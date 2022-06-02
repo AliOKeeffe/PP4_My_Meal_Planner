@@ -15,19 +15,42 @@ class Recipe(models.Model):
     image = CloudinaryField('image', default='placeholder')
     created_on = models.DateTimeField(auto_now=True)
     status = models.IntegerField(choices=STATUS, default=0)
-    is_vegatarian = models.BooleanField(default=False)
+    is_vegetarian = models.BooleanField(default=False)
     is_vegan = models.BooleanField(default=False)
 
-
-class Favourites(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="favourites")
-    favourites = models.ManyToManyField(Recipe, related_name="favourites", blank=True)
+    class Meta:
+        ordering = ['-created_on']
 
 
-class MealPlan(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="meal_plan")
+    def __str__(self):
+        return self.title
 
-class MealPlanItem(models.Model):
-    meal_plan = models.ForeignKey(MealPlan, on_delete=models.CASCADE, related_name="meal_plan_item")
-    recipe = models.ManyToManyField(Recipe, related_name="meal_plan_item")
-    # day = models.IntegerChoices()
+
+class Comment(models.Model):
+
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name='comments')
+    name = models.CharField(max_length=80)
+    email = models.EmailField()
+    body = models.TextField()
+    created_on = models.DateTimeField(auto_now=True)
+    approved = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ['created_on']
+
+    def __str__(self):
+        return f"Comment {self.body} by {self.name}"
+
+
+# class Favourites(models.Model):
+#     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="favourites")
+#     favourites = models.ManyToManyField(Recipe, related_name="favourites", blank=True)
+
+
+# class MealPlan(models.Model):
+#     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="meal_plan")
+
+# class MealPlanItem(models.Model):
+#     meal_plan = models.ForeignKey(MealPlan, on_delete=models.CASCADE, related_name="meal_plan_item")
+#     recipe = models.ManyToManyField(Recipe, related_name="meal_plan_item")
+#     # day = models.IntegerChoices()
