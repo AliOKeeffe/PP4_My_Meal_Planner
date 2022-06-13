@@ -8,7 +8,7 @@
     <div>
         <p class="author">Author: {{ recipe.author }}</p>
     </div>
-    <a href="#">
+    <a href="{% url 'recipe_detail' recipe.slug %}">
         <h2>{{ recipe.title }}</h2>
         <p>{{ recipe.description }}</p>
     </a>
