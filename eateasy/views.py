@@ -3,7 +3,6 @@ from django.views import generic, View
 from .models import Recipe
 from .forms import CommentForm
 
-
 class RecipeList(generic.ListView):
     model = Recipe
     queryset = Recipe.objects.filter(status=1).order_by('-created_on')
@@ -62,7 +61,10 @@ class RecipeDetail(View):
         )
 
 
-
-
 class AddRecipe(View):
-    template_name = 'add_recipe.html'
+    def get(self, request, *args, **kwargs):
+        # recipe_form = AddRecipeForm()
+        model = Recipe
+        template_name = 'add_recipe.html'
+        return render(request, template_name)
+
