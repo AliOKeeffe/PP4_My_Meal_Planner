@@ -1,4 +1,4 @@
-from .models import Comment
+from .models import Comment, Recipe
 from django import forms
 
 class CommentForm(forms.ModelForm):
@@ -7,14 +7,14 @@ class CommentForm(forms.ModelForm):
         fields = ('body',)
 
 
-# class AddRecipeForm(forms.ModelForm):
-#     class Meta:
-#         model = Recipe
-#         fields = [
-#             'title',
-#             'description',
-#             'method',
-#             'image',
-#             'is_vegetarian',
-#             'is_vegan'
-#         ]
+class RecipeForm(forms.ModelForm):
+    class Meta:
+        model = Recipe
+        fields = [
+            'title',
+            'description',
+            'method',
+            'image',
+            'is_vegetarian',
+            'is_vegan'
+        ]

@@ -2,10 +2,25 @@
 
 {% block content %}
 
-<!-- {% load crispy_forms_tags %} -->
+{% load crispy_forms_tags %}
 
 <div>
     <p>Add your recipe here</p>
+    <div class="col-md-4 card mb-4 mt-3">
+        <div class="card-body">
+            {% if user.is_authenticated %}
+
+            <h3 class="card-title">Add your Recipe:</h3>
+            <p>Posting as: {{ user.username }}</p>
+            <form method="post" style="margin-top: 1.3em;">
+                {{ recipe_form | crispy }}
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            {% endif %}
+
+        </div>
+    </div>
 </div>
 
 

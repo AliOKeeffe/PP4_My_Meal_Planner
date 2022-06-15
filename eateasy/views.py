@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic, View
 from .models import Recipe
-from .forms import CommentForm
+from .forms import CommentForm, RecipeForm
 
 class RecipeList(generic.ListView):
     model = Recipe
@@ -61,10 +61,16 @@ class RecipeDetail(View):
         )
 
 
-class AddRecipe(View):
+class AddRecipe(generic.CreateView):
     def get(self, request, *args, **kwargs):
-        # recipe_form = AddRecipeForm()
-        model = Recipe
+        recipe_form = RecipeForm()
+        # model = Recipe
         template_name = 'add_recipe.html'
-        return render(request, template_name)
+        return render(
+            request,
+            template_name,
+            {
+                "recipe_form": recipe_form
+            }
+        )
 
