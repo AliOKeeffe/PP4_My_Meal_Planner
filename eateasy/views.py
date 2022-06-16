@@ -68,3 +68,21 @@ class AddRecipe(generic.CreateView):
         form.instance.author = self.request.user
         super(AddRecipe, self).form_valid(form)
         return redirect('home')
+
+# class UpdateRecipe(generic.UpdateView):
+#     form_class = RecipeForm
+#     template_name_suffix = '_add_recipe.html'
+#     success_url = reverse_lazy('home')
+
+#     def form_valid(self, form):
+#         form.instance.author = self.request.user
+#         super(UpdateRecipe, self).form_valid(form)
+#         return redirect('home')
+
+
+class UpdateRecipe(generic.UpdateView):
+    model = Recipe
+    fields = '__all__'
+    template_name = 'update_recipe.html'
+    success_url = reverse_lazy('home')
+

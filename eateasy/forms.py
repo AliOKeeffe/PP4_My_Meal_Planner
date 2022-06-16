@@ -9,8 +9,8 @@ class CommentForm(forms.ModelForm):
 
 class RecipeForm(forms.ModelForm):
 
-    def __init__(self, *args, **kwargs):
-        super(RecipeForm, self).__init__(*args, **kwargs)
+    # def __init__(self, *args, **kwargs):
+    #     super(RecipeForm, self).__init__(*args, **kwargs)
 
     class Meta:
         model = Recipe
