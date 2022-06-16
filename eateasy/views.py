@@ -1,4 +1,5 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
+from django.urls import reverse_lazy
 from django.views import generic, View
 from .models import Recipe
 from .forms import CommentForm, RecipeForm
@@ -62,15 +63,12 @@ class RecipeDetail(View):
 
 
 class AddRecipe(generic.CreateView):
-    def get(self, request, *args, **kwargs):
-        recipe_form = RecipeForm()
-        # model = Recipe
-        template_name = 'add_recipe.html'
-        return render(
-            request,
-            template_name,
-            {
-                "recipe_form": recipe_form
-            }
-        )
 
+    form_class = RecipeForm()
+    template_name = 'add_recipe.html'
+    success_url = reverse_lazy('add_recipe')
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        super(AddRecipe, self).form_valid(form)
+        return redirect('add_recipe')

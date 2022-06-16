@@ -18,3 +18,7 @@ class RecipeForm(forms.ModelForm):
             'is_vegetarian',
             'is_vegan'
         ]
+
+
+    def __init__(self, *args, **kwargs):
+        super(RecipeForm, self).__init__(*args, **kwargs)
