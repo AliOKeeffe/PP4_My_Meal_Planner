@@ -5,7 +5,7 @@
 {% load crispy_forms_tags %}
 
 
-<div>
+<div class="container">
     <h1>{{ recipe.title }}</h1>
 
     <div>
@@ -39,24 +39,31 @@
                 {% endfor %}
             </div>
         </div>
-    <div class="col-md-4 card mb-4 mt-3">
-        <div class="card-body">
-            {% if user.is_authenticated %}
+        <div class="col-md-4 card mb-4 mt-3">
+            <div class="card-body">
+                {% if user.is_authenticated %}
 
-            <h3 class="card-title">Leave a comment:</h3>
-            <p>Posting as: {{ user.username }}</p>
-            <form method="post" style="margin-top: 1.3em;">
-                {{ comment_form | crispy }}
-                {% csrf_token %}
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-            {% endif %}
+                <h3 class="card-title">Leave a comment:</h3>
+                <p>Posting as: {{ user.username }}</p>
+                <form method="post" style="margin-top: 1.3em;">
+                    {{ comment_form | crispy }}
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+                {% endif %}
 
+            </div>
+        </div>
+        <div>
+            <a class="btn btn-info btn-lg mt-4" href="{% url 'update_recipe' recipe.slug %}">
+                Update
+            </a>
+        </div>
+        <div>
+            <a class="btn btn-info btn-lg mt-4" href="{% url 'delete_recipe' recipe.slug %}">
+                Delete
+            </a>
         </div>
     </div>
-    <a href="{% url 'update_recipe' recipe.slug %}">
-        <h2>update</h2>
-    </a>
-</div>
 
-{% endblock content %}
+    {% endblock content %}

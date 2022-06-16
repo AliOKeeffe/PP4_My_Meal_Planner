@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django_extensions.db.fields import AutoSlugField
+from django.urls import reverse
 from cloudinary.models import CloudinaryField
 
 STATUS = ((0, "Draft"), (1, "Published"))
@@ -26,6 +27,10 @@ class Recipe(models.Model):
 
     def __str__(self):
         return self.title
+
+
+    def get_absolute_url(self):
+        return reverse('recipe_detail', kwargs={'slug': self.slug})
 
 class Comment(models.Model):
 
