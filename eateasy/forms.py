@@ -8,6 +8,10 @@ class CommentForm(forms.ModelForm):
 
 
 class RecipeForm(forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super(RecipeForm, self).__init__(*args, **kwargs)
+
     class Meta:
         model = Recipe
         fields = [
@@ -16,9 +20,6 @@ class RecipeForm(forms.ModelForm):
             'method',
             'image',
             'is_vegetarian',
-            'is_vegan'
+            'is_vegan',
+            'status',
         ]
-
-
-    def __init__(self, *args, **kwargs):
-        super(RecipeForm, self).__init__(*args, **kwargs)

@@ -13,7 +13,7 @@
             <h3 class="card-title">Add your Recipe:</h3>
             <p>Posting as: {{ user.username }}</p>
             <form method="post" style="margin-top: 1.3em;">
-                {{ recipe_form | crispy }}
+                {{ form | crispy }}
                 {% csrf_token %}
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
