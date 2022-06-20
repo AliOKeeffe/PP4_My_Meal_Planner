@@ -18,8 +18,9 @@ class RecipeDetail(View):
         queryset = Recipe.objects.all()
         recipe = get_object_or_404(queryset, slug=slug)
         comments = recipe.comments.order_by('created_on')
-        # favourite = False
-        # if recipe.favourites.filter
+        favourited = False
+        if recipe.favourites.filter(id = self.request.user.id).exists():
+            favourited = True
 
         return render(
             request,
@@ -27,7 +28,8 @@ class RecipeDetail(View):
             {
                 "recipe": recipe,
                 "comments": comments,
-                "comment_form": CommentForm()
+                "comment_form": CommentForm(),
+                "favourited": favourited
             },
         )
 
@@ -35,6 +37,9 @@ class RecipeDetail(View):
         queryset = Recipe.objects.filter(status=1)
         recipe = get_object_or_404(queryset, slug=slug)
         comments = recipe.comments.order_by('created_on')
+        favourited = False
+        if recipe.favourites.filter(id = self.request.user.id).exists():
+            favourited = True
 
         comment_form = CommentForm(data=request.POST)
 
@@ -53,7 +58,8 @@ class RecipeDetail(View):
             {
                 "recipe": recipe,
                 "comments": comments,
-                "comment_form": CommentForm()
+                "comment_form": CommentForm(),
+                "favourited": favourited
             },
         )
 
@@ -119,6 +125,7 @@ class FavouriteRecipe(LoginRequiredMixin, View):
 
 
 class MyFavourites(LoginRequiredMixin, generic.ListView):
-    def favourite_list(request):
-        favourites = Recipe.objects.filter(favourites=request.user)
-        return render(request, 'my_favourites.html', {'favourites': favourites})
+    def get(self, request):
+        fav_recipes = Recipe.objects.filter(favourites=request.user.id)
+        return render(
+            request, 'my_favourites.html', {'fav_recipes': fav_recipes})
