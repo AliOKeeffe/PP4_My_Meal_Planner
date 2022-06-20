@@ -7,6 +7,11 @@
 
 <div class="container">
     <h1>{{ recipe.title }}</h1>
+    <form action="{% url 'favourite_recipe' recipe.slug %}" class="d-inline" method="POST">
+        {% csrf_token %}
+    <button type="submit" class="btn btn-primary">Add to Favourites</button>
+
+    </form>
 
     <div>
         <p class="author">Author: {{ recipe.author }}</p>

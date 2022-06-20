@@ -20,6 +20,8 @@ class Recipe(models.Model):
     status = models.IntegerField(choices=STATUS, default=0)
     is_vegetarian = models.BooleanField(default=False)
     is_vegan = models.BooleanField(default=False)
+    favourites = models.ManyToManyField(
+        User, related_name='favourite', default=None, blank=True)
 
     class Meta:
         ordering = ['-created_on']

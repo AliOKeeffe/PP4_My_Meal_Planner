@@ -43,6 +43,9 @@
                         <a class="nav-link" href="{% url 'my_recipes' %}">My Recipes</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'my_favourites' %}">My Favourites</a>
+                    </li>
+                    <li class="nav-item">
                         {{ user.username }}
                     </li>
                     {% else %}

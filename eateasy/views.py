@@ -1,6 +1,7 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
+from django.http import HttpResponseRedirect
 from django.views import generic, View
 from .models import Recipe
 from .forms import CommentForm, RecipeForm
@@ -106,3 +107,18 @@ class DeleteRecipe(LoginRequiredMixin, UserPassesTestMixin, generic.DeleteView):
         """
         recipe = self.get_object()
         return recipe.author == self.request.user
+
+class FavouriteRecipe(LoginRequiredMixin, View):
+    def post(self, request, slug, *args, **kwargs):
+        recipe = get_object_or_404(Recipe, slug=slug)
+        if recipe.favourites.filter(id=request.user.id).exists():
+            recipe.favourites.remove(request.user)
+        else:
+            recipe.favourites.add(request.user)
+        return HttpResponseRedirect(reverse('recipe_detail', args=[slug]))
+
+
+class MyFavourites(LoginRequiredMixin, generic.ListView):
+    def favourite_list(request):
+        favourites = Recipe.objects.filter(favourites=request.user)
+        return render(request, 'my_favourites.html', {'favourites': favourites})
