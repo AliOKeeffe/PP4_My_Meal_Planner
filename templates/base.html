@@ -39,6 +39,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'add_recipe' %}">Add recipe</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'my_recipes' %}">My Recipes</a>
+                    </li>
+                    <li class="nav-item">
+                        {{ user.username }}
+                    </li>
                     {% else %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'account_signup' %}">Sign up</a>

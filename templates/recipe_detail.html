@@ -54,6 +54,7 @@
 
             </div>
         </div>
+        {% if user.is_authenticated and recipe.author == user %}
         <div>
             <a class="btn btn-info btn-lg mt-4" href="{% url 'update_recipe' recipe.slug %}">
                 Update
@@ -64,6 +65,7 @@
                 Delete
             </a>
         </div>
+        {% endif %}
     </div>
 
     {% endblock content %}

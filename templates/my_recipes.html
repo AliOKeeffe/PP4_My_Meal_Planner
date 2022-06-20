@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+    {% for recipe in recipe_list  %}
+    {% if user.is_authenticated and recipe.author == user %}
+
+    <div>
+        <p class="author">Author: {{ recipe.author }}</p>
+    </div>
+    <a href="{% url 'recipe_detail' recipe.slug %}">
+        <h2>{{ recipe.title }}</h2>
+        <p>{{ recipe.description }}</p>
+    </a>
+    <hr>
+    {% endif %}
+    {% endfor %}
+</div>
+
+
+
+{%endblock%}
