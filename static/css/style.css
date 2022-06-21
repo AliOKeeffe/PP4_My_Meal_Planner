@@ -1,21 +1,30 @@
 
 
 
-h1, h2 {
+h1, h2, h6 {
     text-align: center;
 }
 
 
 
 .hero-outer {
-    height:800px;
-    background-image: url(/static/images/family_dinner.jpg); 
+    height: 60vh;
+    background-image: url("/static/images/family_dinner.jpg"); 
     background-repeat: no-repeat; 
     background-size: cover; 
     background-position: center center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.feature {
+
+.feature-image {
+    height: 80px;
+    width: 80px;
     text-align: center;
+    margin: 0 auto;
+
 }
 
