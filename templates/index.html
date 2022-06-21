@@ -2,21 +2,48 @@
 
 {% block content %}
 
-<div class="container">
-    {% for recipe in recipe_list  %}
+<article class="container-fluid">
+    <section class="container-fluid hero-outer hero-image">
+        <div class="row">
+            <div class="col title">
+                <h1 class="welcome-title">Welcome to the Easy Eater</h1>
+                <hr>
+                <p class="welcome-msg">Taking the stress out of everyday cooking!</p>
+            </div>
+        </div>
+    </section>
 
-    <div>
-        <p class="author">Author: {{ recipe.author }}</p>
-    </div>
-    <a href="{% url 'recipe_detail' recipe.slug %}">
-        <h2>{{ recipe.title }}</h2>
-        <p>{{ recipe.description }}</p>
-    </a>
-    <hr>
+    <section class="features container">
+        <div class="row">
+            <div class="col-12">
+                <h2>Sign up today to access the following features!</h2>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-12 col-md-3">
+                <div class="feature">
+                    <h3>Browse recipes for inspiration</h3>
+                </div>
+            </div>
+            <div class="col-12 col-md-3">
+                <div class="feature">
+                    <h3>Upload and manage your recipes or add recipes to your favourites</h3>
+                </div>
+            </div>
+            <div class="col-12 col-md-3">
+                <div class="feature">
+                    <h3>Add recipes to your weekly meal planner</h3>
+                </div>
+            </div>
+            <div class="col-12 col-md-3">
+                <div class="feature">
+                    <h3>Generate your shopping list</h3>
+                </div>
+            </div>
+        </div>
 
-    {% endfor %}
-</div>
-
-
+    </section>
+</article>
 
 {%endblock%}

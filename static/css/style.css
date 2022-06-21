@@ -1,0 +1,21 @@
+
+
+
+h1, h2 {
+    text-align: center;
+}
+
+
+
+.hero-outer {
+    height:800px;
+    background-image: url(/static/images/family_dinner.jpg); 
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    background-position: center center;
+}
+
+.feature {
+    text-align: center;
+}
+

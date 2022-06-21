@@ -6,10 +6,17 @@ from django.views import generic, View
 from .models import Recipe
 from .forms import CommentForm, RecipeForm
 
+
+class Home(View):
+    def get(self, request):
+        return render(request, 'index.html')
+
+
+
 class RecipeList(generic.ListView):
     model = Recipe
     queryset = Recipe.objects.filter(status=1).order_by('-created_on')
-    template_name = 'index.html'
+    template_name = 'browse_recipes.html'
     paginate_by = 6
 
 class RecipeDetail(View):
