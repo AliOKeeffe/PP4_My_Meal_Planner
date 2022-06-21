@@ -3,20 +3,25 @@
 {% block content %}
 
 <div class="container">
-    {% for recipe in recipe_list  %}
-
-    <div>
-        <p class="author">Author: {{ recipe.author }}</p>
+    <div class="row">
+        <div class="col">
+            <h1>Recipes</h1>
+        </div>
     </div>
-    <a href="{% url 'recipe_detail' recipe.slug %}">
-        <h2>{{ recipe.title }}</h2>
-        <p>{{ recipe.description }}</p>
-    </a>
-    <hr>
+    <div class="row">
+        {% for recipe in recipe_list  %}
+        <div class="col-sm-4">
+            <div class="card mb-3">
+                <img src="/static/images/meatballs.jpg" class="card-img-top card-img" alt="meatballs">
+                <div class="card-body">
+                    <h5 class="card-title">{{ recipe.title }}</h5>
+                    <p class="card-text">{{ recipe.description }}</p>
+                    <a href="{% url 'recipe_detail' recipe.slug %}" class="btn btn-primary">View</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 
-    {% endfor %}
 </div>
-
-
-
 {%endblock%}

@@ -28,3 +28,9 @@ h1, h2, h6 {
 
 }
 
+.card-img {
+
+    height: 15vw;
+    object-fit: cover;
+    min-height: 200px;
+}
