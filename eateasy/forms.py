@@ -1,5 +1,7 @@
 from .models import Comment, Recipe
 from django import forms
+from django_summernote.widgets import SummernoteWidget, SummernoteInplaceWidget
+
 
 class CommentForm(forms.ModelForm):
     class Meta:
@@ -23,3 +25,7 @@ class RecipeForm(forms.ModelForm):
             'is_vegan',
             'status',
         ]
+        widgets = {
+            'description': SummernoteInplaceWidget(),
+            'method': SummernoteInplaceWidget()
+        }

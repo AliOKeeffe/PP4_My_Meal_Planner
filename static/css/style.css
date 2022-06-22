@@ -52,3 +52,7 @@ h1, h2, h6 {
     width: 100%;
 }
 
+.add-recipe {
+    width: 80%;
+    margin: 0 auto;
+}
