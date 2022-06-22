@@ -10,9 +10,9 @@
     </div>
     <div class="row">
         {% for recipe in recipe_list  %}
-        <div class="col-sm-4">
-            <div class="card mb-3">
-                <img src="/static/images/meatballs.jpg" class="card-img-top card-img" alt="meatballs">
+        <div class="col-sm-3 px-1">
+            <div class="card card-detail mb-3">
+                <img src="/static/images/meatballs.jpg" class="card-img-top img-fluid card-img" alt="meatballs">
                 <div class="card-body">
                     <h5 class="card-title">{{ recipe.title }}</h5>
                     <p class="card-text">{{ recipe.description }}</p>

@@ -3,61 +3,109 @@
 {% block content %}
 
 {% load crispy_forms_tags %}
+<div class="container">
+    <div class="card mb-3 mt-3 recipe-detail-card bg-light">
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <img src="/static/images/meatballs.jpg" class="recipe-detail-img" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h1 class="card-title text-left">{{ recipe.title }}</h1>
+                    <p class="card-text">Author: {{ recipe.author }}</p>
+                    <p class="card-text">Description: {{ recipe.description | safe }}</p>
+                    <div class="row">
+                        <div class="col-2 col-md-1 pr-0"><i class="far fa-clock"></i></div>
+                        <div class="col-10 col-md-11 pl-0">
+                            <p>
+                                Prep Time: {{ recipe.preparation_length }}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2 col-md-1 pr-0"><i class="far fa-clock"></i></div>
+                        <div class="col-10 col-md-11 pl-0">
+                            <p>
+                                Cook Time: {{ recipe.cooking_length }}
+                            </p>
+                        </div>
+                    </div>
+                    {% if user.is_authenticated %}
+                    <form class="d-inline" action="{% url 'favourite_recipe' recipe.slug %}" method="POST">
+                        {% csrf_token %}
+                        {% if favourited  %}
+                        <button type="submit" name="blogpost_id" value="{{recipe.slug}}" class="btn-like"><i
+                                class="fas fa-heart"></i></button>
+                        {% else %}
+                        <button type="submit" name="blogpost_id" value="{{recipe.slug}}" class="btn-like"><i
+                                class="far fa-heart"></i></button>
+                        {% endif %}
 
+                    </form>
+                    {% else %}
+                    <span class="text-secondary"><i class="far fa-heart"></i></span>
+                    {% endif %}
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="container">
-    <h1>{{ recipe.title }}</h1>
-    <!-- <form action="{% url 'favourite_recipe' recipe.slug %}" class="d-inline" method="POST">
-        {% csrf_token %}
-    <button type="submit" class="btn btn-primary">Add to Favourites</button> -->
-
-    {% if user.is_authenticated %}
-    <form class="d-inline" action="{% url  'favourite_recipe' recipe.slug %}" method="POST">
-        {% csrf_token %}
-        {% if favourited  %}
-        <button type="submit" name="blogpost_id" value="{{recipe.slug}}" class="btn-like"><i class="fas fa-heart"></i></button>
-        {% else %}
-        <button type="submit" name="blogpost_id" value="{{recipe.slug}}" class="btn-like"><i class="far fa-heart"></i></button>
-        {% endif %}
-
-    </form>
-    {% else %}
-    <span class="text-secondary"><i class="far fa-heart"></i></span>
-    {% endif %}
-    <div>
-        <p class="author">Author: {{ recipe.author }}</p>
-    </div>
-    <a href="#">
-        <p>{{ recipe.description }} </p>
-        <p>{{ recipe.content | safe }} </p>
-    </a>
-    <hr>
-
     <div class="row">
-        <div class="col-md-8 card mb-4  mt-3 ">
-            <h3>Comments:</h3>
+        <div class="col-md-6">
+            <div class="card mb-3">
+                <h5 class="card-header">
+                    Ingredients
+                </h5>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">An item</li>
+                    <li class="list-group-item">A second item</li>
+                    <li class="list-group-item">A third item</li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="col-md-6">
+            <div class="card mb-3">
+                <h5 class="card-header">Method</h5>
+                <div class="card-body">
+
+                    <p class="card-text">{{ recipe.method }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<hr>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card mb-4 mt-3 ">
             <div class="card-body">
-                <!-- We want a for loop inside the empty control tags to iterate through each comment in comments -->
+                <h3 class="card-title">Comments:</h3>
                 {% for comment in comments %}
-                <div class="comments" style="padding: 10px;">
+                <div>
                     <p class="font-weight-bold">
-                        <!-- The commenter's name goes here. Check the model if you're not sure what that is -->
                         {{ comment.name }}
                         <span class=" text-muted font-weight-normal">
-                            <!-- The comment's created date goes here -->
                             {{ comment.created_on }}
                         </span> wrote:
                     </p>
-                    <!-- The body of the comment goes before the | -->
                     {{ comment.body | linebreaks }}
                 </div>
-                <!-- Our for loop ends here -->
                 {% endfor %}
             </div>
         </div>
+        </div>
+        {% if user.is_authenticated %}
         <div class="col-md-4 card mb-4 mt-3">
             <div class="card-body">
-                {% if user.is_authenticated %}
+
 
                 <h3 class="card-title">Leave a comment:</h3>
                 <p>Posting as: {{ user.username }}</p>

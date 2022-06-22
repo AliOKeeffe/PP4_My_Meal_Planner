@@ -30,7 +30,25 @@ h1, h2, h6 {
 
 .card-img {
 
-    height: 15vw;
-    object-fit: cover;
-    min-height: 200px;
+    height: 350px;
+    /* object-fit: cover;
+    min-height: 200px; */
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
+
+.card-detail {
+    border: none;
+}
+
+
+.recipe-detail-card {
+    border: none;
+}
+
+.recipe-detail-img {
+    max-height: 300px;
+    object-fit: cover;
+    width: 100%;
+}
+
