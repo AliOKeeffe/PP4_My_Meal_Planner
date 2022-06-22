@@ -4,7 +4,7 @@ from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
 from django.views import generic, View
 from .models import Recipe
-from .forms import CommentForm, RecipeForm
+from .forms import CommentForm, RecipeForm, IngredientFormSet
 
 
 class Home(View):
@@ -73,6 +73,10 @@ class RecipeDetail(View):
 
 class AddRecipe(LoginRequiredMixin, generic.CreateView):
     form_class = RecipeForm
+    formset = IngredientFormSet()
+    # form_classes = {'recipe': RecipeForm,
+    #                 'ingredients': IngredientForm}
+
     template_name = 'add_recipe.html'
     # success_url = reverse_lazy('home')
 

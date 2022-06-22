@@ -1,5 +1,6 @@
-from .models import Comment, Recipe
+from .models import Comment, Recipe, Ingredient
 from django import forms
+from django.forms import inlineformset_factory
 from django_summernote.widgets import SummernoteWidget, SummernoteInplaceWidget
 
 
@@ -11,8 +12,9 @@ class CommentForm(forms.ModelForm):
 
 class RecipeForm(forms.ModelForm):
 
-    # def __init__(self, *args, **kwargs):
-    #     super(RecipeForm, self).__init__(*args, **kwargs)
+    def __init__(self, *args, **kwargs):
+        super(RecipeForm, self).__init__(*args, **kwargs)
+
 
     class Meta:
         model = Recipe
@@ -26,6 +28,15 @@ class RecipeForm(forms.ModelForm):
             'status',
         ]
         widgets = {
-            'description': SummernoteInplaceWidget(),
-            'method': SummernoteInplaceWidget()
+            'description': SummernoteWidget(),
+            'method': SummernoteWidget()
         }
+
+
+class IngredientForm(forms.ModelForm):
+    class Meta:
+        model = Ingredient
+        exclude = ('recipe',)
+
+
+IngredientFormSet = inlineformset_factory(Recipe, Ingredient, form=IngredientForm)
