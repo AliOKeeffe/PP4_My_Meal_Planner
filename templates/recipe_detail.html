@@ -7,7 +7,11 @@
     <div class="card mb-3 mt-3 recipe-detail-card bg-light">
         <div class="row no-gutters">
             <div class="col-md-4">
-                <img src="/static/images/meatballs.jpg" class="recipe-detail-img" alt="...">
+                {% if "placeholder" in recipe.image.url %}
+                <img src="https://res.cloudinary.com/aliokeeffe/image/upload/v1656016833/placeholder_image_prqssg.jpg" class="recipe-detail-img" alt="placeholder image">
+                {% else %}
+                <img src=" {{ recipe.image.url }}" alt="recipe image" class="recipe-detail-img">
+                {% endif %}
             </div>
             <div class="col-md-8">
                 <div class="card-body">
@@ -34,11 +38,10 @@
                     <form class="d-inline" action="{% url 'favourite_recipe' recipe.slug %}" method="POST">
                         {% csrf_token %}
                         {% if favourited  %}
-                        <button type="submit" name="blogpost_id" value="{{recipe.slug}}" class="btn-like"><i
-                                class="fas fa-heart"></i></button>
+                        <button type="submit" name="blogpost_id" value="{{recipe.slug}}" class="btn-like">
+                            <i class="fas fa-bookmark"></i></button>
                         {% else %}
-                        <button type="submit" name="blogpost_id" value="{{recipe.slug}}" class="btn-like"><i
-                                class="far fa-heart"></i></button>
+                        <button type="submit" name="blogpost_id" value="{{recipe.slug}}" class="btn-like"><i class="far fa-bookmark"></i></button>
                         {% endif %}
 
                     </form>

@@ -4,11 +4,14 @@
 
 {% load crispy_forms_tags %}
 
+
+
 <div class="container">
-    <h1 class="mt-5">Add Recipe</h1>
+    <h1 class="page-title">Add Recipe</h1>
     <div class="row">
         {% if user.is_authenticated %}
-        <form method="post" class="add-recipe">
+        {% load cloudinary %}
+        <form method="post" class="add-recipe" action="" enctype="multipart/form-data">
             <div class="col">
 
                 <div class="card">

@@ -5,14 +5,18 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h1>Recipes</h1>
+            <h1 class="page-title">Recipes</h1>
         </div>
     </div>
     <div class="row">
         {% for recipe in recipe_list  %}
         <div class="col-sm-3 px-1">
             <div class="card card-detail mb-3">
-                <img src="/static/images/meatballs.jpg" class="card-img-top img-fluid card-img" alt="meatballs">
+                {% if "placeholder" in recipe.image.url %}
+                <img src="https://res.cloudinary.com/aliokeeffe/image/upload/v1656016833/placeholder_image_prqssg.jpg" class="card-img-top img-fluid card-img" alt="placeholder image">
+                {% else %}
+                <img src=" {{ recipe.image.url }}" alt="recipe image" class="card-img-top img-fluid card-img">
+                {% endif %}
                 <div class="card-body">
                     <h5 class="card-title">{{ recipe.title }}</h5>
                     <p class="card-text">{{ recipe.description }}</p>
