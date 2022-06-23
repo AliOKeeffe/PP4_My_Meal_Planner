@@ -1,10 +1,10 @@
-from django.shortcuts import render, get_object_or_404, reverse
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
 from django.views import generic, View
 from .models import Recipe
-from .forms import CommentForm, RecipeForm, IngredientFormSet
+from .forms import CommentForm, RecipeForm
 
 
 class Home(View):
@@ -73,10 +73,7 @@ class RecipeDetail(View):
 
 class AddRecipe(LoginRequiredMixin, generic.CreateView):
     form_class = RecipeForm
-    formset = IngredientFormSet()
-    # form_classes = {'recipe': RecipeForm,
-    #                 'ingredients': IngredientForm}
-
+    # formset = IngredientFormSet()
     template_name = 'add_recipe.html'
     # success_url = reverse_lazy('home')
 
@@ -84,6 +81,24 @@ class AddRecipe(LoginRequiredMixin, generic.CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
+
+# def add_recipe(request):
+#     if request.method == "GET":
+#         form = RecipeForm()
+#         formset = IngredientFormSet()
+#         return render(request, 'add_recipe.html', {"form": form, "formset": formset})
+
+#     elif request.method == 'POST':
+#         form = RecipeForm(request.POST)
+#         if form.is_valid():
+#             form.instance.author = request.user
+#             recipe = form.save()
+#             formset = IngredientFormSet(request.POST, instance=recipe)
+#             if formset.is_valid():
+#                 formset.save()
+#             return redirect('/')
+#         else:
+#             return render(request, 'add_recipe.html', {"form": form})
 
 class MyRecipes(LoginRequiredMixin, generic.ListView):
 

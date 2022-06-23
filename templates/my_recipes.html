@@ -3,21 +3,29 @@
 {% block content %}
 
 <div class="container">
-    {% for recipe in recipe_list  %}
-    {% if user.is_authenticated and recipe.author == user %}
-
-    <div>
-        <p class="author">Author: {{ recipe.author }}</p>
+    <div class="row">
+        <div class="col">
+            <h1>My Recipes</h1>
+        </div>
     </div>
-    <a href="{% url 'recipe_detail' recipe.slug %}">
-        <h2>{{ recipe.title }}</h2>
-        <p>{{ recipe.description }}</p>
-    </a>
-    <hr>
-    {% endif %}
-    {% endfor %}
-</div>
+    <div class="row">
+        {% for recipe in recipe_list  %}
+        {% if user.is_authenticated and recipe.author == user %}
+        <div class="col-sm-3 px-1">
+            <div class="card card-detail mb-3">
+                <img src="/static/images/meatballs.jpg" class="card-img-top img-fluid card-img" alt="meatballs">
+                <div class="card-body">
+                    <h5 class="card-title">{{ recipe.title }}</h5>
+                    <p class="card-text">{{ recipe.description }}</p>
+                    <a href="{% url 'recipe_detail' recipe.slug %}" class="btn btn-primary">View</a>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
 
+</div>
 
 
 {%endblock%}

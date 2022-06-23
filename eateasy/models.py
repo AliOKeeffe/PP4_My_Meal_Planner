@@ -7,13 +7,24 @@ from cloudinary.models import CloudinaryField
 STATUS = ((0, "Draft"), (1, "Published"))
 
 
+# class Ingredient(models.Model):
+#     name = models.CharField(max_length=100)
+#     # quantity = models.FloatField()
+#     # recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name="ingredients")
+
+#     def __str__(self):
+#         return self.name
+
 class Recipe(models.Model):
     title = models.CharField(max_length=100, unique=True)
     # slug = models.SlugField(max_length=100, unique=True)
     slug = AutoSlugField(populate_from='title', unique=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="recipes")
     updated_on = models.DateTimeField(auto_now=True)
+    preparation_time = models.CharField(max_length=10, default=0)
+    cook_time = models.CharField(max_length=10, default=0)
     description = models.TextField()
+    ingredients = models.TextField()
     method = models.TextField()
     image = CloudinaryField('image', default='placeholder')
     created_on = models.DateTimeField(auto_now=True)
@@ -34,13 +45,6 @@ class Recipe(models.Model):
     def get_absolute_url(self):
         return reverse('recipe_detail', kwargs={'slug': self.slug})
 
-class Ingredient(models.Model):
-    name = models.CharField(max_length=100)
-    quantity = models.FloatField()
-    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name="ingredients")
-
-    def __str__(self):
-        return self.name
 
 class Comment(models.Model):
 

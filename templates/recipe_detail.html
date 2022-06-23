@@ -18,7 +18,7 @@
                         <div class="col-2 col-md-1 pr-0"><i class="far fa-clock"></i></div>
                         <div class="col-10 col-md-11 pl-0">
                             <p>
-                                Prep Time: {{ recipe.preparation_length }}
+                                Prep Time: {{ recipe.preparation_time }}
                             </p>
                         </div>
                     </div>
@@ -26,7 +26,7 @@
                         <div class="col-2 col-md-1 pr-0"><i class="far fa-clock"></i></div>
                         <div class="col-10 col-md-11 pl-0">
                             <p>
-                                Cook Time: {{ recipe.cooking_length }}
+                                Cook Time: {{ recipe.cook_time }}
                             </p>
                         </div>
                     </div>
@@ -60,9 +60,7 @@
                     Ingredients
                 </h5>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">An item</li>
-                    <li class="list-group-item">A second item</li>
-                    <li class="list-group-item">A third item</li>
+                    <li class="list-group-item">{{ recipe.ingredients | safe }}</li>
                 </ul>
             </div>
 
@@ -72,7 +70,7 @@
                 <h5 class="card-header">Method</h5>
                 <div class="card-body">
 
-                    <p class="card-text">{{ recipe.method }}</p>
+                    <p class="card-text">{{ recipe.method | safe }}</p>
                 </div>
             </div>
         </div>
