@@ -6,6 +6,15 @@ from cloudinary.models import CloudinaryField
 
 STATUS = ((0, "Draft"), (1, "Published"))
 
+DAY_CHOICES = (
+    ("Monday", "Monday"),
+    ("Tuesday", "Tuesday"),
+    ("Wednesday", "Wednesday"),
+    ("Thursday", "Thursday"),
+    ("Friday", "Friday"),
+    ("Saturday", "Saturday"),
+    ("Sunday", "Sunday"),
+)
 
 # class Ingredient(models.Model):
 #     name = models.CharField(max_length=100)
@@ -45,6 +54,13 @@ class Recipe(models.Model):
     def get_absolute_url(self):
         return reverse('recipe_detail', kwargs={'slug': self.slug})
 
+class MealPlanItem(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="meal_plan")
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name="meal_plan_item")
+    day = models.CharField(max_length=20, choices=DAY_CHOICES, default='Monday', unique=True)
+        
+    def __str__(self):
+        return self.day
 
 class Comment(models.Model):
 
@@ -70,7 +86,3 @@ class Comment(models.Model):
 # class MealPlan(models.Model):
 #     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="meal_plan")
 
-# class MealPlanItem(models.Model):
-#     meal_plan = models.ForeignKey(MealPlan, on_delete=models.CASCADE, related_name="meal_plan_item")
-#     recipe = models.ManyToManyField(Recipe, related_name="meal_plan_item")
-#     # day = models.IntegerChoices()

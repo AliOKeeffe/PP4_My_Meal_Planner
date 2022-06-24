@@ -3,8 +3,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
 from django.views import generic, View
-from .models import Recipe
-from .forms import CommentForm, RecipeForm
+from .models import Recipe, MealPlanItem
+from .forms import CommentForm, RecipeForm, MealPlanForm
 
 
 class Home(View):
@@ -18,6 +18,14 @@ class RecipeList(generic.ListView):
     queryset = Recipe.objects.filter(status=1).order_by('-created_on')
     template_name = 'browse_recipes.html'
     paginate_by = 6
+
+
+
+    # def get(self, request):
+    #     mealplan = MealPlanItem.objects.filter(user=request.user.id)
+    #     return render(
+    #         request, 'my_mealplan.html', {'mealplan': mealplan})
+
 
 class RecipeDetail(View):
 
@@ -49,6 +57,7 @@ class RecipeDetail(View):
             favourited = True
 
         comment_form = CommentForm(data=request.POST)
+        
 
         if comment_form.is_valid():
             comment_form.instance.email = request.user.email
@@ -59,6 +68,16 @@ class RecipeDetail(View):
         else:
             comment_form = CommentForm()
 
+        mealplan_form = MealPlanForm(data=request.POST)
+
+        if mealplan_form.is_valid():
+            mealplan_item = mealplan_form.save(commit=False)
+            mealplan_item.user = request.user
+            mealplan_item.recipe = recipe
+            mealplan_item.save()
+        else:
+            mealplan_form = MealPlanForm()
+
         return render(
             request,
             "recipe_detail.html",
@@ -66,6 +85,7 @@ class RecipeDetail(View):
                 "recipe": recipe,
                 "comments": comments,
                 "comment_form": CommentForm(),
+                "mealplan_form": MealPlanForm(),
                 "favourited": favourited
             },
         )
@@ -81,6 +101,16 @@ class AddRecipe(LoginRequiredMixin, generic.CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
+# class AddMealPlanItem(LoginRequiredMixin, generic.CreateView):
+#     form_class = MealPlanForm
+#     template_name = 'add_mealplan_item.html'
+#     success_url = reverse_lazy('home')
+
+#     def form_valid(self, form):
+#         # recipe = get_object_or_404(Recipe, slug=slug)
+#         form.instance.user = self.request.user
+
+#         return super().form_valid(form)
 
 # def add_recipe(request):
 #     if request.method == "GET":
@@ -101,7 +131,6 @@ class AddRecipe(LoginRequiredMixin, generic.CreateView):
 #             return render(request, 'add_recipe.html', {"form": form})
 
 class MyRecipes(LoginRequiredMixin, generic.ListView):
-
     model = Recipe
     queryset = Recipe.objects.all()
     template_name = 'my_recipes.html'
@@ -155,3 +184,9 @@ class MyFavourites(LoginRequiredMixin, generic.ListView):
         fav_recipes = Recipe.objects.filter(favourites=request.user.id)
         return render(
             request, 'my_favourites.html', {'fav_recipes': fav_recipes})
+
+class MealPlan(LoginRequiredMixin, generic.ListView):
+    model = MealPlanItem
+    queryset = MealPlanItem.objects.all()
+    template_name = 'my_mealplan.html'
+    paginate_by = 6

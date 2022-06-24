@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1 class="page-title">My Meal Plan</h1>
+        </div>
+    </div>
+    <div class="row">
+        {% for meal in mealplanitem_list  %}
+        <div class="col-sm-3 px-1">
+            <div class="card card-detail mb-3">
+                {% if "placeholder" in meal.recipe.image.url %}
+                <img src="https://res.cloudinary.com/aliokeeffe/image/upload/v1656016833/placeholder_image_prqssg.jpg" class="card-img-top img-fluid card-img" alt="placeholder image">
+                {% else %}
+                <img src=" {{ meal.recipe.image.url }}" alt="recipe image" class="card-img-top img-fluid card-img">
+                {% endif %}
+                <div class="card-body">
+                    <h2 class="card-title">{{ meal.day }} </h2>
+                    <h5 class="card-title">{{ meal.recipe.title }}</h5>
+                    <p class="card-text">{{ meal.recipe.description }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+
+{%endblock%}

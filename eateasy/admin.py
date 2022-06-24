@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Recipe, Comment
+from .models import Recipe, Comment, MealPlanItem
 from django_summernote.admin import SummernoteModelAdmin
 
 
@@ -24,3 +24,8 @@ class CommentAdmin(admin.ModelAdmin):
 
     # def approve_comments(self, request, queryset):
     #     queryset.update(approved=True)
+
+@admin.register(MealPlanItem)
+class MealplanAdmin(admin.ModelAdmin):
+
+    list_display = ('user', 'recipe', 'day')

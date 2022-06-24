@@ -48,6 +48,16 @@
                     {% else %}
                     <span class="text-secondary"><i class="far fa-heart"></i></span>
                     {% endif %}
+                    <form method="post" class="add-recipe" action="">
+                        <div class="col">
+            
+                            <div class="card">
+                                {{ mealplan_form | crispy }}
+                                {% csrf_token %}
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
                 </div>
 
             </div>
@@ -79,9 +89,6 @@
         </div>
     </div>
 </div>
-
-
-
 <hr>
 <div class="container">
     <div class="row">

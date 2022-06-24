@@ -1,4 +1,5 @@
-from .models import Comment, Recipe
+from .models import Comment, Recipe, MealPlanItem
+from django.shortcuts import get_object_or_404
 from django import forms
 # from django.forms import inlineformset_factory
 from django_summernote.widgets import SummernoteWidget, SummernoteInplaceWidget
@@ -35,6 +36,10 @@ class RecipeForm(forms.ModelForm):
             'ingredients': SummernoteWidget()
         }
 
+class MealPlanForm(forms.ModelForm):
+    class Meta:
+        model = MealPlanItem
+        fields = ('day',)
 
 # class IngredientForm(forms.ModelForm):
 #     class Meta:
