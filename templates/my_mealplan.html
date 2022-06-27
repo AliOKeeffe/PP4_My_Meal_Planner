@@ -9,38 +9,15 @@
         </div>
     </div>
     <div class="row">
-        {% for meal in mealplanitem_list  %}
-        {% if user.is_authenticated and meal.user == user %}
-        <div class="col-sm-3 px-1">
-            <div class="card card-detail mb-3">
-                {% if "placeholder" in meal.recipe.image.url %}
-                <img src="https://res.cloudinary.com/aliokeeffe/image/upload/v1656016833/placeholder_image_prqssg.jpg" class="card-img-top img-fluid card-img" alt="placeholder image">
-                {% else %}
-                <img src=" {{ meal.recipe.image.url }}" alt="recipe image" class="card-img-top img-fluid card-img">
-                {% endif %}
-                <div class="card-body">
-                    
-                    <h2 class="card-title">{{ meal.get_day_display }} </h2>
-                    <h5 class="card-title">{{ meal.recipe.title }}</h5>
-                    <p class="card-text">{{ meal.recipe.description }}</p>
-                </div>
-            </div>
-        </div>
-        {% endif %}
-        {% endfor %}
-        {% for day in  days  %}
-        <div class="col-sm-3 px-1">
-            <div class="card card-detail mb-3">
-                <div class="card-body">
-                    
-                    <h2 class="card-title">{{ day }} </h2>
-                </div>
-            </div>
-        </div>
+        {% for day in days  %}
+            <h2>Day: {{day}}</h2>
+            {% if mpi[day] %}
+                <h2>None</h2>
+            {% else %}
+                <h2>{{mpi[day].recipe.title}}</h2>
+            {% endif %}
         {% endfor %}
     </div>
-
 </div>
 
-
-{%endblock%}
+{% endblock %}
