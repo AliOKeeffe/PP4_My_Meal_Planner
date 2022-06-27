@@ -19,7 +19,8 @@
                 <img src=" {{ meal.recipe.image.url }}" alt="recipe image" class="card-img-top img-fluid card-img">
                 {% endif %}
                 <div class="card-body">
-                    <h2 class="card-title">{{ meal.day }} </h2>
+                    
+                    <h2 class="card-title">{{ meal.get_day_display }} </h2>
                     <h5 class="card-title">{{ meal.recipe.title }}</h5>
                     <p class="card-text">{{ meal.recipe.description }}</p>
                 </div>
