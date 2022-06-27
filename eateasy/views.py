@@ -203,3 +203,11 @@ class MealPlan(LoginRequiredMixin, generic.ListView):
     queryset = MealPlanItem.objects.all()
     template_name = 'my_mealplan.html'
     paginate_by = 12
+
+    def get_context_data(self, **kwargs):
+        # https://stackoverflow.com/questions/29598341/extra-context-in-django-generic-listview
+        context = super(MealPlan, self).get_context_data(**kwargs)
+        context['days'] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+        return context
+
+
