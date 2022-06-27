@@ -10,6 +10,7 @@
     </div>
     <div class="row">
         {% for meal in mealplanitem_list  %}
+        {% if user.is_authenticated and meal.user == user %}
         <div class="col-sm-3 px-1">
             <div class="card card-detail mb-3">
                 {% if "placeholder" in meal.recipe.image.url %}
@@ -24,6 +25,7 @@
                 </div>
             </div>
         </div>
+        {% endif %}
         {% endfor %}
     </div>
 

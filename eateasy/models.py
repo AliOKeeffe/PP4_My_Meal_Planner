@@ -7,13 +7,13 @@ from cloudinary.models import CloudinaryField
 STATUS = ((0, "Draft"), (1, "Published"))
 
 DAY_CHOICES = (
-    ("Monday", "Monday"),
-    ("Tuesday", "Tuesday"),
-    ("Wednesday", "Wednesday"),
-    ("Thursday", "Thursday"),
-    ("Friday", "Friday"),
-    ("Saturday", "Saturday"),
-    ("Sunday", "Sunday"),
+    (0, "Monday"),
+    (1, "Tuesday"),
+    (2, "Wednesday"),
+    (3, "Thursday"),
+    (4, "Friday"),
+    (5, "Saturday"),
+    (6, "Sunday"),
 )
 
 # class Ingredient(models.Model):
@@ -57,8 +57,11 @@ class Recipe(models.Model):
 class MealPlanItem(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="meal_plan")
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name="meal_plan_item")
-    day = models.CharField(max_length=20, choices=DAY_CHOICES, default='Monday', unique=True)
-        
+    day = models.IntegerField(choices=DAY_CHOICES, default='0')
+    
+    class Meta:
+        ordering = ['day']
+
     def __str__(self):
         return self.day
 

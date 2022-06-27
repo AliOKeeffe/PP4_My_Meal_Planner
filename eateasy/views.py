@@ -44,6 +44,7 @@ class RecipeDetail(View):
                 "recipe": recipe,
                 "comments": comments,
                 "comment_form": CommentForm(),
+                "mealplan_form": MealPlanForm(),
                 "favourited": favourited
             },
         )
@@ -70,11 +71,23 @@ class RecipeDetail(View):
 
         mealplan_form = MealPlanForm(data=request.POST)
 
+
         if mealplan_form.is_valid():
-            mealplan_item = mealplan_form.save(commit=False)
-            mealplan_item.user = request.user
-            mealplan_item.recipe = recipe
+            # ----
+            # get exsiting mpi record for user / day
+            queryset = MealPlanItem.objects.filter(user=request.user, day=request.POST['day'])
+            mealplan_item = queryset.first()
+
+            if mealplan_item:
+                # check if user wants to over write existing meal plan item
+                mealplan_item.recipe = recipe
+            else:
+                mealplan_item = mealplan_form.save(commit=False)
+                mealplan_item.user = request.user
+                mealplan_item.recipe = recipe
+
             mealplan_item.save()
+
         else:
             mealplan_form = MealPlanForm()
 
@@ -189,4 +202,4 @@ class MealPlan(LoginRequiredMixin, generic.ListView):
     model = MealPlanItem
     queryset = MealPlanItem.objects.all()
     template_name = 'my_mealplan.html'
-    paginate_by = 6
+    paginate_by = 12
