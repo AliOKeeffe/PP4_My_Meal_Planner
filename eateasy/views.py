@@ -201,11 +201,38 @@ class MyFavourites(LoginRequiredMixin, generic.ListView):
 
 class MealPlan(LoginRequiredMixin, generic.ListView):
     def get(self, request):
-        mpi = MealPlanItem.objects.filter(user=request.user)
-        days = [0, 1, 2, 3, 4, 5, 6]
-        mpi_response = {}
-        for cal_day in days:
-            mpi_response[cal_day] = mpi.filter(day=cal_day) or 'nil'
+        user_meal_plan_items = MealPlanItem.objects.filter(user=request.user)
+        # days = [0, 1, 2, 3, 4, 5, 6]
+        days = {
+            0: 'Monday',
+            1: 'Tuesday',
+            2: 'Wednesday',
+            3: 'Thursday',
+            4: 'Friday',
+            5: 'Saturday',
+            6: 'Sunday'
+        }
+        mealplan = {}
+
+        for ind, day in days.items():
+            day_meal_plan_item = user_meal_plan_items.filter(day=ind).first()
+            mealplan[day] = day_meal_plan_item or None
 
         return render(
-            request, 'my_mealplan.html', {'mpi': mpi_response, 'days': [0, 1, 2, 3, 4, 5, 6]})
+            request, 'my_mealplan.html', {'mealplan': mealplan})
+
+
+# class MealPlan(LoginRequiredMixin, generic.ListView):
+#     model = MealPlanItem
+#     queryset = MealPlanItem.objects.all()
+#     template_name = 'my_mealplan.html'
+#     paginate_by = 12
+
+#     def get_context_data(self, **kwargs):
+#         # https://stackoverflow.com/questions/29598341/extra-context-in-django-generic-listview
+#         context = super(MealPlan, self).get_context_data(**kwargs)
+#         # context['days'] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+#         context['days'] = [0, 1, 2, 3, 4, 5, 6]
+#         return context
+
+

@@ -66,7 +66,7 @@ class MealPlanItem(models.Model):
         ordering = ['day']
 
     def __str__(self):
-        return self.day
+        return "Meal Plan" + self.user.username
 
 class Comment(models.Model):
 
