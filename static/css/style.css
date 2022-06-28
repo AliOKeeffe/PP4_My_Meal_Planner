@@ -27,6 +27,11 @@ h1, h2, h6 {
     justify-content: center;
 }
 
+.card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+}
 
 .feature-image {
     height: 80px;
@@ -36,13 +41,16 @@ h1, h2, h6 {
 
 }
 
-.card-img {
 
-    height: 350px;
-    /* object-fit: cover;
-    min-height: 200px; */
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+
+
+
+
+
+.mp-icon {
+    font-size: 50px;
+    text-align: center;
+    color: grey;
 }
 
 .card-detail {

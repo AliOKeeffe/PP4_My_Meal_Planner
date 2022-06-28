@@ -8,7 +8,8 @@
         <div class="row no-gutters">
             <div class="col-md-4">
                 {% if "placeholder" in recipe.image.url %}
-                <img src="https://res.cloudinary.com/aliokeeffe/image/upload/v1656016833/placeholder_image_prqssg.jpg" class="recipe-detail-img" alt="placeholder image">
+                <img src="https://res.cloudinary.com/aliokeeffe/image/upload/v1656016833/placeholder_image_prqssg.jpg"
+                    class="recipe-detail-img" alt="placeholder image">
                 {% else %}
                 <img src=" {{ recipe.image.url }}" alt="recipe image" class="recipe-detail-img">
                 {% endif %}
@@ -41,23 +42,48 @@
                         <button type="submit" name="blogpost_id" value="{{recipe.slug}}" class="btn-like">
                             <i class="fas fa-bookmark"></i></button>
                         {% else %}
-                        <button type="submit" name="blogpost_id" value="{{recipe.slug}}" class="btn-like"><i class="far fa-bookmark"></i></button>
+                        <button type="submit" name="blogpost_id" value="{{recipe.slug}}" class="btn-like"><i
+                                class="far fa-bookmark"></i></button>
                         {% endif %}
 
                     </form>
                     {% else %}
                     <span class="text-secondary"><i class="far fa-heart"></i></span>
                     {% endif %}
-                    <form method="post" class="add-recipe" action="">
-                        <div class="col">
-            
-                            <div class="card">
-                                {{ mealplan_form | crispy }}
-                                {% csrf_token %}
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        <span><i class="fas fa-calendar-plus"></span></i>
+                                            Add to Meal Plan
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Select Day</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form method="post" class="add-recipe" action="">
+                                    <div class="modal-body">
+                                        {{ mealplan_form | crispy }}
+                                        {% csrf_token %}
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary btn-sm">
+                                            <span><i class="fas fa-calendar-plus"></span></i>
+                                            Add to Meal Plan
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
-                    </form>
+                    </div>
+
+
+
                 </div>
 
             </div>
@@ -94,21 +120,21 @@
     <div class="row">
         <div class="col-md-8">
             <div class="card mb-4 mt-3 ">
-            <div class="card-body">
-                <h3 class="card-title">Comments:</h3>
-                {% for comment in comments %}
-                <div>
-                    <p class="font-weight-bold">
-                        {{ comment.name }}
-                        <span class=" text-muted font-weight-normal">
-                            {{ comment.created_on }}
-                        </span> wrote:
-                    </p>
-                    {{ comment.body | linebreaks }}
+                <div class="card-body">
+                    <h3 class="card-title">Comments:</h3>
+                    {% for comment in comments %}
+                    <div>
+                        <p class="font-weight-bold">
+                            {{ comment.name }}
+                            <span class=" text-muted font-weight-normal">
+                                {{ comment.created_on }}
+                            </span> wrote:
+                        </p>
+                        {{ comment.body | linebreaks }}
+                    </div>
+                    {% endfor %}
                 </div>
-                {% endfor %}
             </div>
-        </div>
         </div>
         {% if user.is_authenticated %}
         <div class="col-md-4 card mb-4 mt-3">
