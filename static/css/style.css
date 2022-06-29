@@ -3,11 +3,13 @@
 body {
     font-family: Montserrat, sans-serif;
     font-weight: 300;
+    font-size: 20px;
 }
 
 
-h1, h2, h6 {
+h1, h2, h3, h4, h5, h6 {
     text-align: center;
+    color: darkslategrey;
 }
 
 .landing-title {
@@ -23,7 +25,6 @@ h1, h2, h6 {
     color: darkslategrey;
     font-size: 30px;
     font-weight: 300;
- 
     width: 30%;
 
 }
@@ -50,14 +51,30 @@ h1, h2, h6 {
     object-fit: cover;
 }
 
+
+.features-outer {
+    height: 600px;
+}
+
+.feature-image-outer {
+    width: 80%;
+}
+
+
 .feature-image {
     height: 80px;
-    /* width: 80px; */
+    /* margin-bottom: 25px; */
     text-align: center;
-    margin: 0 auto;
+
 
 }
 
+.feature-text {
+    color: darkslategrey;
+    text-align: center;
+    font-size: 20px;
+
+}
 
 
 
@@ -90,3 +107,25 @@ h1, h2, h6 {
 .profile-icon {
     padding-right: 5px;
 }
+
+
+/* For mobile device sizes from 480px wide and down */
+@media screen and (max-width: 767.98px) {
+    .landing-tagline {
+        width: 100%;
+    
+
+  }
+}
+
+/* Extra small devices (portrait phones, less than 576px)
+@media (max-width: 575.98px) { ... }
+
+// Small devices (landscape phones, less than 768px)
+@media (max-width: 767.98px) { ... }
+
+// Medium devices (tablets, less than 992px)
+@media (max-width: 991.98px) { ... }
+
+// Large devices (desktops, less than 1200px)
+@media (max-width: 1199.98px) { ... }
