@@ -16,7 +16,40 @@
             </div>
             <div class="col-md-8">
                 <div class="card-body">
-                    <h1 class="card-title text-left">{{ recipe.title }}</h1>
+                    <h1 class="card-title text-left d-sm-inline">{{ recipe.title }}</h1>
+                    <button type="button" class="btn btn-info rounded-pill d-sm-inline mb-3 ml-sm-5" data-toggle="modal"
+                        data-target="#mealplanModal">
+                        <span><i class="fas fa-calendar-plus"></span></i>
+                        Add to Meal Plan
+                    </button>
+
+                    <!--Meal Plan Modal -->
+                    <div class="modal fade" id="mealplanModal" tabindex="-1" aria-labelledby="mealplanModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="mealplanModalLabel">Select Day</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form method="post" class="add-recipe" action="">
+                                    <div class="modal-body">
+                                        {{ mealplan_form | crispy }}
+                                        {% csrf_token %}
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-info btn-sm">
+                                            <span><i class="fas fa-calendar-plus"></span></i>
+                                            Add to Meal Plan
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
                     <p class="card-text">Author: {{ recipe.author }}</p>
                     <p class="card-text">Description: {{ recipe.description | safe }}</p>
                     <div class="row">
@@ -50,37 +83,6 @@
                     {% else %}
                     <span class="text-secondary"><i class="far fa-heart"></i></span>
                     {% endif %}
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                        <span><i class="fas fa-calendar-plus"></span></i>
-                                            Add to Meal Plan
-                    </button>
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Select Day</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <form method="post" class="add-recipe" action="">
-                                    <div class="modal-body">
-                                        {{ mealplan_form | crispy }}
-                                        {% csrf_token %}
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="submit" class="btn btn-primary btn-sm">
-                                            <span><i class="fas fa-calendar-plus"></span></i>
-                                            Add to Meal Plan
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
 
 
 

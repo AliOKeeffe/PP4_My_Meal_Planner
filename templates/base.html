@@ -20,12 +20,12 @@
     <nav class="navbar navbar-light bg-white navbar-expand-sm">
         <div class="container-fluid">
             <a class="navbar-brand" href="{% url 'home' %}">Easy Eater</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+            <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+                <ul class="navbar-nav mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
                     </li>
@@ -36,7 +36,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'add_recipe' %}">Add recipe</a>
                     </li>
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown d-block d-sm-none">
                         <a class="nav-link" href="#" id="navbarDropdown" role="button"
                             data-toggle="dropdown" aria-expanded="false">
                             <span><i class="fas fa-user profile-icon"></i></i>{{ user.username }}</span>
@@ -54,7 +54,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'browse_recipes' %}">Browse Recipes</a>
                     </li>
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown d-block d-sm-none">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-toggle="dropdown" aria-expanded="false">
                             <span>Login/Sign up</span>
@@ -68,6 +68,39 @@
 
                 </ul>
             </div>
+           
+            <div id="navbarSupportedContent" class="d-none d-md-block">
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    {% if user.is_authenticated %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-expanded="false">
+                            <span><i class="fas fa-user profile-icon"></i></i>{{ user.username }}</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{% url 'my_recipes' %}">My Recipes</a>
+                            <a class="dropdown-item" href="{% url 'my_favourites' %}">My Bookmarks</a>
+                            <a class="dropdown-item" href="{% url 'my_mealplan' %}">My Mealplan</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a>
+                        </div>
+                    </li>
+                    {% else %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-expanded="false">
+                            <span>Login/Sign up</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{% url 'account_signup' %}">Sign up</a>
+                            <a class="dropdown-item" href="{% url 'account_login' %}">Log in</a>
+                        </div>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+
+            
         </div>
     </nav>
 
