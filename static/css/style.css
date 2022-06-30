@@ -23,6 +23,9 @@ h1, h2, h3, h4, h5, h6 {
 
 }
 
+.full-height{
+    height: 100vh;
+}
 
 .landing-tagline {
     color: darkslategrey;
@@ -34,7 +37,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .page-title {
     text-align: center;
-    margin-top: 15px;
+    padding-top: 15px;
 }
 
 /* linear gradient credit: https://bootstrapcreative.com/pattern/jumbotron-background-image-opacity-bootstrap-4/ */
@@ -56,7 +59,7 @@ h1, h2, h3, h4, h5, h6 {
 
 
 .features-outer {
-    height: 600px;
+    min-height: 600px;
 }
 
 .feature-image-outer {
@@ -73,7 +76,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .feature-text {
-    color: darkslategrey;
+    /* color: darkslategrey; */
     text-align: center;
     font-size: 20px;
 
@@ -102,13 +105,18 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
 }
 
-.add-recipe {
-    width: 80%;
-    margin: 0 auto;
-    border: none;
+.add-recipe label {
+    color: white;
+    font-weight: bold;
+} 
 
+.green-background {
+    background-color: #0D5C63;
 }
 
+.clearablefileinput {
+    color: white;
+}
 
 .profile-icon {
     padding-right: 5px;
@@ -116,12 +124,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .signup, .login {
     text-align: center;
-    /* background-color: #046865; */
     padding: 20px 0;
     background-color: #0D5C63;
-    /* border: 1px solid #0D5C63; */
     border-radius: 2%;
-
 }
 
 .signup input, .login input {

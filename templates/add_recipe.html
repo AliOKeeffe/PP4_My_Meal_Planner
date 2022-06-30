@@ -6,32 +6,18 @@
 
 
 
-<div class="container">
-    <h1 class="page-title">Add Recipe</h1>
-    <div class="row">
+<div class="container-fluid green-background">
+    <h1 class="page-title text-light">Add Recipe</h1>
+    <div class="row justify-content-center">
         {% if user.is_authenticated %}
         {% load cloudinary %}
-        <form method="post" class="add-recipe mb-5" action="" enctype="multipart/form-data">
-            <div class="col">
-
-                <div>
+        <div class="col-11 col-md-4 mt-3">
+            <form method="post" class="add-recipe mb-5" action="" enctype="multipart/form-data">
                     {{ form | crispy }}
-                    {% csrf_token %}
-                </div>
-                <button type="submit" class="btn btn-info">Submit</button>
-            </div>
-            <!-- <div class="col-md-6">
-            <div class="card">
-                <h2>Add Ingredients</h2>
-                {{ formset.management_form }}
-                {% for form in formset %}
-                {{ form | crispy }}
-                {% endfor %}
-            </div>
-        </div> -->
-
-        </form>
-
+                    {% csrf_token %} 
+                <button type="submit" class="btn btn-light">Submit</button>
+            </form>
+        </div>
 
         {% endif %}
 
@@ -40,3 +26,14 @@
 </div>
 
 {%endblock%}
+
+
+                <!-- <div class="col-md-6">
+            <div class="card">
+                <h2>Add Ingredients</h2>
+                {{ formset.management_form }}
+                {% for form in formset %}
+                {{ form | crispy }}
+                {% endfor %}
+            </div>
+        </div> -->
