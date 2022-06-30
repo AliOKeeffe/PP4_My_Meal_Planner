@@ -16,7 +16,7 @@
                     {% endif %}
                 </div>
                 <div class="col-12 col-md-8">
-                    <div class="card-body">
+                    <div class="card-body h-100">
                         <h1 class="card-title text-left d-sm-inline">{{ recipe.title }}</h1>
                         <button type="button" class="btn btn-info rounded-pill d-sm-inline mb-3 ml-sm-5"
                             data-toggle="modal" data-target="#mealplanModal">
@@ -68,36 +68,40 @@
                                 </p>
                             </div>
                         </div>
-                        {% if user.is_authenticated %}
-                        <form class="d-inline" action="{% url 'favourite_recipe' recipe.slug %}" method="POST">
-                            {% csrf_token %}
-                            {% if favourited  %}
-                            <button type="submit" name="bookmark_id" value="{{recipe.slug}}">
-                                <i class="fas fa-bookmark"></i></button>
+
+                            {% if user.is_authenticated %}
+                            <form action="{% url 'favourite_recipe' recipe.slug %}" method="POST">
+                                {% csrf_token %}
+                                {% if favourited  %}
+                                <button type="submit" name="bookmark_id" value="{{recipe.slug}}">
+                                    <i class="fas fa-bookmark"></i></button>
+                                {% else %}
+                                <button type="submit" name="bookmark_id" value="{{recipe.slug}}"><i
+                                        class="far fa-bookmark"></i></button>
+                                {% endif %}
+
+                            </form>
                             {% else %}
-                            <button type="submit" name="bookmark_id" value="{{recipe.slug}}"><i
-                                    class="far fa-bookmark"></i></button>
+                            <span class="text-secondary"><i class="far fa-bookmark"></i></span>
                             {% endif %}
+                            {% if user.is_authenticated and recipe.author == user %}
 
-                        </form>
-                        {% else %}
-                        <span class="text-secondary"><i class="far fa-bookmark"></i></span>
-                        {% endif %}
-                        {% if user.is_authenticated and recipe.author == user %}
-                        <div class="d-inline">
-                            <a class="btn btn-info d-sm-inline mb-3 ml-sm-5" href="{% url 'update_recipe' recipe.slug %}">
-                                <i class="fas fa-edit"></i>
-                            </a>
-                            <a class="btn btn-info d-sm-inline mb-3 ml-sm-5" href="{% url 'delete_recipe' recipe.slug %}">
-                                <i class="fas fa-times"></i>
-                            </a>
+                                <a class="btn btn-info d-sm-inline mb-3 ml-sm-5"
+                                    href="{% url 'update_recipe' recipe.slug %}">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a class="btn btn-info d-sm-inline mb-3 ml-sm-5"
+                                    href="{% url 'delete_recipe' recipe.slug %}">
+                                    <i class="fas fa-times"></i>
+                                </a>
 
-                        </div>
-  
+
+
+                    
+                    </div>
+
 
                 </div>
-
-            </div>
             </div>
         </div>
     </div>
