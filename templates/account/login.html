@@ -8,27 +8,27 @@
 {% block content %}
 
 <div class="container">
-  <div class="row">
-    <div class="col-md-8 mt-3 offset-md-2">
+  <div class="row justify-content-center">
+    <div class="col-11 col-md-4 mt-3">
 
 
       <h1>{% trans "Log in" %}</h1>
 
 
-      <p>{% blocktrans %} Welcome back to Easy Eater. To add new recipes or to view your saved recipes please log in.
-        If you have not created an account yet, then please
-        <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
+      <p class="text-center mt-3">{% blocktrans %}
+        Don't have an account?
+        <a href="{{ signup_url }}">Sign up</a>{% endblocktrans %}</p>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-8 mt-3 offset-md-2">
+  <div class="row justify-content-center">
+    <div class="col-11 col-md-4 mt-3">
       <form class="login" method="POST" action="{% url 'account_login' %}">
         {% csrf_token %}
         {{ form.as_p }}
         {% if redirect_field_value %}
         <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
         {% endif %}
-        <button class="btn btn-outline-primary" type="submit">{% trans "Log in" %}</button>
+        <button class="btn btn-outline-light" type="submit">{% trans "Log in" %}</button>
       </form>
 
 
