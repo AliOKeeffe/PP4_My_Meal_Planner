@@ -11,14 +11,14 @@
     <div class="row">
         {% if user.is_authenticated %}
         {% load cloudinary %}
-        <form method="post" class="add-recipe" action="" enctype="multipart/form-data">
+        <form method="post" class="add-recipe mb-5" action="" enctype="multipart/form-data">
             <div class="col">
 
-                <div class="card">
+                <div>
                     {{ form | crispy }}
                     {% csrf_token %}
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-info">Submit</button>
             </div>
             <!-- <div class="col-md-6">
             <div class="card">

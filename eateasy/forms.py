@@ -15,6 +15,7 @@ class RecipeForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(RecipeForm, self).__init__(*args, **kwargs)
+        self.fields['description'].widget = forms.Textarea(attrs={'rows': 3})
 
     class Meta:
         model = Recipe
@@ -32,11 +33,12 @@ class RecipeForm(forms.ModelForm):
         ]
         widgets = {
             'method': SummernoteWidget(),
-            'ingredients': SummernoteWidget()
+            'ingredients': SummernoteWidget(),
         }
 
     def clean_title(self):
         return self.cleaned_data['title'].title()
+
 
 class MealPlanForm(forms.ModelForm):
     class Meta:

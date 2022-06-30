@@ -55,6 +55,7 @@ INSTALLED_APPS = [
 
 SUMMERNOTE_CONFIG = {
     'width': '100%',
+    'height': '250',
 }
 
 SITE_ID = 1

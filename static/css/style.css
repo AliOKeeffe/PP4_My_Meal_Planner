@@ -1,11 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Montserrat:wght@300;400&family=Oswald:wght@300;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300&family=Petit+Formal+Script&display=swap');
 
 body {
     font-family: Montserrat, sans-serif;
     font-weight: 300;
-    font-size: 20px;
 }
 
+.navbar-brand {
+    font-family: Petit Formal Script, sans-serif;
+    font-size: 150%;
+}
 
 h1, h2, h3, h4, h5, h6 {
     text-align: center;
@@ -102,12 +105,39 @@ h1, h2, h3, h4, h5, h6 {
 .add-recipe {
     width: 80%;
     margin: 0 auto;
+    border: none;
+
 }
+
 
 .profile-icon {
     padding-right: 5px;
 }
 
+.signup {
+    text-align: center;
+    /* background-color: #046865; */
+    padding: 20px 0;
+    background-color: #0D5C63;
+    /* border: 1px solid #0D5C63; */
+    border-radius: 2%;
+
+}
+
+.signup input {
+    width: 90%;
+    border: 1px solid white;
+    padding: 5px;
+    margin: 5px 0 10px 0;
+
+} 
+
+.signup label {
+    display: block;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
 
 /* For mobile device sizes from 480px wide and down */
 @media screen and (max-width: 767.98px) {
