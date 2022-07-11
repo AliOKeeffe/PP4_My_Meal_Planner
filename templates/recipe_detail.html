@@ -3,7 +3,7 @@
 {% block content %}
 
 {% load crispy_forms_tags %}
-<div class="container-fluid green-background">
+<div class="container green-background p-0">
     <div class="container pt-3">
         <div class="card mb-3 recipe-detail-card bg-light">
             <div class="row no-gutters">
@@ -151,7 +151,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <div class="card mt-3 ">
+                <div class="card">
                     <div class="card-body">
                         <h3 class="card-title">Comments:</h3>
                         {% for comment in comments %}
@@ -173,7 +173,7 @@
         <div class="row">
             {% if user.is_authenticated %}
             <div class="col">
-                <div class="card mb-4 mt-3">
+                <div class="card mb-3 mt-3">
                     <div class="card-body">
                         <p>Leave a comment as: {{ user.username }}</p>
                         <form method="post" style="margin-top: 1.3em;">

@@ -19,8 +19,6 @@ h1, h2, h3, h4, h5, h6 {
     color: darkslategrey;
     font-size: 90px;
     font-weight: 300;
-
-
 }
 
 .full-height{
@@ -117,6 +115,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .green-background {
     background-color: #0D5C63;
+    
 }
 
 .clearablefileinput {
@@ -164,6 +163,7 @@ h1, h2, h3, h4, h5, h6 {
     
 
   }
+  
 }
 
 /* Extra small devices (portrait phones, less than 576px)
