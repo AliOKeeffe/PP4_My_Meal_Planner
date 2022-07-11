@@ -1,4 +1,6 @@
 from django.shortcuts import render, get_object_or_404, reverse, redirect
+from django.contrib import messages
+from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
@@ -104,15 +106,20 @@ class RecipeDetail(View):
         )
 
 
-class AddRecipe(LoginRequiredMixin, generic.CreateView):
+class AddRecipe(LoginRequiredMixin, SuccessMessageMixin, generic.CreateView):
     form_class = RecipeForm
-    # formset = IngredientFormSet()
     template_name = 'add_recipe.html'
-    # success_url = reverse_lazy('home')
+    success_message = "%(calculated_field)s was created successfully"
 
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+
+    def get_success_message(self, cleaned_data):
+        return self.success_message % dict(
+            cleaned_data,
+            calculated_field=self.object.title,
+    )
 
 # class AddMealPlanItem(LoginRequiredMixin, generic.CreateView):
 #     form_class = MealPlanForm
@@ -150,11 +157,12 @@ class MyRecipes(LoginRequiredMixin, generic.ListView):
     paginate_by = 6
 
 
-class UpdateRecipe(LoginRequiredMixin, UserPassesTestMixin, generic.UpdateView):
+class UpdateRecipe(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, generic.UpdateView):
     model = Recipe
     form_class = RecipeForm
     template_name = 'update_recipe.html'
-    # success_url = reverse_lazy('home')
+    success_message = "%(calculated_field)s was edited successfully"
+
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -168,12 +176,19 @@ class UpdateRecipe(LoginRequiredMixin, UserPassesTestMixin, generic.UpdateView):
         recipe = self.get_object()
         return recipe.author == self.request.user
 
+    def get_success_message(self, cleaned_data):
+        return self.success_message % dict(
+            cleaned_data,
+            calculated_field=self.object.title,
+    )
 
 
 class DeleteRecipe(LoginRequiredMixin, UserPassesTestMixin, generic.DeleteView):
     model = Recipe
     template_name = 'delete_recipe.html'
+    success_message = "Recipe deleted successfully"
     success_url = reverse_lazy('home')
+
 
     def test_func(self):
         """
@@ -181,6 +196,13 @@ class DeleteRecipe(LoginRequiredMixin, UserPassesTestMixin, generic.DeleteView):
         """
         recipe = self.get_object()
         return recipe.author == self.request.user
+    
+    # cannot use SucessMessageMixin on delete view. Found this alternative method on stack
+    # over flow: https://stackoverflow.com/questions/24822509/success-message-in-deleteview-not-shown
+    def delete(self, request, *args, **kwargs):
+        messages.success(self.request, self.success_message)
+        return super(DeleteRecipe, self).delete(request, *args, **kwargs)
+
 
 class FavouriteRecipe(LoginRequiredMixin, View):
     def post(self, request, slug, *args, **kwargs):
@@ -189,7 +211,9 @@ class FavouriteRecipe(LoginRequiredMixin, View):
             recipe.favourites.remove(request.user)
         else:
             recipe.favourites.add(request.user)
+
         return HttpResponseRedirect(reverse('recipe_detail', args=[slug]))
+
 
 
 class MyFavourites(LoginRequiredMixin, generic.ListView):
