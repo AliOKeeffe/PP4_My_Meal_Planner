@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.core.paginator import Paginator
 from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
 from django.views import generic, View
@@ -19,15 +20,7 @@ class RecipeList(generic.ListView):
     model = Recipe
     queryset = Recipe.objects.filter(status=1).order_by('-created_on')
     template_name = 'browse_recipes.html'
-    paginate_by = 6
-
-
-
-    # def get(self, request):
-    #     mealplan = MealPlanItem.objects.filter(user=request.user.id)
-    #     return render(
-    #         request, 'my_mealplan.html', {'mealplan': mealplan})
-
+    paginate_by = 8
 
 class RecipeDetail(View):
 
@@ -129,7 +122,7 @@ class MyRecipes(LoginRequiredMixin, generic.ListView):
     model = Recipe
     queryset = Recipe.objects.all()
     template_name = 'my_recipes.html'
-    paginate_by = 6
+    paginate_by = 8
 
 
 class UpdateRecipe(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, generic.UpdateView):

@@ -4,7 +4,7 @@ from django_extensions.db.fields import AutoSlugField
 from django.urls import reverse
 from cloudinary.models import CloudinaryField
 
-STATUS = ((0, "Draft"), (1, "Published"))
+STATUS = ((0, "Save for later"), (1, "Publish Now"))
 
 
 
@@ -29,7 +29,7 @@ class Recipe(models.Model):
     method = models.TextField()
     image = CloudinaryField('image', default='placeholder')
     created_on = models.DateTimeField(auto_now=True)
-    status = models.IntegerField(choices=STATUS, default=0)
+    status = models.IntegerField(choices=STATUS, default=1)
     is_vegetarian = models.BooleanField(default=False)
     is_vegan = models.BooleanField(default=False)
     favourites = models.ManyToManyField(
