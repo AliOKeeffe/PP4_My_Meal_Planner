@@ -163,8 +163,15 @@
                                 </span> wrote:
                             </p>
                             {{ comment.body | linebreaks }}
+                            {% if user.is_authenticated and user.username == comment.name %}
+
+                            <a href="{% url 'update_comment' comment.id %}"><i class="fas fa-edit"></i></a>
+                            <!-- <button type="button" class="btn-sm btn-danger" data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop">Delete</button> -->
+                            {% endif %}
                             <hr>
                         </div>
+
                         {% endfor %}
                     </div>
                 </div>

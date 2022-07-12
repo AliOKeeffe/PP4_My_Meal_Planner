@@ -5,7 +5,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
 from django.views import generic, View
-from .models import Recipe, MealPlanItem
+from .models import Recipe, MealPlanItem, Comment
 from .forms import CommentForm, RecipeForm, MealPlanForm
 
 
@@ -60,7 +60,6 @@ class RecipeDetail(View):
             favourited = True
 
         comment_form = CommentForm(data=request.POST)
-        
 
         if comment_form.is_valid():
             comment_form.instance.email = request.user.email
@@ -80,15 +79,19 @@ class RecipeDetail(View):
             queryset = MealPlanItem.objects.filter(user=request.user, day=request.POST['day'])
             mealplan_item = queryset.first()
 
+            # if a mealplan item already exists for that day
             if mealplan_item:
                 # check if user wants to over write existing meal plan item
                 mealplan_item.recipe = recipe
+                messages.success(self.request, 'Mealplan successfully updated')
             else:
                 mealplan_item = mealplan_form.save(commit=False)
                 mealplan_item.user = request.user
                 mealplan_item.recipe = recipe
+                messages.success(self.request, 'Recipe added to mealplan')
 
             mealplan_item.save()
+            
 
         else:
             mealplan_form = MealPlanForm()
@@ -121,34 +124,6 @@ class AddRecipe(LoginRequiredMixin, SuccessMessageMixin, generic.CreateView):
             calculated_field=self.object.title,
     )
 
-# class AddMealPlanItem(LoginRequiredMixin, generic.CreateView):
-#     form_class = MealPlanForm
-#     template_name = 'add_mealplan_item.html'
-#     success_url = reverse_lazy('home')
-
-#     def form_valid(self, form):
-#         # recipe = get_object_or_404(Recipe, slug=slug)
-#         form.instance.user = self.request.user
-
-#         return super().form_valid(form)
-
-# def add_recipe(request):
-#     if request.method == "GET":
-#         form = RecipeForm()
-#         formset = IngredientFormSet()
-#         return render(request, 'add_recipe.html', {"form": form, "formset": formset})
-
-#     elif request.method == 'POST':
-#         form = RecipeForm(request.POST)
-#         if form.is_valid():
-#             form.instance.author = request.user
-#             recipe = form.save()
-#             formset = IngredientFormSet(request.POST, instance=recipe)
-#             if formset.is_valid():
-#                 formset.save()
-#             return redirect('/')
-#         else:
-#             return render(request, 'add_recipe.html', {"form": form})
 
 class MyRecipes(LoginRequiredMixin, generic.ListView):
     model = Recipe
@@ -209,8 +184,10 @@ class FavouriteRecipe(LoginRequiredMixin, View):
         recipe = get_object_or_404(Recipe, slug=slug)
         if recipe.favourites.filter(id=request.user.id).exists():
             recipe.favourites.remove(request.user)
+            messages.success(self.request, 'Recipe removed from bookmarks')
         else:
             recipe.favourites.add(request.user)
+            messages.success(self.request, 'Recipe added to bookmarks')
 
         return HttpResponseRedirect(reverse('recipe_detail', args=[slug]))
 
@@ -246,17 +223,27 @@ class MealPlan(LoginRequiredMixin, generic.ListView):
             request, 'my_mealplan.html', {'mealplan': mealplan})
 
 
-# class MealPlan(LoginRequiredMixin, generic.ListView):
-#     model = MealPlanItem
-#     queryset = MealPlanItem.objects.all()
-#     template_name = 'my_mealplan.html'
-#     paginate_by = 12
+class UpdateComment(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, generic.UpdateView):
+    model = Comment
+    form_class = CommentForm
+    template_name = 'update_comment.html'
+    success_message = "Comment edited successfully"
 
-#     def get_context_data(self, **kwargs):
-#         # https://stackoverflow.com/questions/29598341/extra-context-in-django-generic-listview
-#         context = super(MealPlan, self).get_context_data(**kwargs)
-#         # context['days'] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
-#         context['days'] = [0, 1, 2, 3, 4, 5, 6]
-#         return context
 
+    def form_valid(self, form):
+        form.instance.name = self.request.user.username
+        return super().form_valid(form)
+
+    def test_func(self):
+        """
+        Prevent another user from editing user's comments
+        """
+
+        comment = self.get_object()
+        return comment.name == self.request.user.username
+
+    def get_success_url(self):
+        """ Return to recipe detail view when comment updated sucessfully"""
+        recipe = self.object.recipe
+        return reverse_lazy('recipe_detail', kwargs={'slug': recipe.slug})
 
