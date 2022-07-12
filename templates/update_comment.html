@@ -14,6 +14,7 @@
                     {{ form | crispy }}
                     {% csrf_token %} 
                 <button type="submit" class="btn btn-light">Update</button>
+                <a class="btn btn-light" href="{%  url 'recipe_detail' comment.recipe.slug  %}">Cancel</a>
             </form>
         </div>
 

@@ -247,3 +247,27 @@ class UpdateComment(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin
         recipe = self.object.recipe
         return reverse_lazy('recipe_detail', kwargs={'slug': recipe.slug})
 
+
+class DeleteComment(LoginRequiredMixin, UserPassesTestMixin, generic.DeleteView):
+    model = Comment
+    template_name = 'delete_comment.html'
+    success_message = "Comment deleted successfully"
+
+
+    def test_func(self):
+        """
+        Prevent another user from deleting user's comments
+        """
+        comment = self.get_object()
+        return comment.name == self.request.user.username
+    
+    # cannot use SucessMessageMixin on delete view. Found this alternative method on stack
+    # over flow: https://stackoverflow.com/questions/24822509/success-message-in-deleteview-not-shown
+    def delete(self, request, *args, **kwargs):
+        messages.success(self.request, self.success_message)
+        return super(DeleteComment, self).delete(request, *args, **kwargs)
+
+    def get_success_url(self):
+        """ Return to recipe detail view when comment deleted sucessfully"""
+        recipe = self.object.recipe
+        return reverse_lazy('recipe_detail', kwargs={'slug': recipe.slug})
