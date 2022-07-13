@@ -120,10 +120,12 @@ class AddRecipe(LoginRequiredMixin, SuccessMessageMixin, generic.CreateView):
 
 class MyRecipes(LoginRequiredMixin, generic.ListView):
     model = Recipe
-    queryset = Recipe.objects.all()
     template_name = 'my_recipes.html'
     paginate_by = 8
 
+    def get_queryset(self):
+        """Override get_queryset to filter by user"""
+        return Recipe.objects.filter(author=self.request.user)
 
 class UpdateRecipe(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, generic.UpdateView):
     model = Recipe
@@ -187,10 +189,18 @@ class FavouriteRecipe(LoginRequiredMixin, View):
 
 
 class MyFavourites(LoginRequiredMixin, generic.ListView):
-    def get(self, request):
-        fav_recipes = Recipe.objects.filter(favourites=request.user.id)
-        return render(
-            request, 'my_favourites.html', {'fav_recipes': fav_recipes})
+    model = Recipe
+    template_name = 'my_favourites.html'
+    paginate_by = 8
+
+    def get_queryset(self):
+        """Override get_queryset to filter by user favourites"""
+        return Recipe.objects.filter(favourites=self.request.user.id)
+
+    # def get(self, request):
+    #     fav_recipes = Recipe.objects.filter(favourites=request.user.id)
+    #     return render(
+    #         request, 'my_favourites.html', {'fav_recipes': fav_recipes})
 
 
 class MealPlan(LoginRequiredMixin, generic.ListView):

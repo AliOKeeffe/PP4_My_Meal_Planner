@@ -2,14 +2,16 @@
 
 {% block content %}
 
+{% if user.is_authenticated %}
+
 <div class="container">
     <div class="row">
         <div class="col">
             <h1 class="page-title">Bookmarks</h1>
         </div>
     </div>
-    <div class="row">
-        {% for recipe in fav_recipes %}
+    <div class="row card-deck">
+        {% for recipe in recipe_list %}
         <div class="col-sm-3 px-1 d-flex align-items-stretch">
             <div class="card card-detail mb-3 shadow-sm">
                 {% if "placeholder" in recipe.image.url %}
@@ -31,4 +33,6 @@
 
 {% include "paginator.html" %}
 
-{%endblock%}
+{% endif %}
+
+{% endblock %}
