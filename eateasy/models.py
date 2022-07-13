@@ -39,12 +39,12 @@ class Recipe(models.Model):
         ordering = ['-created_on']
 
 
+    def get_absolute_url(self):
+        return reverse('recipe_detail', kwargs={'slug': self.slug})
+
     def __str__(self):
         return self.title
 
-
-    def get_absolute_url(self):
-        return reverse('recipe_detail', kwargs={'slug': self.slug})
 
 class MealPlanItem(models.Model):
 
@@ -66,7 +66,7 @@ class MealPlanItem(models.Model):
         ordering = ['day']
 
     def __str__(self):
-        return "Meal Plan" + self.user.username
+        return f"Meal Plan for {self.day} by {self.user}"
 
 class Comment(models.Model):
 
