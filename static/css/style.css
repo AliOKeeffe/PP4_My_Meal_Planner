@@ -1,8 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300&family=Petit+Formal+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300&family=Petit+Formal+Script&family=Playfair+Display:wght@600&display=swap');
 
 body {
     font-family: Montserrat, sans-serif;
     font-weight: 300;
+    background-color: #FCF7F2;
 }
 
 .navbar-brand {
@@ -14,6 +15,20 @@ h1, h2, h3, h4, h5, h6 {
     text-align: center;
     color: darkslategrey;
 }
+
+.hero-text-outer {
+    background-color: #F4DDD8;
+}
+
+.hero-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 50px;
+    color: #442E10;
+}
+
+/* .family-image {
+    max-height: 400px;
+} */
 
 .landing-title {
     color: darkslategrey;
