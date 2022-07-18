@@ -157,7 +157,7 @@ class DeleteRecipe(LoginRequiredMixin, UserPassesTestMixin, generic.DeleteView):
     model = Recipe
     template_name = 'delete_recipe.html'
     success_message = "Recipe deleted successfully"
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('my_recipes')
 
 
     def test_func(self):

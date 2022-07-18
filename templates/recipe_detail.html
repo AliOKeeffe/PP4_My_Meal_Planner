@@ -20,12 +20,13 @@
                         <div class="row h-50">
                             <div class="col">
                                 <h1 class="card-title text-left d-sm-inline">{{ recipe.title }}</h1>
+                                {% if user.is_authenticated %}
                                 <button type="button" class="btn btn-info rounded-pill d-sm-inline mb-3 ml-sm-5"
                                     data-toggle="modal" data-target="#mealplanModal">
                                     <span><i class="fas fa-calendar-plus"></span></i>
                                     Add to Meal Plan
                                 </button>
-
+                                {% endif %}
                                 <!--Meal Plan Modal -->
                                 <div class="modal fade" id="mealplanModal" tabindex="-1"
                                     aria-labelledby="mealplanModalLabel" aria-hidden="true">
