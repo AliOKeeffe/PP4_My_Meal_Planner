@@ -1,14 +1,34 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300&family=Petit+Formal+Script&family=Playfair+Display:wght@600&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300&family=Open+Sans:wght@300;500&family=Petit+Formal+Script&family=Playfair+Display:wght@600&display=swap');
 body {
     font-family: Montserrat, sans-serif;
     font-weight: 300;
-    background-color: #FCF7F2;
+    background-color: rgb(252, 247, 242);
+}
+
+.content {
+    min-height: calc(100vh - 90px);
+}
+
+.navbar {
+    padding: 1.5rem 1rem;
+}
+
+.navbar ul a {
+    color: #442E10;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.navbar a:hover {
+    color: #886363;
 }
 
 .navbar-brand {
     font-family: Petit Formal Script, sans-serif;
     font-size: 160%;
+    color: #886363;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -26,12 +46,17 @@ h1, h2, h3, h4, h5, h6 {
     color: #442E10;
 }
 
+.home-break {
+    border-top: 1px solid #D8B646;
+    margin: auto !important;
+}
+
 /* .family-image {
     min-height: 400px;
     object-fit: cover;
 } */
 
-.landing-title {
+/* .landing-title {
     color: darkslategrey;
     font-size: 90px;
     font-weight: 300;
@@ -47,7 +72,7 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 300;
     width: 30%;
 
-}
+} */
 
 .page-title {
     text-align: center;
@@ -55,7 +80,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* linear gradient credit: https://bootstrapcreative.com/pattern/jumbotron-background-image-opacity-bootstrap-4/ */
-.jumbotron {
+/* .jumbotron {
     height: 100vh;
     background-image: linear-gradient(to bottom, rgba(255,255,255,0.6) 0%,rgba(255,255,255,0.9) 100%), url("/static/images/family_dinner.jpg"); 
     background-repeat: no-repeat; 
@@ -63,7 +88,7 @@ h1, h2, h3, h4, h5, h6 {
     background-position: center center;
 
     /* display: flex; */
-}
+ */
 
 .card-img-top {
     width: 100%;
@@ -73,27 +98,33 @@ h1, h2, h3, h4, h5, h6 {
 
 
 .features-outer {
-    min-height: 600px;
+    /* min-height: 600px; */
+}
+
+.pink-text {
+    color: #886363;
 }
 
 .feature-image-outer {
-    width: 80%;
+    width: 60%;
 }
 
 
 .feature-image {
-    height: 80px;
-    /* margin-bottom: 25px; */
     text-align: center;
+    color: #886363;
+}
 
-
+.feature-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    color: #886363;
+    padding-top: 10px
 }
 
 .feature-text {
-    /* color: darkslategrey; */
     text-align: center;
-    font-size: 20px;
-
+    font-size: 17px;
 }
 
 
@@ -170,6 +201,31 @@ h1, h2, h3, h4, h5, h6 {
 .login #id_remember {
     width: 20px;
     display: inline;
+}
+
+/* Footer */
+
+.footer-container {
+    border-top: 1px #D8B646 solid !important;
+}
+.social-networks {
+    text-align: center;
+    padding: 0;
+    margin: 30px 0;
+}
+
+.social-networks li {
+    display: inline;
+}
+
+.social-networks i {
+    font-size: 160%;
+    padding: 0 30px;
+    color: #4b5054;
+}
+
+.social-networks i:hover {
+    color: #142a2b;
 }
 
 /* For mobile device sizes from 480px wide and down */

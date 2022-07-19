@@ -2,31 +2,79 @@
 
 {% block content %}
 
+<!-- hero section -->
 <section>
-    <div class="container">
 
-    </div>
-</section>
+    <div class="container px-2 py-3">
+        <div class="row flex-md-row-reverse py-3">
+            <div class="col-md-7 col-lg-5 p-0 pl-md-5 align-self-center">
+                <img src="/static/images/family_dinner.webp" class="img-fluid family-image" alt="family_dinner">
+            </div>
+            <div class="col-md-5 col-lg-7 hero-text-outer text-center">
+                <h1 class="m-4 hero-text">Take the stress out of everyday cooking!</h1>
+                <p class="lead">
 
-
-<div class="container px-2 py-3">
-    <div class="row flex-md-row-reverse py-3">
-        <div class="col-md-5 p-0 pl-md-5 align-self-center">
-            <img src="/static/images/family_dinner.jpg" class="img-fluid family-image" alt="family_dinner">
-        </div>
-        <div class="col-md-7 hero-text-outer text-center">
-            <h1 class="m-4 hero-text">Take the stress out of everyday cooking!</h1>
-            <p class="lead">
-                
-              </p>
-            <div class="lead">
-                Sign up today to get started
-                <button type="button" class="btn btn-primary btn-lg d-inline">Sign up!</button>
+                </p>
+                <div class="lead">
+                    Sign up today to get started
+                    <button type="button" class="btn btn-primary btn-lg d-inline">Sign up!</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</section>
 
+<!-- features section -->
+
+<section class="container-fluid features-outer">
+    <div class="container w-50">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="my-3 pink-text">What We Do</h2>
+            </div>
+        </div>
+        <hr class="home-break">
+        <div class="row mb-5">
+            <div class="col-12">
+                <p class="my-3 text-center lead">The Easy Eater is a recipe sharing and meal planning application designed to
+                    take the hassle out of everyday cooking
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid feature-image-outer">
+        <div class="row">
+            <div class="col-12 col-md-4 mb-2">
+                <div class="feature-image mb-2">
+                    <i class="fas fa-hamburger fa-6x"></i>
+                </div>
+                <div>
+                    <h3 class="feature-title">Browse</h3>
+                    <p class="feature-text">Get inspiration from home cooks all over the world</p>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 mb-2">
+                <div class="feature-image mb-2">
+                    <i class="fas fa-utensils fa-6x"></i>
+                </div>
+                <h3 class="feature-title">Upload or Bookmark</h3>
+                <p class="feature-text">Upload and manage your recipes through our easy to use interface</p>
+            </div>
+            <div class="col-12 col-md-4 mb-2">
+                <div class="feature-image mb-2">
+                    <i class="fas fa-calendar-alt fa-6x"></i>
+                </div>
+                <h3 class="feature-title">Plan</h3>
+                <p class="feature-text">Add recipes to your weekly meal planner saving you time and stress in the week
+                    ahead</p>
+
+            </div>
+        </div>
+    </div>
+
+
+</section>
 
 {%endblock%}
 
@@ -47,51 +95,3 @@
         </div>
     </div>
 </section>
-
-<section class="container-fluid green-background features-outer text-light">
-    <div class="row">
-        <div class="col-12">
-            <h2 class="my-3 text-light">Sign up today to access the following features!</h2>
-        </div>
-    </div>
-    <div class="row mb-5">
-        <div class="col-12">
-            <p class="my-3 text-center">Some filler text about what the proplem is and why this website is the solution
-            </p>
-        </div>
-    </div>
-
-    <div class="container-fluid feature-image-outer">
-        <div class="row">
-            <div class="col-12 col-md-4 mb-2">
-                <div class="feature-image mb-2">
-                    <a href="#">
-                        <img src="/static/images/light-bulb.png" alt="lightbulb">
-                    </a>
-                </div>
-                <h3 class="text-light">Browse</h3>
-                <p class="feature-text">recipes for inspiration</p>
-            </div>
-            <div class="col-12 col-md-4 mb-2">
-                <div class="feature-image mb-2">
-                    <a href="#">
-                        <img src="/static/images/light-bulb.png" alt="lightbulb">
-                    </a>
-                </div>
-                <h3 class="text-light">Upload or Bookmark</h3>
-                <p class="feature-text">Upload and manage your recipes or add recipes to your bookmarks</p>
-            </div>
-            <div class="col-12 col-md-4 mb-2">
-                <div class="feature-image mb-2">
-                    <a href="#">
-                        <img src="/static/images/light-bulb.png" alt="lightbulb">
-                    </a>
-                </div>
-                <h3 class="text-light">Plan</h3>
-                <p class="feature-text">Add recipes to your weekly meal planner</p>
-
-            </div>
-        </div>
-    </div>
-
-</section> -->
