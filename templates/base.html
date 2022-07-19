@@ -22,13 +22,15 @@
             <!-- Navigation -->
             <nav class="navbar navbar-expand-md">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="{% url 'home' %}">Easy Eater</a>
-                    <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse"
+                    <a class="navbar-brand" href="{% url 'home' %}">
+                        <img class="logo-image" src="/static/images/logo_transparent.png" alt="headerlogo">
+                    </a>
+                    <button class="navbar-light navbar-toggler ml-auto" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+                    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                         <ul class="navbar-nav mb-2 mb-lg-0">
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
