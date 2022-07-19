@@ -203,10 +203,16 @@ h1, h2, h3, h4, h5, h6 {
 @media screen and (max-width: 767.98px) {
     .landing-tagline {
         width: 100%;
+    }
     
+    .logo-image {
+        height: 70px;
+    }
 
-  }
-  
+    .social-networks i {
+        font-size: 120%;
+        padding: 0 20px;
+    }
 }
 /* For Medium devices (tablets, less than 992px) */
 @media screen and (max-width: 991.98px) {
@@ -216,6 +222,10 @@ h1, h2, h3, h4, h5, h6 {
   
     .feature-image-outer {
         width: 90%;
+    }
+
+    .logo-image {
+        height: 75px;
     }
 }
 
