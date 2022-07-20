@@ -6,30 +6,32 @@
 
 <div class="container">
     <div class="row">
-        <div class="col">
+        <div class="col-12">
             <h1 class="page-title">My Recipes</h1>
         </div>
     </div>
+    <hr class="home-break">
+    <br>
     <div class="row card-deck">
         {% for recipe in recipe_list  %}
-
-            <div class="col-sm-3 px-1 d-flex align-items-stretch">
-                <div class="card card-detail mb-3 shadow-sm">
-                    {% if "placeholder" in recipe.image.url %}
-                    <img src="https://res.cloudinary.com/aliokeeffe/image/upload/v1656016833/placeholder_image_prqssg.jpg" class="card-img-top" alt="placeholder image">
-                    {% else %}
-                    <img src=" {{ recipe.image.url }}" alt="recipe image" class="card-img-top">
+        <div class="col-sm-6 col-md-4 col-lg-3 px-1 d-flex align-items-stretch">
+            <div class="card card-detail mb-3 shadow-sm mx-auto mx-sm-2">
+                {% if "placeholder" in recipe.image.url %}
+                <img src="https://res.cloudinary.com/aliokeeffe/image/upload/v1656016833/placeholder_image_prqssg.jpg"
+                    class="card-img-top" alt="placeholder image">
+                {% else %}
+                <img src=" {{ recipe.image.url }}" alt="recipe image" class="card-img-top">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ recipe.title }}</h5>
+                    <p class="card-text">{{ recipe.description }}</p>
+                    {% if recipe.status == 0 %}
+                    <p>DRAFT</p>
                     {% endif %}
-                    <div class="card-body">
-                        <h5 class="card-title">{{ recipe.title }}</h5>
-                        <p class="card-text">{{ recipe.description }}</p>
-                        {% if recipe.status == 0 %}
-                        <p>DRAFT</p>
-                        {% endif %}
-                        <a href="{% url 'recipe_detail' recipe.slug %}" class="stretched-link"></a>
-                    </div>
+                    <a href="{% url 'recipe_detail' recipe.slug %}" class="stretched-link"></a>
                 </div>
             </div>
+        </div>
 
         {% endfor %}
     </div>

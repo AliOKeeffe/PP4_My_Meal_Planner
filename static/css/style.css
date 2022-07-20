@@ -115,7 +115,7 @@ body {
 
 
 
-
+/* Recipe Detail Page */
 .mp-icon {
     font-size: 50px;
     text-align: center;
@@ -139,18 +139,28 @@ body {
     width: 40px;
 }
 
+/* Add Recipe */
+
+.add-recipe input, .add-recipe textarea, .add-recipe select {
+    border: 1px solid #D8B646;
+}
+
+.add-recipe input[type=file] {
+    border: none !important;
+}
+
 .add-recipe label {
-    color: white;
+    color: #886363;
     font-weight: bold;
 } 
 
 .green-background {
     background-color: #0D5C63;
-    
 }
 
 .clearablefileinput {
-    color: white;
+    color: #886363;
+    border: none
 }
 
 /* All auth templates */

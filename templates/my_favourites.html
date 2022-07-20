@@ -7,13 +7,15 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h1 class="page-title">Bookmarks</h1>
+            <h1 class="page-title">My Bookmarks</h1>
         </div>
     </div>
+    <hr class="home-break">
+    <br>
     <div class="row card-deck">
         {% for recipe in recipe_list %}
-        <div class="col-sm-3 px-1 d-flex align-items-stretch">
-            <div class="card card-detail mb-3 shadow-sm">
+        <div class="col-sm-6 col-md-4 col-lg-3 px-1 d-flex align-items-stretch">
+            <div class="card card-detail mb-3 shadow-sm mx-auto mx-sm-2">
                 {% if "placeholder" in recipe.image.url %}
                 <img class="card-img-top" alt="placeholder image"
                     src="https://res.cloudinary.com/aliokeeffe/image/upload/v1656016833/placeholder_image_prqssg.jpg">
