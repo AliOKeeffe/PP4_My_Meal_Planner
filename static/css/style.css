@@ -113,14 +113,12 @@ body {
     color: #886363;
 }
 
+.card:hover {
+    box-shadow: 0px 0px 4px #D8B646 !important;
+}
 
 
 /* Recipe Detail Page */
-.mp-icon {
-    font-size: 50px;
-    text-align: center;
-    color: grey;
-}
 
 
 
@@ -162,6 +160,30 @@ body {
     color: #886363;
     border: none
 }
+
+/* meal plan page */
+
+.mealplan-card .card-img-top {
+    border-bottom: 1px solid #D8B646;
+}
+
+.mp-icon {
+    text-align: center;
+    color: #F4DDD8;
+    padding-top: 60px;
+}
+
+.mealplan-card-header {
+    background-color: #F4DDD8;
+    border-bottom: 1px solid #D8B646;
+}
+
+.mealplan-title {
+    text-align: center;
+    color: #442E10;
+    font-weight: 300;
+}
+
 
 /* All auth templates */
 
