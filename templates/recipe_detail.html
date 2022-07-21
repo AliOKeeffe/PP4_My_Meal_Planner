@@ -16,98 +16,82 @@
                     {% endif %}
                 </div>
                 <div class="col-12 col-md-8">
-                    <div class="card-body h-100">
-                        <div class="row h-50">
-                            <div class="col">
-                                <h1 class="card-title page-title text-left d-sm-inline">{{ recipe.title }}</h1>
-                                {% if user.is_authenticated %}
-                                <button type="button" class="btn btn-info rounded-pill d-sm-inline mb-3 ml-sm-5"
-                                    data-toggle="modal" data-target="#mealplanModal">
-                                    <span><i class="fas fa-calendar-plus pr-1"></span></i>
-                                    Add to Meal Plan
-                                </button>
-                                {% endif %}
-                                <!--Meal Plan Modal -->
-                                <div class="modal fade" id="mealplanModal" tabindex="-1"
-                                    aria-labelledby="mealplanModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="mealplanModalLabel">Select Day</h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                    aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
+                    <div class="card-body recipe-detail-outer py-2">
+                        <div>
+                            <h1 class="card-title page-title recipe-detail-title text-left">{{ recipe.title }}</h1>
+                        </div>
+                        <p class="card-text">Author: {{ recipe.author }}</p>
+                        <div class="mb-5">
+                            <p>
+                                <span><i class="far fa-clock pr-2"></i></span>
+                                <span>Prep Time: {{ recipe.preparation_time }}</span>
+                            </p>
+                            <p>
+                                <span><i class="far fa-clock pr-2"></i></span>
+                                <span>Cook Time: {{ recipe.cook_time }}</span>
+                            </p>
+                        </div>
+                        <!-- recipe action buttons -->
+                        <div class="action-buttons-outer d-block">
+                            {% if user.is_authenticated %}
+                            <button type="button" class="btn btn-outline-info mp-button rounded-pill mr-2"
+                                data-toggle="modal" data-target="#mealplanModal">
+                                <span><i class="fas fa-calendar-plus pr-1"></span></i>
+                                Add to Meal Plan
+                            </button>
+                            <!--Meal Plan Modal -->
+                            <div class="modal fade" id="mealplanModal" tabindex="-1"
+                                aria-labelledby="mealplanModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="mealplanModalLabel">Select Day</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <form method="post" class="add-recipe" action="">
+                                            <div class="modal-body">
+                                                {{ mealplan_form | crispy }}
+                                                {% csrf_token %}
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="submit" class="btn btn-info btn-sm">
+                                                    <span><i class="fas fa-calendar-plus pr-1"></span></i>
+                                                    Add to Meal Plan
                                                 </button>
                                             </div>
-                                            <form method="post" class="add-recipe" action="">
-                                                <div class="modal-body">
-                                                    {{ mealplan_form | crispy }}
-                                                    {% csrf_token %}
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="submit" class="btn btn-info btn-sm">
-                                                        <span><i class="fas fa-calendar-plus"></span></i>
-                                                        Add to Meal Plan
-                                                    </button>
-                                                </div>
-                                            </form>
-                                        </div>
+                                        </form>
                                     </div>
                                 </div>
-                                <!--End of Meal Plan Modal -->
-                                <p class="card-text">Author: {{ recipe.author }}</p>
                             </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-2 col-md-1 pr-0"><i class="far fa-clock"></i></div>
-                            <div class="col-10 col-md-11 pl-0">
-                                <p>
-                                    Prep Time: {{ recipe.preparation_time }}
-                                </p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-2 col-md-1 pr-0"><i class="far fa-clock"></i></div>
-                            <div class="col-10 col-md-11 pl-0">
-                                <p>
-                                    Cook Time: {{ recipe.cook_time }}
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- Recipe Action Buttons -->
-                        <div class="row h-25 pb-2">
-                            <div class="col align-self-end">
-                                <span>
-                                    {% if user.is_authenticated %}
-                                    <form class="d-inline" action="{% url 'favourite_recipe' recipe.slug %}"
-                                        method="POST">
-                                        {% csrf_token %}
-                                        {% if favourited  %}
-                                        <button class="action-btn btn btn-info" type="submit" name="bookmark_id"
-                                            value="{{recipe.slug}}">
-                                            <i class="fas fa-bookmark"></i></button>
-                                        {% else %}
-                                        <button class="action-btn btn btn-info" type="submit" name="bookmark_id"
-                                            value="{{recipe.slug}}"><i class="far fa-bookmark"></i></button>
-                                        {% endif %}
-                                    </form>
+                            <!--End of Meal Plan Modal -->
+                            <span>
+                                <form class="d-inline" action="{% url 'favourite_recipe' recipe.slug %}" method="POST">
+                                    {% csrf_token %}
+                                    {% if favourited  %}
+                                    <button class="action-btn btn btn-info" type="submit" name="bookmark_id"
+                                        value="{{recipe.slug}}">
+                                        <i class="fas fa-bookmark"></i></button>
+                                    {% else %}
+                                    <button class="action-btn btn btn-info" type="submit" name="bookmark_id"
+                                        value="{{recipe.slug}}"><i class="far fa-bookmark"></i></button>
                                     {% endif %}
-                                </span>
-                                {% if user.is_authenticated and recipe.author == user %}
-                                <span>
-                                    <a class="action-btn btn btn-info" href="{% url 'update_recipe' recipe.slug %}">
-                                        <i class="fas fa-edit"></i>
-                                    </a>
-                                </span>
-                                <span>
-                                    <a class="action-btn btn btn-info" href="{% url 'delete_recipe' recipe.slug %}">
-                                        <i class="fas fa-times"></i>
-                                    </a>
-                                </span>
+                                </form>
                                 {% endif %}
-                            </div>
+                            </span>
+                            {% if user.is_authenticated and recipe.author == user %}
+                            <span>
+                                <a class="action-btn btn btn-info" href="{% url 'update_recipe' recipe.slug %}">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                            </span>
+                            <span>
+                                <a class="action-btn btn btn-info" href="{% url 'delete_recipe' recipe.slug %}">
+                                    <i class="fas fa-times"></i>
+                                </a>
+                            </span>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -170,7 +154,8 @@
                             </span>
                             {% if user.is_authenticated and user.username == comment.name %}
                             <span class="comment-action-btn pl-2">
-                                <a href="{% url 'update_comment' comment.id %}"><i class="fas fa-edit link-primary"></i></a>
+                                <a href="{% url 'update_comment' comment.id %}"><i
+                                        class="fas fa-edit link-primary"></i></a>
                                 <a href="{% url 'delete_comment' comment.id %}"><i class="fas fa-times"></i></a>
                             </span>
                             {% endif %}

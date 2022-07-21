@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-12">
             <h1 class="page-title">Recipes</h1>
-        </div>    
+        </div>
     </div>
     <hr class="home-break">
     <br>
@@ -15,13 +15,17 @@
         <div class="col-sm-6 col-md-4 col-lg-3 px-1 d-flex align-items-stretch">
             <div class="card card-detail recipe-card mb-3 shadow-sm mx-auto mx-sm-2">
                 {% if "placeholder" in recipe.image.url %}
-                <img src="https://res.cloudinary.com/aliokeeffe/image/upload/v1656016833/placeholder_image_prqssg.jpg" class="card-img-top" alt="placeholder image">
+                <img src="https://res.cloudinary.com/aliokeeffe/image/upload/v1656016833/placeholder_image_prqssg.jpg"
+                    class="card-img-top" alt="placeholder image">
                 {% else %}
                 <img src=" {{ recipe.image.url }}" alt="recipe image" class="card-img-top">
                 {% endif %}
                 <div class="card-body">
-                    <h5 class="card-title">{{ recipe.title }}</h5>
-                    <p class="card-text">{{ recipe.description }}</p>
+                    <h5 class="card-title recipe-detail-title text-truncate">{{ recipe.title }}</h5>
+                    <p class="card-text">
+                        <span><i class="far fa-clock pr-2"></i></span>
+                        <span>Cook Time: {{ recipe.cook_time }}</span>
+                    </p>
                     <a href="{% url 'recipe_detail' recipe.slug %}" class="stretched-link"></a>
                 </div>
             </div>

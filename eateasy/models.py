@@ -11,7 +11,7 @@ STATUS = ((0, "Save for later"), (1, "Publish Now"))
 
 class Recipe(models.Model):
     """Model for Recipe"""
-    title = models.CharField(max_length=100, unique=True)
+    title = models.CharField(max_length=50, unique=True)
     slug = AutoSlugField(populate_from='title', unique=True)
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="recipes")

@@ -1,0 +1,201 @@
+{% extends 'base.html' %}
+{% block title %}The Easy Eater | {{ recipe.title }}{% endblock %}
+{% block content %}
+
+{% load crispy_forms_tags %}
+<div class="container p-0">
+    <div class="container pt-3">
+        <div class="card mb-3 recipe-detail-card">
+            <div class="row no-gutters">
+                <div class="col-12 col-md-4">
+                    {% if "placeholder" in recipe.image.url %}
+                    <img src="https://res.cloudinary.com/aliokeeffe/image/upload/v1656016833/placeholder_image_prqssg.jpg"
+                        class="recipe-detail-img" alt="placeholder image">
+                    {% else %}
+                    <img src=" {{ recipe.image.url }}" alt="recipe image" class="recipe-detail-img">
+                    {% endif %}
+                </div>
+                <div class="col-12 col-md-8">
+                    <div class="card-body py-2 h-100">
+                        <div class="row">
+                            <div class="col">
+                                <h1 class="card-title page-title recipe-detail-title text-left">{{ recipe.title }}</h1>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <p class="card-text">Author: {{ recipe.author }}</p>
+                                <span><i class="far fa-clock pr-2"></i></span>
+                                <span>Prep Time: {{ recipe.preparation_time }}</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <span><i class="far fa-clock pr-2"></i></span>
+                                <span>Cook Time: {{ recipe.cook_time }}</span>
+                            </div>
+                        </div>
+                        <!-- Recipe Action Buttons -->
+                        <div class="row h-25">
+                            <div class="col align-self-end">
+                                {% if user.is_authenticated %}
+                                <button type="button" class="btn btn-outline-info mp-button rounded-pill mr-2"
+                                    data-toggle="modal" data-target="#mealplanModal">
+                                    <span><i class="fas fa-calendar-plus pr-1"></span></i>
+                                    Add to Meal Plan
+                                </button>
+                                <!--Meal Plan Modal -->
+                                <div class="modal fade" id="mealplanModal" tabindex="-1"
+                                    aria-labelledby="mealplanModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="mealplanModalLabel">Select Day</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <form method="post" class="add-recipe" action="">
+                                                <div class="modal-body">
+                                                    {{ mealplan_form | crispy }}
+                                                    {% csrf_token %}
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="submit" class="btn btn-info btn-sm">
+                                                        <span><i class="fas fa-calendar-plus pr-1"></span></i>
+                                                        Add to Meal Plan
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--End of Meal Plan Modal -->
+                                <span>
+                                    <form class="d-inline" action="{% url 'favourite_recipe' recipe.slug %}"
+                                        method="POST">
+                                        {% csrf_token %}
+                                        {% if favourited  %}
+                                        <button class="action-btn btn btn-info" type="submit" name="bookmark_id"
+                                            value="{{recipe.slug}}">
+                                            <i class="fas fa-bookmark"></i></button>
+                                        {% else %}
+                                        <button class="action-btn btn btn-info" type="submit" name="bookmark_id"
+                                            value="{{recipe.slug}}"><i class="far fa-bookmark"></i></button>
+                                        {% endif %}
+                                    </form>
+                                {% endif %}
+                                </span>
+                                {% if user.is_authenticated and recipe.author == user %}
+                                <span>
+                                    <a class="action-btn btn btn-info" href="{% url 'update_recipe' recipe.slug %}">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                </span>
+                                <span>
+                                    <a class="action-btn btn btn-info" href="{% url 'delete_recipe' recipe.slug %}">
+                                        <i class="fas fa-times"></i>
+                                    </a>
+                                </span>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container text-center">
+        <div class="row">
+            <div class="col">
+                <div class="card mb-3 recipe-detail-card">
+                    <h5 class="card-header recipe-detail-header">
+                        Description
+                    </h5>
+                    <div class="card-body">
+                        <p class="card-text">{{ recipe.description | safe }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card mb-3 recipe-detail-card">
+                    <h5 class="card-header recipe-detail-header">
+                        Ingredients
+                    </h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">{{ recipe.ingredients | safe }}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card mb-3 recipe-detail-card">
+                    <h5 class="card-header recipe-detail-header">Method</h5>
+                    <div class="card-body">
+                        <p class="card-text">{{ recipe.method | safe }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- comments section -->
+{% if comments %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="card recipe-detail-card">
+                <h3 class="card-header recipe-detail-header text-left">Comments</h3>
+                <div class="card-body">
+                    {% for comment in comments %}
+                    <div>
+                        <p class="font-weight-bold">
+                            {{ comment.name }}
+                            <span class=" text-muted font-weight-normal">
+                                {{ comment.created_on }}
+                            </span>
+                            {% if user.is_authenticated and user.username == comment.name %}
+                            <span class="comment-action-btn pl-2">
+                                <a href="{% url 'update_comment' comment.id %}"><i class="fas fa-edit link-primary"></i></a>
+                                <a href="{% url 'delete_comment' comment.id %}"><i class="fas fa-times"></i></a>
+                            </span>
+                            {% endif %}
+                        </p>
+                        {{ comment.body | linebreaks }}
+                        <hr>
+                    </div>
+
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% if user.is_authenticated %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="card recipe-detail-card mb-3 mt-3">
+                <div class="card-body">
+                    <p>Leave a comment as: {{ user.username }}</p>
+                    <form method="post" style="margin-top: 1.3em;">
+                        {{ comment_form | crispy }}
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-info">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% endblock content %}

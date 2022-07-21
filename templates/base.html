@@ -39,53 +39,36 @@
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
                             </li>
-                            {% if user.is_authenticated %}
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url 'browse_recipes' %}">Browse Recipes</a>
                             </li>
+                            {% if user.is_authenticated %}
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url 'add_recipe' %}">Add Recipe</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url 'my_mealplan' %}">My Meal Plan</a>
                             </li>
-                            <li class="nav-item d-block d-md-none">
+                            <li class="nav-item d-block d-lg-none">
                                 <a class="nav-link" href="{% url 'my_recipes' %}">My Recipes</a>
                             </li>
-                            <li class="nav-item d-block d-md-none">
+                            <li class="nav-item d-block d-lg-none">
                                 <a class="nav-link" href="{% url 'my_favourites' %}">My Bookmarks</a>
                             </li>
-                            <li class="nav-item d-block d-md-none">
+                            <li class="nav-item d-block d-lg-none">
                                 <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
                             </li>
-                            <!-- <li class="nav-item dropdown d-block d-sm-none">
-                        <a class="nav-link" href="#" id="navbarDropdown" role="button"
-                            data-toggle="dropdown" aria-expanded="false">
-                            <span><i class="fas fa-user profile-icon"></i></i>{{ user.username }}</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{% url 'my_recipes' %}">My Recipes</a>
-                            <a class="dropdown-item" href="{% url 'my_favourites' %}">My Bookmarks</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a>
-                        </div>
-                    </li> -->
                             {% else %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'browse_recipes' %}">Browse Recipes</a>
-                            </li>
-                            <li class="nav-item d-block d-md-none">
+                            <li class="nav-item d-block d-lg-none">
                                 <a class="nav-link" href="{% url 'account_signup' %}">Sign up</a>
                             </li>
-                            <li class="nav-item d-block d-md-none">
+                            <li class="nav-item d-block d-lg-none">
                                 <a class="nav-link" href="{% url 'account_login' %}">Log in</a>
                             </li>
                             {% endif %}
-
                         </ul>
                     </div>
-
-                    <div id="navbarSupportedContent" class="d-none d-md-block">
+                    <div id="navbarSupportedContent" class="d-none d-lg-block">
                         <ul class="navbar-nav mb-2 mb-lg-0">
                             {% if user.is_authenticated %}
                             <li class="nav-item dropdown">

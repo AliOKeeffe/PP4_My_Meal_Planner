@@ -23,7 +23,7 @@
                 <img src=" {{ recipe.image.url }}" alt="recipe image" class="card-img-top">
                 {% endif %}
                 <div class="card-body">
-                    <h5 class="card-title">{{ recipe.title }}</h5>
+                    <h5 class="card-title recipe-detail-title text-truncate">{{ recipe.title }}</h5>
                     <p class="card-text">{{ recipe.description }}</p>
                     <a href="{% url 'recipe_detail' recipe.slug %}" class="stretched-link"></a>
                 </div>

@@ -48,6 +48,7 @@ body {
     color: #886363;
     font-weight: 300;
     text-align: center;
+
 }
 
 /* Home Page */
@@ -68,10 +69,6 @@ body {
     margin: auto !important;
 }
 
-
-.feature-image-outer {
-    width: 75%;
-}
 
 .feature-image {
     text-align: center;
@@ -119,6 +116,10 @@ body {
 
 /* Recipe Detail Page */
 
+/* https://stackoverflow.com/questions/11129696/capitalize-first-letter-of-sentences-css */
+.recipe-detail-title:first-letter{
+    text-transform: capitalize
+}
 
 .recipe-detail-card {
     border: 0.5px solid #D8B646;
@@ -130,6 +131,9 @@ body {
     width: 100%;
 }
 
+/* .recipe-detail-outer {
+    min-height: 250px;
+} */
 
 .recipe-detail-header {
     border: none;
@@ -137,8 +141,12 @@ body {
     color: #886363;
 }
 
+.action-buttons-outer {
+    position: absolute;
+    bottom: 15px;
+}
+
 .action-btn {
-    font-size: .75rem;
     width: 40px;
 }
 
@@ -252,6 +260,24 @@ body {
     color: #142a2b;
 }
 
+/* For Medium devices (tablets, less than 992px) */
+@media screen and (max-width: 991.98px) {
+    .hero-text {
+        font-size: 35px;
+    }
+  
+
+    .logo-image {
+        height: 75px;
+    }
+
+    .recipe-detail-title {
+        font-size: 1.75rem;
+    }
+
+}
+
+
 
 /* Small devices (landscape phones, less than 768px */
 @media screen and (max-width: 767.98px) {
@@ -271,21 +297,16 @@ body {
     .card-detail {
        width: 300px;
     }
-}
-/* For Medium devices (tablets, less than 992px) */
-@media screen and (max-width: 991.98px) {
-    .hero-text {
-        font-size: 35px;
-    }
-  
-    .feature-image-outer {
-        width: 90%;
+
+    .recipe-detail-title {
+        font-size: 1.5rem;
     }
 
-    .logo-image {
-        height: 75px;
+    .mp-button, .action-btn {
+        font-size: .75rem;
     }
 
+    
 }
 
 /* Extra small devices (portrait phones, less than 576px)
