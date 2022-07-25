@@ -114,6 +114,9 @@ body {
     color: #886363;
 }
 
+.draft {
+    color: red;
+}
 /* Recipe Detail Page */
 
 /* https://stackoverflow.com/questions/11129696/capitalize-first-letter-of-sentences-css */
@@ -208,13 +211,13 @@ body {
 .signup, .login {
     text-align: center;
     padding: 20px 0;
-    background-color: #0D5C63;
     border-radius: 2%;
+    border: 1px solid #D8B646;
 }
 
 .signup input, .login input {
     width: 90%;
-    border: 1px solid white;
+    border: 1px solid #D8B646;
     padding: 5px;
     margin: 5px 0 10px 0;
 
@@ -223,7 +226,7 @@ body {
 .signup label, .login label {
     display: block;
     text-align: center;
-    color: white;
+    color: #442E10;
     font-weight: bold;
 }
 

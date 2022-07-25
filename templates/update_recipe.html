@@ -4,24 +4,24 @@
 
 {% load crispy_forms_tags %}
 
-
-<div class="container-fluid green-background">
-    <h1 class="page-title text-light">Edit Recipe</h1>
-    <div class="row justify-content-center">
+<div class="container">
+    <h1 class="page-title">Edit Recipe</h1>
+    <hr class="home-break">
+    <br>
+    <div class="row justify-content-center ">
         {% if user.is_authenticated and recipe.author == user  %}
         {% load cloudinary %}
-        <div class="col-11 col-md-4 mt-3">
+        <div class="col-11 col-md-8 col-lg-6 mt-3 add-recipe-outer">
             <form method="post" class="add-recipe mb-5" action="" enctype="multipart/form-data">
                     {{ form | crispy }}
                     {% csrf_token %} 
-                <button type="submit" class="btn btn-light">Update</button>
-                <a class="btn btn-light" href="{%  url 'recipe_detail' recipe.slug  %}">Cancel</a>
+                <button type="submit" class="btn btn-info">Update</button>
+                <a class="btn btn-info m-2" href="{%  url 'recipe_detail' recipe.slug  %}">Cancel</a>
             </form>
         </div>
         {% endif %}
-
-
     </div>
 </div>
+
 
 {%endblock%}
