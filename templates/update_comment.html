@@ -12,7 +12,7 @@
     <div class="row justify-content-center">
         {% if user.is_authenticated and comment.name == user.username  %}
         <div class="col-11 col-md-6 col-lg-4 mt-3">
-            <form method="post" class="add-recipe" action="">
+            <form method="post" class="add-recipe">
                 {{ form | crispy }}
                 {% csrf_token %}
                 <div class="text-center">

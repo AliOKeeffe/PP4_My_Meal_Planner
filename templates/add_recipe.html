@@ -14,7 +14,7 @@
         {% if user.is_authenticated %}
         {% load cloudinary %}
         <div class="col-11 col-md-8 col-lg-6 mt-3 add-recipe-outer">
-            <form method="post" class="add-recipe mb-5" action="" enctype="multipart/form-data">
+            <form method="post" class="add-recipe mb-5" enctype="multipart/form-data">
                     {{ form | crispy }}
                     {% csrf_token %} 
                 <button type="submit" class="btn btn-info">Submit</button>

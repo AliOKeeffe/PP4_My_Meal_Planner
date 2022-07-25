@@ -5,14 +5,14 @@
 {% load crispy_forms_tags %}
 
 <div class="container">
-    <h1 class="page-title">Edit Recipe</h1>
+    <h1 class="page-title">Update Recipe</h1>
     <hr class="home-break">
     <br>
     <div class="row justify-content-center ">
         {% if user.is_authenticated and recipe.author == user  %}
         {% load cloudinary %}
         <div class="col-11 col-md-8 col-lg-6 mt-3 add-recipe-outer">
-            <form method="post" class="add-recipe mb-5" action="" enctype="multipart/form-data">
+            <form method="post" class="add-recipe mb-5" enctype="multipart/form-data">
                     {{ form | crispy }}
                     {% csrf_token %} 
                 <button type="submit" class="btn btn-info">Update</button>

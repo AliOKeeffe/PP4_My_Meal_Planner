@@ -72,22 +72,22 @@
                                 {% csrf_token %}
                                 {% if favourited  %}
                                 <button class="action-btn btn btn-info" type="submit" name="bookmark_id"
-                                    value="{{recipe.slug}}">
+                                    value="{{recipe.slug}}" aria-label="bookmark-outline">
                                     <i class="fas fa-bookmark"></i></button>
                                 {% else %}
                                 <button class="action-btn btn btn-info" type="submit" name="bookmark_id"
-                                    value="{{recipe.slug}}"><i class="far fa-bookmark"></i></button>
+                                    value="{{recipe.slug}}" aria-label="bookmark-solid"><i class="far fa-bookmark"></i></button>
                                 {% endif %}
                             </form>
                             {% endif %}
                             {% if user.is_authenticated and recipe.author == user %}
                             <span>
-                                <a class="action-btn btn btn-info" href="{% url 'update_recipe' recipe.slug %}">
+                                <a class="action-btn btn btn-info" href="{% url 'update_recipe' recipe.slug %}" aria-label="edit-recipe">
                                     <i class="fas fa-edit"></i>
                                 </a>
                             </span>
                             <span>
-                                <a class="action-btn btn btn-info" href="{% url 'delete_recipe' recipe.slug %}">
+                                <a class="action-btn btn btn-info" href="{% url 'delete_recipe' recipe.slug %}" aria-label="delete-recipe">
                                     <i class="fas fa-times"></i>
                                 </a>
                             </span>
@@ -154,9 +154,9 @@
                             </span>
                             {% if user.is_authenticated and user.username == comment.name %}
                             <span class="comment-action-btn pl-2">
-                                <a href="{% url 'update_comment' comment.id %}"><i
+                                <a href="{% url 'update_comment' comment.id %}" aria-label="edit-comment"><i
                                         class="fas fa-edit link-primary"></i></a>
-                                <a href="{% url 'delete_comment' comment.id %}"><i class="fas fa-times"></i></a>
+                                <a href="{% url 'delete_comment' comment.id %}" aria-label="delete-comment"><i class="fas fa-times"></i></a>
                             </span>
                             {% endif %}
                         </p>
@@ -179,7 +179,7 @@
             <div class="card recipe-detail-card mb-3 mt-3">
                 <div class="card-body">
                     <p>Leave a comment as: {{ user.username }}</p>
-                    <form method="post" style="margin-top: 1.3em;">
+                    <form method="post">
                         {{ comment_form | crispy }}
                         {% csrf_token %}
                         <button type="submit" class="btn btn-info">Submit</button>
