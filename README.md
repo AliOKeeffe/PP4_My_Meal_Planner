@@ -20,7 +20,7 @@ A list of my user stories and their tasks can be found
 
 ### EPIC | User Profile
 - As a Site User I can register an account so that I can add/edit/delete my recipes and comment on and bookmark other people's recipes and add recipes to my mealplanner.
-- As a Site User, I can login or logout of my account, so that I can keep my profile secure.
+- As a Site User, I can login or logout of my account so that I can keep my account secure.
 - As a Site User I can see my login status so that I know if I'm logged in or out.
 
 ### EPIC | User Navigation
