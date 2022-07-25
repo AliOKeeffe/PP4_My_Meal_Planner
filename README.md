@@ -47,8 +47,7 @@ A list of my user stories and their tasks can be found
 - As a Site User, I can export the ingredients from the recipes on my meal plan to a shopping list and remove the ones that are not necessary so that I can have all my required ingredients for the week in one place.
 
 ### EPIC | Site Administration
-- As a Site Administrator, I can create, read, update and delete recipes so that I can manage the app content.
-- As a Site Administrator, I can view, create, edit and delete comments so that I can control the websites content.
+- As a Site Administrator, I can create, read, update and delete recipes, comments and meal plan items so that I can manage the app content.
 
 ### Design
 
