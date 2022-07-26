@@ -64,6 +64,31 @@ A list of my user stories and their tasks can be found
 
 ## Features
 
+### Home Page
+- **Navigation Menu**
+
+    - The navigation menu is present at the top of every page and includes all links to the various other pages.
+    - The My Account navigation link is a drop down menu which includes the Sign up and Log in links. 
+    - When the user has logged in, the My Account drop down menu changes to display the user's name and a profile icon.
+    - The options to Sign up or Log in will change to the option to log out once a user has logged in.
+    - Once a user has signed in, more options such as 'Add Recipe', 'My Meal Plan', 'My Recipes' and 'My Bookmarks' become available.
+    - The navigation menu is fully responsive, collapsing into a hamburger menu when the screen size becomes too small.
+    - Hovering over the links will lighten the font.
+
+- **Call to Action Section**
+    - The home page includes a call to action section which encourages the user to sign up to the site with the message "Take the stress out of everyday cooking!" and an image of a family dinner.
+    - The CTA includes a sign up button button which takes the user to the sign up page.
+    - If a user is already signed in the message changes to 'Welcome back to The Easy Eater' and the user is encouraged to create a new recipe.
+    - The sign up button changes to a 'Create' button which takes the user to the 'Add recipe' page. 
+
+- **What We Do Section**
+    - The "What We Do' section gives a brief overview of what the site has to offer and summarises the basic features with three simple steps illustrated with font-awesome icons.
+
+- **Footer**
+    - The footer section includes links to Facebook, Instagram, Twitter and Youtube.
+    - Clicking the links in the footer opens a separate browser tab to avoid pulling the user away from the site.
+
+
 
 ## Credits
 

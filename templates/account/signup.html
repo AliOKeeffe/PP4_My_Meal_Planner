@@ -9,7 +9,7 @@
       <h1 class="page-title">{% trans "Sign up" %}</h1>
       <hr class="home-break">
       <br>
-      <p class="text-center mt-3">{% blocktrans %}Have an account? <a href="{{ login_url }}">Log in</a>{% endblocktrans %}
+      <p class="text-center mt-3">{% blocktrans %}Have an account? <a href="{{ login_url }}" class="text-dark"><u>Log in</u></a>{% endblocktrans %}
       </p>
   <div class="row justify-content-center">
     <div class="col-11 col-md-6 col-lg-4 mt-3 mb-3">
@@ -19,7 +19,7 @@
         {% if redirect_field_value %}
         <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
         {% endif %}
-        <button class="btn btn-info" type="submit">{% trans "Sign up" %}</button>
+        <button class="btn btn-outline-dark" type="submit">{% trans "Sign up" %}</button>
       </form>
     </div>
   </div>

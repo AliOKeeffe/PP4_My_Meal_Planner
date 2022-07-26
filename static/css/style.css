@@ -25,6 +25,7 @@ body {
     color: #886363;
 }
 
+
 .logo-image {
     height: 100px;
 }
@@ -114,15 +115,26 @@ body {
     color: #886363;
 }
 
+.recipe-detail-title {
+    font-size: 20px;
+}
+
+.recipe-detail-title:first-letter{
+    text-transform: capitalize
+}
+
 .draft {
     color: red;
 }
 /* Recipe Detail Page */
 
+
 /* https://stackoverflow.com/questions/11129696/capitalize-first-letter-of-sentences-css */
-.recipe-detail-title:first-letter{
+
+.recipe-title:first-letter{
     text-transform: capitalize
 }
+
 
 .recipe-detail-card {
     border: 0.5px solid #D8B646;
@@ -274,10 +286,6 @@ body {
         height: 75px;
     }
 
-    .recipe-detail-title {
-        font-size: 1.75rem;
-    }
-
 }
 
 
@@ -301,9 +309,6 @@ body {
        width: 300px;
     }
 
-    .recipe-detail-title {
-        font-size: 1.5rem;
-    }
 
     .mp-button, .action-btn {
         font-size: .75rem;

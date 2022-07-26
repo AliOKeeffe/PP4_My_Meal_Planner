@@ -18,7 +18,7 @@
                 <div class="col-12 col-md-8">
                     <div class="card-body recipe-detail-outer py-2">
                         <div>
-                            <h1 class="card-title page-title recipe-detail-title text-left">{{ recipe.title }}</h1>
+                            <h1 class="card-title page-title recipe-title text-left">{{ recipe.title }}</h1>
                         </div>
                         <p class="card-text">Author: {{ recipe.author }}</p>
                         <div class="mb-5">
@@ -34,7 +34,7 @@
                         <!-- recipe action buttons -->
                         <div class="action-buttons-outer d-block">
                             {% if user.is_authenticated %}
-                            <button type="button" class="btn btn-outline-info mp-button rounded-pill mr-2"
+                            <button type="button" class="btn btn btn-outline-dark mp-button rounded-pill mr-2"
                                 data-toggle="modal" data-target="#mealplanModal">
                                 <span><i class="fas fa-calendar-plus pr-1"></i></span>
                                 Add to Meal Plan
@@ -56,7 +56,7 @@
                                                 {% csrf_token %}
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="submit" class="btn btn-info btn-sm">
+                                                <button type="submit" class="btn btn-outline-dark btn-sm">
                                                     <span><i class="fas fa-calendar-plus pr-1"></i></span>
                                                     Add to Meal Plan
                                                 </button>
@@ -182,7 +182,7 @@
                     <form method="post">
                         {{ comment_form | crispy }}
                         {% csrf_token %}
-                        <button type="submit" class="btn btn-info">Submit</button>
+                        <button type="submit" class="btn btn-outline-dark">Submit</button>
                     </form>
                 </div>
             </div>
