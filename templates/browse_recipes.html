@@ -10,6 +10,7 @@
     </div>
     <hr class="home-break">
     <br>
+    <!-- Recipe Cards -->
     <div class="row card-deck">
         {% for recipe in recipe_list  %}
         <div class="col-sm-6 col-md-4 col-lg-3 px-1 d-flex align-items-stretch">
@@ -26,13 +27,13 @@
                         <span><i class="far fa-clock pr-2"></i></span>
                         <span>Cook Time: {{ recipe.cook_time }}</span>
                     </p>
-                    <a href="{% url 'recipe_detail' recipe.slug %}" class="stretched-link" aria-label="recipe-detail"></a>
+                    <a href="{% url 'recipe_detail' recipe.slug %}" class="stretched-link"
+                        aria-label="recipe-detail"></a>
                 </div>
             </div>
         </div>
         {% endfor %}
     </div>
-
 </div>
 
 {% include "paginator.html" %}

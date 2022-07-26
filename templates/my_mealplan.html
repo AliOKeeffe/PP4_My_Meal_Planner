@@ -1,5 +1,7 @@
 {% extends "base.html" %}
+
 {% block title %}The Easy Eater | My Meal Plan{% endblock %}
+
 {% block content %}
 
 <div class="container">
@@ -10,46 +12,38 @@
     </div>
     <hr class="home-break">
     <br>
+    <!-- Meal Plan Card -->
     <div class="row card-deck justify-content-center">
-
         {% for day, meal in mealplan.items  %}
-            {% if meal %}
-                <div class="col-sm-6 col-md-4 col-lg-3 px-1 d-flex align-items-stretch">
-                    <div class="card card-detail mealplan-card mb-3 shadow-sm mx-auto mx-sm-2">
-                        <div class="card-header mealplan-card-header">
-                            <h2 class="card-title mealplan-title">{{ day }} </h2>
-                        </div>
-                        {% if "placeholder" in meal.recipe.image.url %}
-                        <img src="https://res.cloudinary.com/aliokeeffe/image/upload/v1656016833/placeholder_image_prqssg.jpg" class="card-img-top" alt="placeholder image">
-                        {% else %}
-                        <img src=" {{ meal.recipe.image.url }}" alt="recipe image" class="card-img-top">
-                        {% endif %}
-                        <div class="card-body">
-                            <!-- <div class="mp-icon card-img-overlay">
-                                <i class="fas fa-calendar-check"></i>
-                            </div> -->
-                            <h3 class="card-title recipe-detail-title text-center text-truncate">{{ meal.recipe.title }}</h3>
-                            <a href="{% url 'recipe_detail' meal.recipe.slug %}" class="stretched-link" aria-label="recipe-detail"></a>
-                        </div>
-                    </div>
+        <div class="col-sm-6 col-md-4 col-lg-3 px-1 d-flex align-items-stretch">
+            <div class="card card-detail mealplan-card mb-3 shadow-sm mx-auto mx-sm-2">
+                <div class="card-header mealplan-card-header">
+                    <h2 class="card-title mealplan-title">{{ day }} </h2>
                 </div>
-            {% else %}
-                <div class="col-sm-6 col-md-4 col-lg-3 px-1 d-flex align-items-stretch">
-                    <div class="card card-detail mealplan-card mb-3 shadow-sm mx-auto mx-sm-2">
-                        <div class="card-header mealplan-card-header">
-                            <h2 class="card-title mealplan-title">{{ day }} </h2>
-                        </div>
-                        <!-- <img src="/static/images/light-bulb.png" alt="recipe image" class="card-img-top"> -->
-                        <i class="fas fa-calendar-plus mp-icon fa-6x card-img-top"></i>
-                        <div class="card-body">
-                            <h3 class="card-title text-center">Add Recipe</h3>
-                            <a href="{% url 'browse_recipes' %}" class="stretched-link" aria-label="browse-recipes"></a>
-                        </div>
-                    </div>
+                <!-- if a meal plan exists for that day -->
+                {% if meal %}
+                {% if "placeholder" in meal.recipe.image.url %}
+                <img src="https://res.cloudinary.com/aliokeeffe/image/upload/v1656016833/placeholder_image_prqssg.jpg"
+                    class="card-img-top" alt="placeholder image">
+                {% else %}
+                <img src=" {{ meal.recipe.image.url }}" alt="recipe image" class="card-img-top">
+                {% endif %}
+                <div class="card-body">
+                    <h3 class="card-title recipe-detail-title text-center text-truncate">{{ meal.recipe.title }}</h3>
+                    <a href="{% url 'recipe_detail' meal.recipe.slug %}" class="stretched-link"
+                        aria-label="recipe-detail"></a>
                 </div>
-            {% endif %}
+                <!-- If there is no meal plan item for that day -->
+                {% else %}
+                <i class="fas fa-calendar-plus mp-icon fa-6x card-img-top"></i>
+                <div class="card-body">
+                    <h3 class="card-title recipe-detail-title text-center">Add Recipe</h3>
+                    <a href="{% url 'browse_recipes' %}" class="stretched-link" aria-label="browse-recipes"></a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
         {% endfor %}
-
     </div>
 </div>
 

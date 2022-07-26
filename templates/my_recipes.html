@@ -1,5 +1,7 @@
 {% extends "base.html" %}
+
 {% block title %}The Easy Eater | My Recipes{% endblock %}
+
 {% block content %}
 
 {% if user.is_authenticated %}
@@ -12,6 +14,7 @@
     </div>
     <hr class="home-break">
     <br>
+    <!--  Recipe Cards -->
     <div class="row card-deck">
         {% for recipe in recipe_list  %}
         <div class="col-sm-6 col-md-4 col-lg-3 px-1 d-flex align-items-stretch">
@@ -23,6 +26,7 @@
                 <img src=" {{ recipe.image.url }}" alt="recipe image" class="card-img-top">
                 {% endif %}
                 <div class="card-body pb-1">
+                    <!--  checks if recipe is unpublished -->
                     {% if recipe.status == 0 %}
                     <h2 class="card-title recipe-detail-title text-truncate">{{ recipe.title }}
                         <span class="draft">(DRAFT)</span></h2>
@@ -33,15 +37,13 @@
                         <span><i class="far fa-clock pr-2"></i></span>
                         <span>Cook Time: {{ recipe.cook_time }}</span>
                     </p>
-
-                    <a href="{% url 'recipe_detail' recipe.slug %}" class="stretched-link" aria-label="recipe-detail"></a>
+                    <a href="{% url 'recipe_detail' recipe.slug %}" class="stretched-link"
+                        aria-label="recipe-detail"></a>
                 </div>
             </div>
         </div>
-
         {% endfor %}
     </div>
-
 </div>
 
 {% include "paginator.html" %}

@@ -2,19 +2,21 @@
 {% block title %}The Easy Eater | Home{% endblock %}
 {% block content %}
 
-<!-- hero section -->
+<!-- Call to action section -->
 <section>
     <div class="container px-2 py-3">
         <div class="row flex-md-row-reverse py-3 m-0">
             <div class="col-md-7 col-lg-5 p-0 pl-md-5 align-self-center">
-                <img src="https://res.cloudinary.com/aliokeeffe/image/upload/v1658744116/family_dinner_cmsqxz.webp" class="img-fluid family-image" alt="family_dinner">
+                <img src="https://res.cloudinary.com/aliokeeffe/image/upload/v1658744116/family_dinner_cmsqxz.webp"
+                    class="img-fluid family-image" alt="family_dinner">
             </div>
             {% if user.is_authenticated %}
             <div class="col-md-5 col-lg-7 hero-text-outer text-center">
                 <h1 class="mt-4 mb-2 hero-text">Welcome back to The Easy Eater</h1>
                 <div class="lead mt-4">
                     Add a new recipe
-                    <a class="btn btn-outline-dark rounded-pill btn-lg ml-2 my-2 my-lg-0" href="{%  url 'add_recipe' %}">Create!</a>
+                    <a class="btn btn-outline-dark rounded-pill btn-lg ml-2 my-2 my-lg-0"
+                        href="{%  url 'add_recipe' %}">Create!</a>
                 </div>
             </div>
             {% else %}
@@ -22,7 +24,8 @@
                 <h1 class="mt-4 mb-2 hero-text">Take the stress out of everyday cooking!</h1>
                 <div class="lead mt-4">
                     Get started today
-                    <a class="btn btn-outline-dark rounded-pill btn-lg ml-2 my-2 my-lg-0" href="{%  url 'account_signup' %}">Sign Up!</a>
+                    <a class="btn btn-outline-dark rounded-pill btn-lg ml-2 my-2 my-lg-0"
+                        href="{%  url 'account_signup' %}">Sign Up!</a>
                 </div>
             </div>
             {% endif %}
@@ -31,7 +34,6 @@
 </section>
 
 <!-- features section -->
-
 <section class="container px-0">
     <div class="container">
         <div class="row">
@@ -42,13 +44,13 @@
         <hr class="home-break">
         <div class="row mb-sm-5">
             <div class="col-12">
-                <p class="mt-3 my-md-3 text-center lead">The Easy Eater is a recipe sharing and meal planning application designed to
+                <p class="mt-3 my-md-3 text-center lead">The Easy Eater is a recipe sharing and meal planning
+                    application designed to
                     take the hassle out of everyday cooking
                 </p>
             </div>
         </div>
     </div>
-
     <div class="container-fluid feature-image-outer">
         <div class="row">
             <div class="col-12 col-md-4 mb-2">
@@ -74,12 +76,9 @@
                 <h3 class="feature-title">Plan</h3>
                 <p class="feature-text">Add recipes to your weekly meal planner saving you time and stress in the week
                     ahead</p>
-
             </div>
         </div>
     </div>
-
-
 </section>
 
 {%endblock%}

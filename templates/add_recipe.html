@@ -1,10 +1,10 @@
 {% extends "base.html" %}
+
 {% block title %}The Easy Eater | Add Recipe{% endblock %}
+
 {% block content %}
 
 {% load crispy_forms_tags %}
-
-
 
 <div class="container">
     <h1 class="page-title">Add Recipe</h1>
@@ -14,6 +14,7 @@
         {% if user.is_authenticated %}
         {% load cloudinary %}
         <div class="col-11 col-md-8 col-lg-6 mt-3 add-recipe-outer">
+            <!--  Add Recipe Form -->
             <form method="post" class="add-recipe mb-5" enctype="multipart/form-data">
                     {{ form | crispy }}
                     {% csrf_token %} 
@@ -21,10 +22,7 @@
                 <a class="btn btn btn-outline-dark m-2" href="{%  url 'browse_recipes' %}">Cancel</a>
             </form>
         </div>
-
         {% endif %}
-
-
     </div>
 </div>
 

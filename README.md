@@ -112,7 +112,7 @@ A list of my user stories and their tasks can be found
 - This page displays all recipes with a status of published with the most recent recipes displaying first.
 - The recipes cards are paginated after every 8 recipes. 
 - Each card displays the recipe's image, Title and Cook Time. 
-- Clicking anywhere inside the recipes card will take you directly to that recipes detailed page.
+- Clicking anywhere inside the recipe card will take you directly to that recipe's detailed page.
 
 ### Recipe Detail Page
 - **Recipe Header Section**

@@ -9,6 +9,7 @@
     <hr class="home-break">
     <br>
     <div class="row justify-content-center ">
+        <!-- Checks the user is signed in and the recipe they're trying to access is owned by them -->
         {% if user.is_authenticated and recipe.author == user  %}
         {% load cloudinary %}
         <div class="col-11 col-md-8 col-lg-6 mt-3 add-recipe-outer">

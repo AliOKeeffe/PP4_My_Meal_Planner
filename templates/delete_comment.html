@@ -1,5 +1,7 @@
 {% extends "base.html" %}
+
 {% block title %}The Easy Eater | Delete Comment{% endblock %}
+
 {% block content %}
 
 <div class="container">
@@ -9,6 +11,7 @@
       <p class="text-center mt-3">Are you sure you want to delete this comment?</p>
   <div class="row justify-content-center">
     <div class="col-11 col-md-6 col-lg-4 mt-3">
+        <!-- Delete Comment Form -->
         <form class="text-center" method="POST">
             {%  csrf_token  %}
             <div>
@@ -19,4 +22,5 @@
     </div>
   </div>
 </div>
+
 {% endblock %}
