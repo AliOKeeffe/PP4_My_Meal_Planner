@@ -83,9 +83,35 @@ The Montserrat font is the main font used used for the body of the website with 
 ### Wireframes
 
 ### Data Model
-
 I used principles of Object-Oriented Programming throughout this project and Django’s Class-Based Generic Views. 
 
+#### Database Schema
+![Database Schema](docs/readme_images/database_schema.png)
+
+
+### Security Features and Defensive Design
+
+#### User Authentication
+
+- Django's LoginRequiredMixin is used to make sure that any requests to access secure pages by non-authenticated users are redirected to the login page. 
+- Django's UserPassesTestMixin is used to limit access based on certain permissions i.e. to ensure users can only edit/delete recipes and comments for which they are the author. If the user doesn't pass the test they are shown an HTTP 403 Forbidden error.
+
+#### Form Validation
+If incorrect or empty data is added to a form, the form won't submit and a warning will appear to the user informing them what field raised the error. 
+
+#### Database Security
+The database secret key is stored in the env.py file to prevent unwanted connections to the database and this was set up before the first push to Github.
+
+Cross-Site Request Forgery (CSRF) tokens were used on all forms throughout this site.
+
+#### Custom error pages:
+
+Custom Error Pages were created to give the user more information on the error and to provide them with buttons to guide them back to the site.
+
+400 Bad Request - The Easy Eater is unable to handle this request.
+403 Page Forbiden - Looks like you're trying to access forbidden content. Please log out and sign in to the correct account.
+404 Page Not Found - The page you're looking for doesn't exist.
+500 Server Error - The Easy Eater is currently unable to handle this request
 
 ## Features
 
