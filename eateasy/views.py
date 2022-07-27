@@ -341,8 +341,8 @@ class DeleteComment(
 
     def delete(self, request, *args, **kwargs):
         """
-        This function is used to display sucess message given
-        SucessMessageMixin cannot be used in generic.DeleteView.
+        This function is used to display success message given
+        SuccessMessageMixin cannot be used in generic.DeleteView.
         Credit: https://stackoverflow.com/questions/24822509/
         success-message-in-deleteview-not-shown
         """

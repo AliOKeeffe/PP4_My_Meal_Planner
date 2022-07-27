@@ -1,18 +1,48 @@
 
 ## Validators
 
-- HTML
-All pages were free from errors, except those noted below.
+### HTML
 
-When validating the Recipe Detail page I received an error in relation to an extra `</p>` tag in the 'Recipe Method' field which had been created using the summernote editor. The issue was due to Summernote including the HTML tags. I resolved by removing the surrounding paragraph tags in my HTML when rendering a summernote field in my Recipe Detail page.
+All HTML pages were run through the [W3C HTML Validator](https://validator.w3.org/). The following errors were flagged.
+
+Fixed Errors:
+- When validating the Recipe Detail page I received an error in relation to an extra `</p>` tag in the 'Recipe Method' field which had been created using the summernote editor. The issue was due to Summernote including `<p>` tags around the form field. I resolved the error by removing the surrounding `<p>` tags in my HTML when rendering a summernote field in my Recipe Detail page.
+
+Unfixed Errors
+- When validating the Add Recipe and Edit Recipe forms I received a number of errors which were caused by the installed Summernote library which runs when using the form on these pages. I could not recitify these errors given that they weren't in my own code therefore they are unresolved. 
 
 
-- CSS
+ <details>
 
-- Javascript
+ <summary>Summernote Errors</summary>
 
-- Python
+![Summernote Errors](docs/readme_images/summernote_errors.png)
+ </details>
 
+### CSS
+- No errors were found when passing my CSS file through the official W3C CSS Validator 
+     - [W3C CSS Validator](https://jigsaw.w3.org/css-validator/)  ADD IN RESULTS
+
+### Javascript
+ No errors were found when passing my javascript through [Jshint](https://jshint.com/) 
+
+ <details>
+
+ <summary>Jshint</summary>
+
+![Jshint](docs/readme_images/jshint_validation.png)
+ </details>
+
+
+### Python
+All Python files were ran through [Pep8](http://pep8online.com/) with no errors found. 
+
+### Lighthouse
+
+Lighthouse validation was ran on all pages (both mobile and desktop) in order to check accessibility.
+At first I recieved the warning *'Background and foreground colors do not have a sufficient contrast ratio'* in relation to buttons where I had used the Bootstrap class `btn-info`. 
+
+After I updated the button styling I received 100% score on all pages. 
 
 ## User Story Testing
 
@@ -86,9 +116,6 @@ When validating the Recipe Detail page I received an error in relation to an ext
 
 
 
-
-
-
 ## Manual Testing
 
 ### Site Navigation
@@ -130,3 +157,34 @@ When validating the Recipe Detail page I received an error in relation to an ext
 ### My Bookmarks Page
 ### My Meal Plan Page
 ### Django All Auth Pages
+
+
+## Bugs 
+
+### Fixed Bugs
+
+#### Overwrite Meal Plan Items
+- **Bug**: When I initially wrote the code to add a recipe to a meal plan item, if a meal plan item already existed for the current user for a particular day and then they added another recipe to that day, the meal plan item wouldn't update and the the user's meal plan would still display the original meal plan item for that day.
+- **Fix**: in order to rectify this I queried the database to return all meal plan items for the current user and for the day selected. Through an if statement I could then check if a meal plan item already existed for the user for that day, and if it did then to overwrite it. 
+The solved the problem whereby now if a user adds a meal plan item to a particular day, it just overwrites the previous meal plan item. 
+
+#### not being able to create a dictionary using template logic - had to create the dictionary in the view first?
+
+
+#### Overwrite the queryset in Listview
+override queryset to filter django listview by logged in user
+https://stackoverflow.com/questions/38471260/django-filtering-by-user-id-in-class-based-listview
+
+#### No Reverse Match Error
+No reverse match error when creating new recipe due to the slug field not populating. Was able to use AutoSlugField which is a model field extension that automatically creates a unique slug populated from the recipe title.  
+
+#### Cloudinary Images not Displaying
+cloudinary images not displaying - add enctype 
+
+#### Footer to stay at bottom of page where content was not full screen length
+Didn't want to user a sticky footer but was able to use css calc funtion
+
+
+### Unfixed bugs:
+
+Summernote fields in recipe form save with just whitespace added

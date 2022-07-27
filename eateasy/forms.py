@@ -45,9 +45,6 @@ class RecipeForm(forms.ModelForm):
             'ingredients': SummernoteWidget(),
         }
 
-    # def clean_title(self):
-    #     return self.cleaned_data['title'].title()
-
 
 class MealPlanForm(forms.ModelForm):
     """ Create Meal Plan Form """
