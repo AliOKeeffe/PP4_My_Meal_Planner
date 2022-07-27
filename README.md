@@ -85,7 +85,8 @@ The Montserrat font is the main font used used for the body of the website with 
 ### Data Model
 I used principles of Object-Oriented Programming throughout this project and Django’s Class-Based Generic Views. 
 
-#### Database Schema
+The diagram below outlines the database schema. 
+
 ![Database Schema](docs/readme_images/database_schema.png)
 
 
@@ -100,7 +101,7 @@ I used principles of Object-Oriented Programming throughout this project and Dja
 If incorrect or empty data is added to a form, the form won't submit and a warning will appear to the user informing them what field raised the error. 
 
 #### Database Security
-The database secret key is stored in the env.py file to prevent unwanted connections to the database and this was set up before the first push to Github.
+The database url and secret key are stored in the env.py file to prevent unwanted connections to the database and this was set up before the first push to Github.
 
 Cross-Site Request Forgery (CSRF) tokens were used on all forms throughout this site.
 
@@ -255,7 +256,67 @@ Vegan / vegetarian
 Meal plan breakfast and lunch / snacks
 Ingredients list and shopping list. 
 
+## Deployment - Heroku
 
+To deploy this page to Heroku from its GitHub repository, the following steps were taken:
+
+### Create the Heroku App:
+- Log in to [Heroku](https://dashboard.heroku.com/apps) or create an account.
+- On the main page click the button labelled New in the top right corner and from the drop-down menu select "Create New App".
+- Enter a unique and meaningful app name.
+- Next select your region.
+- Click on the Create App button.
+
+### Attach the Postgres database:
+- In the Resources tab, under add-ons, type in Postgres and select the Heroku Postgres option.
+- Copy the DATABASE_URL located in Config Vars in the Settings Tab.
+
+### Prepare the environment and settings.py file:
+- In your GitPod workspace, create an env.py file in the main directory.
+- Add the DATABASE_URL value and your chosen SECRET_KEY value to the env.py file. 
+- Update the settings.py file to import the env.py file and add the SECRETKEY and DATABASE_URL file paths.
+- Comment out the the default database configuration.
+- Save files and make migrations.
+- Add Cloudinary URL to env.py
+- Add the cloudinary libraries to the list of installed apps.
+- Add the STATIC files settings - the url, storage path, directory path, root path, media url and default file storage path.
+- Link the file to the templates directory in Heroku.
+- Change the templates directory to TEMPLATES_DIR
+- Add Heroku to the ALLOWED_HOSTS list the format ['app_name.heroku.com', 'localhost']
+
+### Create files / directories
+- Create requirements.txt file
+- Create three directories in the main directory; media, storage and templates.
+- Create a file named "Procfile" in the main directory and add the following: web: gunicorn project-name.wsgi
+
+### Update Heroku Config Vars
+Add the following Config Vars in Heroku:
+- SECRET_KEY value 
+- CLOUDINARY_URL
+- PORT = 8000
+- DISABLE_COLLECTSTATIC = 1
+
+### Deploy
+- NB: Ensure in Django settings, DEBUG is False
+- Go to the deploy tab on Heroku and connect to the GitHub, then to the required repository. 
+- Scroll to the bottom of the deploy page and either click Enable Automatic Deploys for automatic deploys or Deploy Branch to deploy manually. Manually deployed branches will need re-deploying each time the repo is updated.
+- Click View to view the deployed site.
+
+The site is now live and operational.
+## Forking this repository
+- Locate the repository at this link [The Easy Eater](https://github.com/AliOKeeffe/PP4_My_Meal_Planner).
+- At the top of the repository, on the right side of the page, select "Fork" from the buttons available. 
+- A copy of the repository is now created.
+
+## Cloning this repository
+To clone this repository follow the below steps: 
+
+1. Locate the repository at this link [The Easy Eater](https://github.com/AliOKeeffe/PP4_My_Meal_Planner). 
+2. Under **'Code'**, see the different cloning options, HTTPS, SSH, and GitHub CLI. Click the prefered cloning option, and then copy the link provided. 
+3. Open **Terminal**.
+4. In Terminal, change the current working directory to the desired location of the cloned directory.
+5. Type **'git clone'**, and then paste the URL copied from GitHub earlier. 
+6. Type **'Enter'** to create the local clone. 
 
 ## Credits
 
