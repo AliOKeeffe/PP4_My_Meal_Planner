@@ -13,10 +13,9 @@ AM I RESPONSIVE IMAGE HERE
 
 ## User Experience (UX)
 
+A visitor to Easy Eater would be someone who is most likely an adult who enjoys their food and trying new recipes but also wants to save time and effort when deciding what to cook for dinner every night of the week.
+
 ## User Stories
-
-
-A list of my user stories and their tasks can be found
 
 ### EPIC | User Profile
 - As a Site User I can register an account so that I can add/edit/delete my recipes and comment on and bookmark other people's recipes and add recipes to my mealplanner.
@@ -49,17 +48,43 @@ A list of my user stories and their tasks can be found
 ### EPIC | Site Administration
 - As a Site Administrator, I can create, read, update and delete recipes, comments and meal plan items so that I can manage the app content.
 
+## Agile Methodology
+
+Github projects was used to manage the develop process using an agile approach. Please see link to project here. INSERT LINK
+
+The 6 Epics listed above were documented within the Github project as Milestones. A Github Issue was created for each User Story which was then allocated to a milestone(Epic). Each User Story has defined acceptance criteria to make it clear when the User Story has been completed. The acceptance criteria are further broken down into tasks to facilitate the User Story's execution.
+
 ### Design
 
-### Imagery
+The site has a very simple and clean design which was purposely chosen in order to keep in theme with the site's goal. i.e. invoking a sense of calm in the user and reducing stress when it comes to everyday cooking. 
+
 
 ### Colour Scheme
+Colour palette from Coolors
+
+![Colour Palette](docs/readme_images/colour_scheme.png)
+
+The colour scheme of the site is mainly mainly pale cream, pink and brown with thin gold borders. THe colours chosen are quite neutral and calming. 
+
+Great care was taken to establish a good contrast between background colours and text at all times to ensure maximum user accessibility. 
+
+### Imagery
+There is only one static image on the site depicting a family dinner on the home page. The rest of the imagery will be uploaded by users for their individual recipes. 
+
 
 ### Fonts
+The Montserrat font is the main font used used for the body of the website with the Playfair Display font used for the main headings on the home page. These fonts were imported via Google Fonts. Sans Serif is the backup font, in case for any reason the main font isn't being imported into the site correctly.
+
+
+
 
 ### Layout
 
 ### Wireframes
+
+### Data Model
+
+I used principles of Object-Oriented Programming throughout this project and Django’s Class-Based Generic Views. 
 
 
 ## Features

@@ -38,9 +38,9 @@ class RecipeDetail(View):
         queryset = Recipe.objects.all()
         recipe = get_object_or_404(queryset, slug=slug)
         comments = recipe.comments.order_by('created_on')
-        favourited = False
-        if recipe.favourites.filter(id=self.request.user.id).exists():
-            favourited = True
+        bookmarked = False
+        if recipe.bookmarks.filter(id=self.request.user.id).exists():
+            bookmarked = True
 
         return render(
             request,
@@ -50,7 +50,7 @@ class RecipeDetail(View):
                 "comments": comments,
                 "comment_form": CommentForm(),
                 "mealplan_form": MealPlanForm(),
-                "favourited": favourited
+                "bookmarked": bookmarked
             },
         )
 
@@ -62,9 +62,9 @@ class RecipeDetail(View):
         queryset = Recipe.objects.filter(status=1)
         recipe = get_object_or_404(queryset, slug=slug)
         comments = recipe.comments.order_by('created_on')
-        favourited = False
-        if recipe.favourites.filter(id=self.request.user.id).exists():
-            favourited = True
+        bookmarked = False
+        if recipe.bookmarks.filter(id=self.request.user.id).exists():
+            bookmarked = True
 
         comment_form = CommentForm(data=request.POST)
 
@@ -110,7 +110,7 @@ class RecipeDetail(View):
                 "comments": comments,
                 "comment_form": CommentForm(),
                 "mealplan_form": MealPlanForm(),
-                "favourited": favourited
+                "bookmarked": bookmarked
             },
         )
 
@@ -223,7 +223,7 @@ class DeleteRecipe(
         return super(DeleteRecipe, self).delete(request, *args, **kwargs)
 
 
-class FavouriteRecipe(LoginRequiredMixin, View):
+class BookmarkRecipe(LoginRequiredMixin, View):
     """
     This view allows a logged in user to bookmark recipes.
     """
@@ -235,27 +235,27 @@ class FavouriteRecipe(LoginRequiredMixin, View):
         If they don't exist then add them to the database.
         """
         recipe = get_object_or_404(Recipe, slug=slug)
-        if recipe.favourites.filter(id=request.user.id).exists():
-            recipe.favourites.remove(request.user)
+        if recipe.bookmarks.filter(id=request.user.id).exists():
+            recipe.bookmarks.remove(request.user)
             messages.success(self.request, 'Recipe removed from bookmarks')
         else:
-            recipe.favourites.add(request.user)
+            recipe.bookmarks.add(request.user)
             messages.success(self.request, 'Recipe added to bookmarks')
 
         return HttpResponseRedirect(reverse('recipe_detail', args=[slug]))
 
 
-class MyFavourites(LoginRequiredMixin, generic.ListView):
+class MyBookmarks(LoginRequiredMixin, generic.ListView):
     """
     This view allows a logged in user to view their bookmarked recipes.
     """
     model = Recipe
-    template_name = 'my_favourites.html'
+    template_name = 'my_bookmarks.html'
     paginate_by = 8
 
     def get_queryset(self):
         """Override get_queryset to filter by user favourites"""
-        return Recipe.objects.filter(favourites=self.request.user.id)
+        return Recipe.objects.filter(bookmarks=self.request.user.id)
 
 
 class MealPlan(LoginRequiredMixin, View):

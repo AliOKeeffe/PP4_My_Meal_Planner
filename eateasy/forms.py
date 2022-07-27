@@ -36,8 +36,6 @@ class RecipeForm(forms.ModelForm):
             'method',
             'ingredients',
             'image',
-            'is_vegetarian',
-            'is_vegan',
             'status',
         ]
         widgets = {

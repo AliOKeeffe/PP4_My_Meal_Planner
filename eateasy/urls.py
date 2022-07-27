@@ -10,10 +10,10 @@ urlpatterns = [
     path('addrecipe/', views.AddRecipe.as_view(), name='add_recipe'),
     path('mymealplan/', views.MealPlan.as_view(), name='my_mealplan'),
     path(
-        'favourite/<slug:slug>',
-        views.FavouriteRecipe.as_view(), name='favourite_recipe'
+        'bookmark/<slug:slug>',
+        views.BookmarkRecipe.as_view(), name='bookmark_recipe'
         ),
-    path('mybookmarks/', views.MyFavourites.as_view(), name='my_favourites'),
+    path('mybookmarks/', views.MyBookmarks.as_view(), name='my_bookmarks'),
     path(
         'recipes/<slug:slug>/',
         views.RecipeDetail.as_view(), name='recipe_detail'

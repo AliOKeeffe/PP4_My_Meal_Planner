@@ -24,10 +24,8 @@ class Recipe(models.Model):
     method = models.TextField()
     image = CloudinaryField('image', default='placeholder')
     status = models.IntegerField(choices=STATUS, default=1)
-    is_vegetarian = models.BooleanField(default=False)
-    is_vegan = models.BooleanField(default=False)
-    favourites = models.ManyToManyField(
-        User, related_name='favourite', default=None, blank=True)
+    bookmarks = models.ManyToManyField(
+        User, related_name='bookmark', default=None, blank=True)
 
     class Meta:
         """To display the recipes by created_on in descending order"""

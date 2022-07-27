@@ -68,9 +68,9 @@
                             {% endif %}
                             <!--End of Meal Plan Modal -->
                             {% if user.is_authenticated %}
-                            <form class="d-inline" action="{% url 'favourite_recipe' recipe.slug %}" method="POST">
+                            <form class="d-inline" action="{% url 'bookmark_recipe' recipe.slug %}" method="POST">
                                 {% csrf_token %}
-                                {% if favourited  %}
+                                {% if bookmarked  %}
                                 <button class="action-btn btn btn-info" type="submit" name="bookmark_id"
                                     value="{{recipe.slug}}" aria-label="bookmark-outline">
                                     <i class="fas fa-bookmark"></i></button>
