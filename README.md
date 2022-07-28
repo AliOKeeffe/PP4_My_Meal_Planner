@@ -85,7 +85,15 @@ The Montserrat font is the main font used used for the body of the website with 
 ### Data Model
 I used principles of Object-Oriented Programming throughout this project and Django’s Class-Based Generic Views. 
 
-The diagram below outlines the database schema. 
+The diagram below details the database schema. 
+
+Django AllAuth was used for the user authentication system.
+
+In order for the users to create Recipes a custom recipe model was required. The recipe author is a foreign key to the User model given a recipe can only have one author.
+
+The Comment model allows users to comment on individual recipes and the Recipe is a forign key in the comment model given a comment can only be linked to one recipe. 
+
+The meal plan item model allows users to add recipes to a meal plan for a particular day. A meal plan item can only have one user and one recipe and is therefore linked to the User and Recipe models through foreign keys.
 
 ![Database Schema](docs/readme_images/database_schema.png)
 
