@@ -163,28 +163,29 @@ After I updated the button styling I received 100% score on all pages.
 
 ### Fixed Bugs
 
-#### Overwrite Meal Plan Items
-- **Bug**: When I initially wrote the code to add a recipe to a meal plan item, if a meal plan item already existed for the current user for a particular day and then they added another recipe to that day, the meal plan item wouldn't update and the the user's meal plan would still display the original meal plan item for that day.
-- **Fix**: in order to rectify this I queried the database to return all meal plan items for the current user and for the day selected. Through an if statement I could then check if a meal plan item already existed for the user for that day, and if it did then to overwrite it. 
-The solved the problem whereby now if a user adds a meal plan item to a particular day, it just overwrites the previous meal plan item. 
+- #### Overwrite Meal Plan Items
+     - **Bug**: When I initially wrote the code to add a recipe to a meal plan item, if a meal plan item already existed for the current user for a particular day and then they added another recipe to that day, the meal plan item wouldn't update and the the user's meal plan would still display the original meal plan item for that day.
+     - **Fix**: in order to rectify this I queried the database to return all meal plan items for the current user and for the day selected. Through an if statement I could then check if a meal plan item already existed for the user for that day, and if it did then to overwrite it. 
+This solved the problem whereby now if a user adds a meal plan item to a particular day, it just overwrites the previous meal plan item. 
 
-#### not being able to create a dictionary using template logic - had to create the dictionary in the view first?
+- #### Required fields using Summernote extension submit with just whitespace entered
+     - **Bug**: In the Add Recipe form, the Ingredients and Method fields both use the summernote extension. Both fields are required fields however the form still submited when only whitespace was entered due to summernote rendering the html `<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</p>` on submit and therefore the form validation didn't pick up the empty field. 
+     - **Fix**: My first attempt at the solution was to write a custom django `clean_<fieldname>() method` which would replace any `&nbsp` with ` `, `strip()` whitespace and `strip_tags()`. The solution did prevent the form submiting with only whitespace however it wasn't a good solution due to fact that stripping the HTML tags meant the summernote editor didn't format valid inputs as expected. 
+     - After posting the question on Slack Ian Meigh_5P proposed a working solution to create a custom validator for textfields and implement this in the Model. I have utilised Ian's  custom validator in my code and have credited him in my Readme. Thanks Ian!
 
+-#### No Reverse Match Error
+     - **Bug** When I first implemented the Add Recipe form I kept getting a no reverse match error when trying to submit a new recipe due to the slug field not populating properly. 
+     - **Fix** After some research on stack overflow I learned about AutoSlugField which is a Django Model Field extension which will automatically create a unique slug and you can choose which field to populate the slug from. Utilising this extension I was able to create a unique slug populated from the recipe title.
 
-#### Overwrite the queryset in Listview
-override queryset to filter django listview by logged in user
-https://stackoverflow.com/questions/38471260/django-filtering-by-user-id-in-class-based-listview
+- #### Cloudinary Images not Displaying
+     - **Bug** Cloudinary images not displaying after uploading. 
+     - **Fix** After searching the issue on slack I realised that I needed to include enctype="multipart/form-data in the opening form HTML tag and this solved the problem. 
 
-#### No Reverse Match Error
-No reverse match error when creating new recipe due to the slug field not populating. Was able to use AutoSlugField which is a model field extension that automatically creates a unique slug populated from the recipe title.  
-
-#### Cloudinary Images not Displaying
-cloudinary images not displaying - add enctype 
-
-#### Footer to stay at bottom of page where content was not full screen length
-Didn't want to user a sticky footer but was able to use css calc funtion
+- #### Footer not staying at bottom of screen
+     - **Bug** Footer not staying at the bottom of the screen when displaying on pages without fullscreen content and didn't want to use a sticky footer. 
+     - **Fix** Was able to utilise the the calc() CSS function and make the page content 100% of the viewport height less the height of the footer and this solved the problem. 
 
 
 ### Unfixed bugs:
 
-Summernote fields in recipe form save with just whitespace added
+There are no known unfixed bugs. 
