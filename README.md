@@ -326,6 +326,39 @@ To clone this repository follow the below steps:
 5. Type **'git clone'**, and then paste the URL copied from GitHub earlier. 
 6. Type **'Enter'** to create the local clone. 
 
+Languages:
+
+- Python
+- HTML
+- CSS
+- Javascript
+
+### Frameworks - Libraries - Programs Used
+- [Django](https://www.djangoproject.com/): Main python framework used in the development of this project
+- [Django-allauth](https://django-allauth.readthedocs.io/en/latest/installation.html): authentication library used to create the user accounts
+- [PostgreSQL](https://www.postgresql.org/) was used as the database for this project.
+- [Heroku](https://dashboard.heroku.com/login) - was used as the cloud based platform to deploy the site on.
+- [Am I Responsive](http://ami.responsivedesign.is/) - Used to verify responsiveness of website on different devices.
+- [Responsinator](http://www.responsinator.com/) - Used to verify responsiveness of website on different devices.
+- [Balsamiq](https://balsamiq.com/) - Used to generate Wireframe images.
+- [Chrome Dev Tools](https://developer.chrome.com/docs/devtools/) - Used for overall development and tweaking, including testing responsiveness and performance.
+- [Font Awesome](https://fontawesome.com/) - Used for icons in information bar.
+- [GitHub](https://github.com/) - Used for version control and agile tool.
+- [Google Fonts](https://fonts.google.com/) - Used to import and alter fonts on the page.
+- [W3C](https://www.w3.org/) - Used for HTML & CSS Validation.
+- [PEP8 Online](http://pep8online.com/) - used to validate all the Python code
+- [Jshint](https://jshint.com/) - used to validate javascript
+- [Coolors](https://coolors.co/) - Used to create colour palette.
+- [Favicon](https://favicon.io/) - Used to create the favicon.
+- [Lucidchart](https://lucid.app/documents#/dashboard) - used to create the database schema design
+- [Grammerly](https://app.grammarly.com/) - used to proof read the README.md
+- [Summernote](https://summernote.org/): A WYSIWYG editor to allow users to edit their posts
+- [Techsini](https://techsini.com/multi-mockup/index.php) - Site mockup generator
+- [Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/) used to manage Django Forms
+- [Cloudinary](https://cloudinary.com/): the image hosting service used to upload images
+
+hatchful by shopify
+
 ## Credits
 
 https://www.tablesgenerator.com/markdown_tables

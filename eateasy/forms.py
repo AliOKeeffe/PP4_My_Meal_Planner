@@ -43,6 +43,22 @@ class RecipeForm(forms.ModelForm):
             'ingredients': SummernoteWidget(),
         }
 
+    # def clean_ingredients(self):
+    #     """
+    #     remove all whitespace and strip tags from ingredients
+    #     """
+    #     ingredients = self.cleaned_data['ingredients']
+    #     ingredients = ingredients.replace('&nbsp;', '').strip()
+    #     return strip_tags(ingredients)
+
+    # def clean_method(self):
+    #     """
+    #     remove all whitespace and strip tags from ›method
+    #     """
+    #     method = self.cleaned_data['method']
+    #     method = method.replace('&nbsp;', '').strip()
+    #     return strip_tags(method)
+
 
 class MealPlanForm(forms.ModelForm):
     """ Create Meal Plan Form """

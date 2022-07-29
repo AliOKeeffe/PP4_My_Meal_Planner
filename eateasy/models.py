@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 from django_extensions.db.fields import AutoSlugField
 from cloudinary.models import CloudinaryField
+from .validators import textfield_not_empty
 
 STATUS = ((0, "Save for later"), (1, "Publish Now"))
 
@@ -20,8 +21,8 @@ class Recipe(models.Model):
     preparation_time = models.CharField(max_length=10, default=0)
     cook_time = models.CharField(max_length=10, default=0)
     description = models.TextField()
-    ingredients = models.TextField()
-    method = models.TextField()
+    ingredients = models.TextField(validators=[textfield_not_empty])
+    method = models.TextField(validators=[textfield_not_empty])
     image = CloudinaryField('image', default='placeholder')
     status = models.IntegerField(choices=STATUS, default=1)
     bookmarks = models.ManyToManyField(
