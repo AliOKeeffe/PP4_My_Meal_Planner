@@ -49,14 +49,19 @@ After I updated the button styling I received 100% score on all pages.
 
 ### EPIC | User Profile
 *As a Site User I can register an account so that I can add/edit/delete my recipes and comment on and bookmark other people's recipes and add recipes to my mealplanner.
+
 ![header](docs/readme_images/features/call_out.png)
+
 - A sign up button is immediately visible on the landing page as a call to action for the user to sign up to get started. When the user clicks the button they are taken to the sign up page.
 - There is also a sign up button in the My Account drop down menu in the Nav bar.
+
 ![header](docs/readme_images/features/login_dropdown.png)
+
 - Once the user has registered an account they can perform all the actions listed above.
 
 *As a Site User, I can login or logout of my account so that I can keep my account secure.*
 - If the user has registered an account they can access the login and logout buttons in the My Account section of the Navbar. 
+
 ![header](docs/readme_images/features/logout_dropdown.png)
 
 *As a Site User I can see my login status so that I know if I'm logged in or out.*
@@ -65,45 +70,61 @@ After I updated the button styling I received 100% score on all pages.
 ### EPIC | User Navigation
  *As a User I can immediately understand the purpose of the site so that I can decide if it meets my needs*
 - In the center of the landing page there is a section entitled "What We Do' which gives a brief overview of what the site has to offer and summarises the basic features with three simple steps illustrated with font-awesome icons.
+
 ![header](docs/readme_images/features/what_we_do.png)
 
 *As a user, I can intuitively navigate around the site so that I can find content*
 - A navigation bar is visible on every page of the site which is fully responsive on different screen sizes.
+
 ![header](docs/readme_images/features/header.png)
 
 *As a Site User, I can view a paginated list of recipes so that I can select a recipe to view.*
 - The Browse Recipes page displays a paginated list of all recipes in the database with a status of published. 
+
 ![header](docs/readme_images/features/browse_page.png)
 
 *As a Site User, I can click on a recipe so that I can read the full recipe,ingredients required and view comments left by users.*
 - Clicking anywhere inside the recipe card will take you directly to that recipe's detailed page which displays the full recipe details including description, ingredients and method. 
+
 ![header](docs/readme_images/features/recipe_header.png)
+
 ![header](docs/readme_images/features/recipe_details.png)
 
 - A list of comments is displayed underneath the recipe details.
+
 ![header](docs/readme_images/features/comment.png)
 
 ### EPIC | Recipe Management
 *As a Site User, I can input my favourite recipes onto the app through an easy to use interface so that I can share them with other users.*
 - Once the user has logged in, a create recipe button is immediately visible on the landing page as a call to action for the user to add a recipe. When the user clicks the button they are taken to the add recipe form.
+
 ![header](docs/readme_images/features/callout_logged_in.png)
+
 ![header](docs/readme_images/features/add_recipe.png)
+
 - There is also a Add Recipe button on the Nav bar which is visible on every page.
+
 ![header](docs/readme_images/features/header.png)
+
 - Once the user has filled out the form details they can choose to 'Publish Recipe Now' which adds the recipe to the Browse Recipes page.
 
 *As a Site User, I can edit and delete recipes that I have created so that I can easily make changes without having to start over.*
 - If the logged in user is the recipe author, edit and delete recipe icon buttons will display on the recipe detail page for each recipe allowing the user to edit and delete their recipes.
 
 ![header](docs/readme_images/features/action_buttons.png)
+
 ![header](docs/readme_images/features/update_recipe.png)
+
 ![header](docs/readme_images/features/delete_recipe.png)
 
 *As a Site User I can view my recipes so that I can see and manage all recipes I have created in the one location.*
 - All the user's created recipes are available to see on the 'My Recipes' page.
+
 ![header](docs/readme_images/features/myrecipes_page.png)
+
 *As a Site User I can view my bookmarked recipes so I can find them easily in the one location.*
 - All the user's bookmarked recipes are available to see on the 'My Bookmarks' page.
+
 -![header](docs/readme_images/features/my_bookmarks.png)
 
 ### EPIC | Recipe Interaction
@@ -114,29 +135,38 @@ After I updated the button styling I received 100% score on all pages.
 
 *As a Site User, I can comment on other people's recipes so I can give my feedback.*
 - Each recipe has a comment section where logged in user's can leave comments on the recipe.
+
 ![header](docs/readme_images/features/add_comment.png)
 
 *As a Site User, I can edit and delete comments that I have created so that I can easily make changes if I have made a mistake.*
 - If the logged in user is the comment author, edit and delete icon buttons will display in the comment header allowing the user to edit or delete their comments.
+
 ![header](docs/readme_images/features/comment.png)
+
 ![header](docs/readme_images/features/edit_comment.png)
+
 ![header](docs/readme_images/features/delete_comment.png)
 
 ### EPIC | Mealplan Management
 *As a Site User, I can add/delete recipes to my meal planner for a particular day of the week so that I can create a meal plan for the week ahead.*
 - Each recipe has an 'Add to Meal Plan' button which only displays if the user is logged in.
+
 ![header](docs/readme_images/features/action_buttons.png) 
+
 - The user can choose which day of the week they want to add the recipe through a drop down menu.
 - The recipe will display in the user's meal plan for the day selected.
+
 ![header](docs/readme_images/features/mealplan_modal.png)
 
 *As a Site User, I can view my meal plan for the week when I log into my account so that I can plan for the week ahead.*
 - All the user's meal plan items are available to see on the 'My Meal Plan' page.
+
 ![header](docs/readme_images/features/mealplan_page.png)
 
 ### EPIC | Site Administration
 *As a Site Administrator, I can create, read, update and delete recipes, comments and meal plan items so that I can manage the app content*
 -  Admins have full access to CRUD functionality for all recipes, comments and meal plans in the admin panel.
+
 ![header](docs/readme_images/features/admin_panel.png)
 
 
@@ -196,7 +226,7 @@ This solved the problem whereby now if a user adds a meal plan item to a particu
 - #### Required fields using Summernote extension submit with just whitespace entered
      - **Bug**: In the Add Recipe form, the Ingredients and Method fields both use the summernote extension. Both fields are required fields however the form still submited when only whitespace was entered due to summernote rendering the html `<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</p>` on submit and therefore the form validation didn't pick up the empty field. 
      - **Fix**: My first attempt at the solution was to write a custom django `clean_<fieldname>() method` which would replace any `&nbsp` with blank, `strip()` whitespace and `strip_tags()`. The solution did prevent the form submiting with only whitespace however it wasn't a good solution due to fact that stripping the HTML tags meant the summernote editor didn't format valid inputs as expected. 
-     - After posting the question on Slack Ian Meigh_5P proposed a working solution to create a custom validator for textfields and implement this in the Model. I have utilised Ian's  custom validator in my code (see validators.py) and have credited him in my Readme. Thanks Ian!
+     - After posting the question on Slack Ian Meigh_5P proposed a working solution to create a custom validator for textfields and implement this in the Model. I have utilised Ian's custom validator in my code [here](eateasy/validators.py) and have credited him in my Readme. Thanks Ian!
 
 - #### No Reverse Match Error
      - **Bug**: When I first implemented the Add Recipe form I kept getting a no reverse match error when trying to submit a new recipe due to the slug field not populating properly. 

@@ -27,7 +27,6 @@ A visitor to Easy Eater would be someone who is most likely an adult who enjoys 
 - As a user, I can intuitively navigate around the site so that I can find content and understand where I am on the site.
 - As a Site User, I can view a paginated list of recipes so that I can select a recipe to view.
 - As a Site User, I can click on a recipe so that I can read the full recipe,ingredients required and view comments left by users.
-- As a Site User, I can search recipes so that I can find the one I want. NOT YET IMPLEMENTED.
 
 ### EPIC | Recipe Management
 - As a Site User, I can input my favourite recipes onto the app through an easy to use interface so that I can share them with other users.
@@ -43,21 +42,26 @@ A visitor to Easy Eater would be someone who is most likely an adult who enjoys 
 ### EPIC | Mealplan Management
 - As a Site User, I can add/delete recipes to my meal planner for a particular day of the week so that I can create a meal plan for the week ahead.
 - As a Site User, I can view my meal plan for the week when I log into my account so that I can plan for the week ahead.
-- As a Site User, I can export the ingredients from the recipes on my meal plan to a shopping list and remove the ones that are not necessary so that I can have all my required ingredients for the week in one place.
 
 ### EPIC | Site Administration
 - As a Site Administrator, I can create, read, update and delete recipes, comments and meal plan items so that I can manage the app content.
 
+### User stories not yet implemented
+
+The following user stories were scoped out of the project due to time constaints and labelled as "Could Have" on the project board in Github. It is intended that these users stories will be implemented at a later date. 
+
+- As a Site User, I can export the ingredients from the recipes on my meal plan to a shopping list and remove the ones that are not necessary so that I can have all my required ingredients for the week in one place.
+- As a Site User, I can search and filter recipes so that I can find the one I want.
+
 ## Agile Methodology
 
-Github projects was used to manage the develop process using an agile approach. Please see link to project here. INSERT LINK
+Github projects was used to manage the development process using an agile approach. Please see link to project board [here](https://github.com/AliOKeeffe/PP4_My_Meal_Planner/projects/2)
 
 The 6 Epics listed above were documented within the Github project as Milestones. A Github Issue was created for each User Story which was then allocated to a milestone(Epic). Each User Story has defined acceptance criteria to make it clear when the User Story has been completed. The acceptance criteria are further broken down into tasks to facilitate the User Story's execution.
 
 ### Design
 
 The site has a very simple and clean design which was purposely chosen in order to keep in theme with the site's goal. i.e. invoking a sense of calm in the user and reducing stress when it comes to everyday cooking. 
-
 
 ### Colour Scheme
 Colour palette from Coolors
@@ -70,7 +74,6 @@ Great care was taken to establish a good contrast between background colours and
 
 ### Imagery
 There is only one static image on the site depicting a family dinner on the home page. The rest of the imagery will be uploaded by users for their individual recipes. 
-
 
 ### Fonts
 The Montserrat font is the main font used used for the body of the website with the Playfair Display font used for the main headings on the home page. These fonts were imported via Google Fonts. Sans Serif is the backup font, in case for any reason the main font isn't being imported into the site correctly.
@@ -128,7 +131,6 @@ The diagram below details the database schema.
 
 ![Database Schema](docs/readme_images/database_schema.png)
 
-
 ## Security Features and Defensive Design
 
 ### User Authentication
@@ -158,25 +160,27 @@ Custom Error Pages were created to give the user more information on the error a
 ### Header
 
 ![header](docs/readme_images/features/nav_loggedout.png)
-- **Logo**
-    - A customised logo was created using Hatchful by Shopify which is a free logo generator.
-    - This logo is positioned in the top left of the navigation bar. The logo is linked to the home page for ease of navigation for the user.
 
-- **Navigation Bar**
+**Logo**
+- A customised logo was created using Hatchful by Shopify which is a free logo generator.
+- This logo is positioned in the top left of the navigation bar. The logo is linked to the home page for ease of navigation for the user.
 
-    - The navigation bar is present at the top of every page and includes all links to the various other pages.
-    - The My Account navigation link is a drop down menu which includes the Sign up and Log in links. 
-    - When the user has logged in, the My Account drop down menu changes to display the user's name and a profile icon.
+**Navigation Bar**
 
-    ![header](docs/readme_images/features/header.png)
+- The navigation bar is present at the top of every page and includes all links to the various other pages.
+- The My Account navigation link is a drop down menu which includes the Sign up and Log in links. 
+- When the user has logged in, the My Account drop down menu changes to display the user's name and a profile icon.
 
-    - The options to Sign up or Log in will change to the option to log out once a user has logged in.
-    - Once a user has signed in, more options such as 'Add Recipe', 'My Meal Plan', 'My Recipes' and 'My Bookmarks' become available.
-    - The navigation bar is fully responsive, collapsing into a hamburger menu when the screen size becomes too small.
-    - Hovering over the links will lighten the font.
+![header](docs/readme_images/features/header.png)
+
+- The options to Sign up or Log in will change to the option to log out once a user has logged in.
+- Once a user has signed in, more options such as 'Add Recipe', 'My Meal Plan', 'My Recipes' and 'My Bookmarks' become available.
+- The navigation bar is fully responsive, collapsing into a hamburger menu when the screen size becomes too small.
+- Hovering over the links will lighten the font.
 
 
 ### Footer
+
 ![header](docs/readme_images/features/footer.png)
 
 - The footer section includes links to Facebook, Instagram, Twitter and Youtube.
@@ -184,85 +188,108 @@ Custom Error Pages were created to give the user more information on the error a
 
 ### Home Page
 
-- **Call to Action Section**
-![header](docs/readme_images/features/call_out.png)
-    - The home page includes a call to action section which encourages the user to sign up to the site with the message "Take the stress out of everyday cooking!" and an image of a family dinner.
-    - The CTA includes a sign up button button which takes the user to the sign up page.
-    - If a user is already signed in the message changes to 'Welcome back to The Easy Eater' and the user is encouraged to create a new recipe.
-    - The sign up button changes to a 'Create' button which takes the user to the 'Add recipe' page. 
+**Call to Action Section**
 
-    ![header](docs/readme_images/features/callout_logged_in.png)
-- **What We Do Section**
+![header](docs/readme_images/features/call_out.png)
+
+- The home page includes a call to action section which encourages the user to sign up to the site with the message "Take the stress out of everyday cooking!" and an image of a family dinner.
+- The CTA includes a sign up button button which takes the user to the sign up page.
+- If a user is already signed in the message changes to 'Welcome back to The Easy Eater' and the user is encouraged to create a new recipe.
+- The sign up button changes to a 'Create' button which takes the user to the 'Add recipe' page. 
+
+![header](docs/readme_images/features/callout_logged_in.png)
+
+**What We Do Section**
+
 ![header](docs/readme_images/features/what_we_do.png)
-    - The "What We Do' section gives a brief overview of what the site has to offer and summarises the basic features with three simple steps illustrated with font-awesome icons.
+
+- The "What We Do' section gives a brief overview of what the site has to offer and summarises the basic features with three simple steps illustrated with font-awesome icons.
 
 ### User Account Pages
 
-- **Sign Up**
+**Sign Up**
+
 ![header](docs/readme_images/features/signup.png)
-- **Log In**
+
+**Log In**
+
 ![header](docs/readme_images/features/login.png)
-- **Log Out**
+
+**Log Out**
+
 ![header](docs/readme_images/features/logout.png)
-    - Django allauth was installed and used to create the Sign up, Log in and Log out functionality. 
-    - Success messages inform the user if they have logged in/ logged out successfully.
+
+- Django allauth was installed and used to create the Sign up, Log in and Log out functionality. 
+- Success messages inform the user if they have logged in/ logged out successfully.
 
 ### Browse Recipes
+
 ![header](docs/readme_images/features/browse_page.png)
+
 - This page displays all recipes with a status of published with the most recent recipes displaying first.
 - The recipes cards are paginated after every 8 recipes. 
 - Each card displays the recipe's image, Title and Cook Time. 
 - Clicking anywhere inside the recipe card will take you directly to that recipe's detailed page.
 
 ### Recipe Detail Page
-- **Recipe Header Section**
- ![header](docs/readme_images/features/recipe_header.png)
- The recipe header section at the top of the page shows the recipe image, title, author, prep time and cook time.
+**Recipe Header Section**
 
-- **Recipe Action Buttons**
+![header](docs/readme_images/features/recipe_header.png)
 
-    The following buttons will display if the user is logged in:
+The recipe header section at the top of the page shows the recipe image, title, author, prep time and cook time.
 
-    ![header](docs/readme_images/features/buttons_not_author.png)
+**Recipe Action Buttons**
 
-    - Add to Meal Plan Button - Clicking on the button opens the Meal Plan Modal (see below).
-    - Bookmark button - Clicking the outlined bookmark button renders the recipe 'bookmarked' by the user which will then fill bookmark icon and add the recipe to the user's bookmarks page. Clicking the button again will remove the recipe from the user's bookmarks and turn the icon back to an outline.
+The following buttons will display if the user is logged in:
 
-    The following buttons will display if the user is logged in and is the recipe author:
+![header](docs/readme_images/features/buttons_not_author.png)
 
-    ![header](docs/readme_images/features/action_buttons.png)
+- Add to Meal Plan Button - Clicking on the button opens the Meal Plan Modal (see below).
+- Bookmark button - Clicking the outlined bookmark button renders the recipe 'bookmarked' by the user which will then fill bookmark icon and add the recipe to the user's bookmarks page. Clicking the button again will remove the recipe from the user's bookmarks and turn the icon back to an outline.
 
-    - Update Recipe Button - Clicking the button opens the update recipe form prepopulated with the current recipe details.
-    - Delete Recipe Button - Clicking the button opens the confirm delete recipe page. 
+The following buttons will display if the user is logged in and is the recipe author:
 
-- **Meal Plan Modal**
+![header](docs/readme_images/features/action_buttons.png)
 
-    ![header](docs/readme_images/features/mealplan_modal.png)
+- Update Recipe Button - Clicking the button opens the update recipe form prepopulated with the current recipe details.
+- Delete Recipe Button - Clicking the button opens the confirm delete recipe page. 
 
-    - The meal plan modal includes a form which allows the user to select a day of the week.
-    - Once the user clicks the add to meal plan button, the recipe is added to the user's meal plan for the selected day.
-    - Only one recipe can be added per day so if a user already has a meal plan item for a particular day, adding another one will over write the existing one. 
-    - The user receives a success message notifiying them that the recipe has been successfully added to their meal plan.
+**Meal Plan Modal**
 
-- **Recipe Details Section**
+![header](docs/readme_images/features/mealplan_modal.png)
+
+- The meal plan modal includes a form which allows the user to select a day of the week.
+- Once the user clicks the add to meal plan button, the recipe is added to the user's meal plan for the selected day.
+- Only one recipe can be added per day so if a user already has a meal plan item for a particular day, adding another one will over write the existing one. 
+- The user receives a success message notifiying them that the recipe has been successfully added to their meal plan.
+
+**Recipe Details Section**
+
 ![header](docs/readme_images/features/recipe_details.png)
-    - The main body of the page consists of the recipe description, ingredients, and method. 
 
-- **Comments Section**
-    ![header](docs/readme_images/features/comment.png)
-    ![header](docs/readme_images/features/add_comment.png)
+- The main body of the page consists of the recipe description, ingredients, and method. 
 
-    - The comments section lists all comments left by user's for that particurly recipe.
-    - Comments can only be left if a user is logged in. Any comments left by the user that is currently signed in can be updated or deleted using the buttons in the comment header. 
+**Comments Section**
+
+![header](docs/readme_images/features/comment.png)
+
+![header](docs/readme_images/features/add_comment.png)
+
+- The comments section lists all comments left by user's for that particurly recipe.
+- Comments can only be left if a user is logged in. Any comments left by the user that is currently signed in can be updated or deleted using the buttons in the comment header. 
     
-    ![header](docs/readme_images/features/edit_comment.png)
-    ![header](docs/readme_images/features/delete_comment.png)
-    - The user receives a success message notifiying them that the comment has been successfully added, updated or deleted.
-    - If a user tries to edit or delete a comment (by changing the url) without being signed in they are redirected to the log in page.
-    - If a user tries to edit/delete another user's comment (by changing the url) they receive a custom 403 error.
+![header](docs/readme_images/features/edit_comment.png)
+
+![header](docs/readme_images/features/delete_comment.png)
+
+- The user receives a success message notifiying them that the comment has been successfully added, updated or deleted.
+- If a user tries to edit or delete a comment (by changing the url) without being signed in they are redirected to the log in page.
+- If a user tries to edit/delete another user's comment (by changing the url) they receive a custom 403 error.
 
 ### Add Recipe Form
+
 ![header](docs/readme_images/features/add_recipe.png)
+
 - If the user is logged in, then they can add a recipe by clicking the link on the navigation bar.
 - The form fields for 'Ingredients' and 'Method' include a WYSIWYG editor called Summernote to help the user format their content by adding bullet points, headings etc.
 - The user can upload a photo if they wish. If they choose not to, a default image displays as their recipe image.
@@ -272,7 +299,9 @@ Custom Error Pages were created to give the user more information on the error a
 - The user will receive a success message notifiying them that the recipe has been successfully added.
 
 ### Update Recipe Form
+
 ![header](docs/readme_images/features/update_recipe.png)
+
 - If the user is logged in and is the author or the recipe they can choose to edit the recipe by clicking the edit button in the recipe detail page. 
 - The form opens with all fields populated with the original content.
 - If a user tries to update a recipe (by changing the url) without being signed in they are redirected to the log in page.
@@ -280,14 +309,17 @@ Custom Error Pages were created to give the user more information on the error a
 - The user will receive a success message notifiying them that the recipe has been successfully updated.
 
 ### Delete Recipe
+
  ![header](docs/readme_images/features/delete_recipe.png)
+
 - If the user is logged in and is the author or the recipe they can choose to delete the recipe by clicking the delete button in the recipe detail page.  
 - The user is asked to confirm if they wish to delete the recipe or cancel.
 - The user will receive a success message notifiying them that the recipe has been successfully deleted.
 
-
 ### My Meal Plan
+
 ![header](docs/readme_images/features/mealplan_page.png)
+
 - This page displays the logged in user's meal plan for the week.
 - The meal plan cards are ordered Monday to Sunday. 
 - If a user has added a recipe to their meal plan for a particular day, the card will display the recipe image and title. Clicking anywhere inside the meal plan card will take you directly to that recipe's detailed page.
@@ -295,7 +327,9 @@ Custom Error Pages were created to give the user more information on the error a
 - If a user tries to access this page (by changing the url) without being signed in they are redirected to the log in page.
 
 ### My Recipes Page
+
 ![header](docs/readme_images/features/myrecipes_page.png)
+
 - This page displays all recipes which the logged in user has created.
 - The recipes cards are paginated after every 8 recipes. 
 - Each card displays the recipe's image, Title and Cook Time. 
@@ -304,7 +338,9 @@ Custom Error Pages were created to give the user more information on the error a
 - If a user tries to access this page (by changing the url) without being signed in they are redirected to the log in page.
 
 ### My Bookmarks Page
+
 ![header](docs/readme_images/features/my_bookmarks.png)
+
 - This page displays all recipes which the logged in user has added to their bookmarks.
 - Clicking anywhere inside the recipes card will take you directly to that recipes detailed page.
 - If a user tries to access this page (by changing the url) without being signed in they are redirected to the log in page.
@@ -312,6 +348,7 @@ Custom Error Pages were created to give the user more information on the error a
 ### Error Pages
 
 Custom Error Pages were created to give the user more information on the error and to guide them back to the site.
+
 ![header](docs/readme_images/features/403_error.png)
 
 - 400 Bad Request - The Easy Eater is unable to handle this request.
@@ -320,10 +357,15 @@ Custom Error Pages were created to give the user more information on the error a
 - 500 Server Error - The Easy Eater is currently unable to handle this request
 
 ### Future Features
+The following user stories were scoped out of the project due to time constaints and labelled as "Could Have" on the project board in Github. It is intended that these users stories will be implemented at a later date. 
+
+- As a Site User, I can export the ingredients from the recipes on my meal plan to a shopping list and remove the ones that are not necessary so that I can have all my required ingredients for the week in one place.
+- As a Site User, I can search and filter recipes so that I can find the one I want.
 Searching and filtering
-Vegan / vegetarian
-Meal plan breakfast and lunch / snacks
-Ingredients list and shopping list. 
+
+Other potential futures include:
+- Adding extra categories on the Meal Plan Item for breakfast, lunch, dinner and snacks so the user can plan out their meals for the full day rather than just for dinner.
+- Adding vegan and vegetarian labels to the recipe so the user can filter by these options.
 
 ## Deployment - Heroku
 
@@ -417,26 +459,25 @@ Languages:
 - [Techsini](https://techsini.com/multi-mockup/index.php) - Site mockup generator
 - [Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/) used to manage Django Forms
 - [Cloudinary](https://cloudinary.com/): the image hosting service used to upload images
-
-hatchful by shopify
-BOOTSTRAP 4.6
+- [Bootstrap 4.6](https://getbootstrap.com/docs/4.6/getting-started/introduction/): CSS Framework for developing responsiveness and styling
+- [Hatchful](https://hatchful.shopify.com/): Used to generate custom logo
+- [Tables Generator](https://www.tablesgenerator.com/markdown_tables): Used to convert excel testing tables to markdown
 
 ## Credits
-family dinner picture
-placeholder chopsticks pexels valeria burdyka
-https://www.tablesgenerator.com/markdown_tables
-stack overflow
-slack channel
-- [W3Schools](https://www.w3schools.com/)  
+
+- [W3Schools](https://www.w3schools.com/)
+- [Django Docs](https://docs.djangoproject.com/en/4.0/)
+- [Bootstrap 4.6 Docs](https://getbootstrap.com/docs/4.6/getting-started/introduction/)
 - [Stack Overflow](https://stackoverflow.com/)
-Django Docs
-- Code Institute blog walkthrough - 
+- [Pexels](https://www.pexels.com/): All imagery on the site was sourced from Pexels.com
+- [BBC Goodfood](https://www.bbcgoodfood.com/): All recipe content was sourced from BBC Goodfood.
 - [Update View](https://pytutorial.com/django-updateview-example)
-- [PAGINATION](https://docs.djangoproject.com/en/2.2/topics/pagination/#using-paginator-in-a-view)
-- [autoslugfield](https://django-extensions.readthedocs.io/en/latest/field_extensions.html)
-- [Bootstrap 4.6](https://getbootstrap.com/docs/4.6/getting-started/introduction/)
-- [Ian Meigh Customer Validator function]
+- [Pagination](https://docs.djangoproject.com/en/2.2/topics/pagination/#using-paginator-in-a-view)
+- [AutoSlugField](https://django-extensions.readthedocs.io/en/latest/field_extensions.html)
+- [Code Institute - Blog Walkthrough Project](https://github.com/Code-Institute-Solutions/Django3blog)
+- [Ian Meigh - Custom Validator function](eateasy/validators.py)
 
 ## Acknowledgments
 
-The Code Institute slack community for their quick responses and very helpful feedback!
+Many thanks to my mentor Antonio for his support and advice. Thanks to 
+The Code Institute slack community for their quick responses and very helpful feedback in particular Ian Meigh.
