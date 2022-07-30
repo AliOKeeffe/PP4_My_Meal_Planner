@@ -75,14 +75,45 @@ There is only one static image on the site depicting a family dinner on the home
 ### Fonts
 The Montserrat font is the main font used used for the body of the website with the Playfair Display font used for the main headings on the home page. These fonts were imported via Google Fonts. Sans Serif is the backup font, in case for any reason the main font isn't being imported into the site correctly.
 
-
-
-
-### Layout
-
 ### Wireframes
 
-### Data Model
+<details>
+
+ <summary>Landing Page</summary>
+
+![Landing PAge](docs/wireframes/landing_wireframe.png)
+</details>
+
+<details>
+
+<summary>Browse Recipes</summary>
+
+![Browse Recipes](docs/wireframes/browse_wireframe.png)
+</details>
+
+
+<details>
+
+<summary>Add Recipe</summary>
+
+![Add Recipe](docs/wireframes/addrecipe_wireframe.png)
+</details>
+
+<details>
+
+<summary>My Recipes</summary>
+
+![My Recipes](docs/wireframes/myrecipes_wireframe.png)
+</details>
+
+<details>
+
+<summary>My Bookmarks</summary>
+
+![My Bookmarks](docs/wireframes/mybookmarks_wireframe.png)
+</details>
+
+## Data Model
 I used principles of Object-Oriented Programming throughout this project and Django’s Class-Based Generic Views. 
 
 The diagram below details the database schema. 
@@ -98,22 +129,22 @@ The meal plan item model allows users to add recipes to a meal plan for a partic
 ![Database Schema](docs/readme_images/database_schema.png)
 
 
-### Security Features and Defensive Design
+## Security Features and Defensive Design
 
-#### User Authentication
+### User Authentication
 
 - Django's LoginRequiredMixin is used to make sure that any requests to access secure pages by non-authenticated users are redirected to the login page. 
 - Django's UserPassesTestMixin is used to limit access based on certain permissions i.e. to ensure users can only edit/delete recipes and comments for which they are the author. If the user doesn't pass the test they are shown an HTTP 403 Forbidden error.
 
-#### Form Validation
+### Form Validation
 If incorrect or empty data is added to a form, the form won't submit and a warning will appear to the user informing them what field raised the error. 
 
-#### Database Security
+### Database Security
 The database url and secret key are stored in the env.py file to prevent unwanted connections to the database and this was set up before the first push to Github.
 
 Cross-Site Request Forgery (CSRF) tokens were used on all forms throughout this site.
 
-#### Custom error pages:
+### Custom error pages:
 
 Custom Error Pages were created to give the user more information on the error and to provide them with buttons to guide them back to the site.
 
@@ -125,6 +156,8 @@ Custom Error Pages were created to give the user more information on the error a
 ## Features
 
 ### Header
+
+![header](docs/readme_images/features/header.png)
 - **Logo**
     - A customised logo was created using Hatchful by Shopify which is a free logo generator.
     - This logo is positioned in the top left of the navigation bar. The logo is linked to the home page for ease of navigation for the user.
@@ -141,18 +174,23 @@ Custom Error Pages were created to give the user more information on the error a
 
 
 ### Footer
+![header](docs/readme_images/features/footer.png)
+
 - The footer section includes links to Facebook, Instagram, Twitter and Youtube.
 - Clicking the links in the footer opens a separate browser tab to avoid pulling the user away from the site.
 
 ### Home Page
 
 - **Call to Action Section**
+![header](docs/readme_images/features/call_out.png)
     - The home page includes a call to action section which encourages the user to sign up to the site with the message "Take the stress out of everyday cooking!" and an image of a family dinner.
     - The CTA includes a sign up button button which takes the user to the sign up page.
     - If a user is already signed in the message changes to 'Welcome back to The Easy Eater' and the user is encouraged to create a new recipe.
     - The sign up button changes to a 'Create' button which takes the user to the 'Add recipe' page. 
 
+    ![header](docs/readme_images/features/callout_logged_in.png)
 - **What We Do Section**
+![header](docs/readme_images/features/what_we_do.png)
     - The "What We Do' section gives a brief overview of what the site has to offer and summarises the basic features with three simple steps illustrated with font-awesome icons.
 
 
@@ -161,11 +199,13 @@ Custom Error Pages were created to give the user more information on the error a
 
 
 - **Sign Up**
+![header](docs/readme_images/features/signup.png)
 - **Log In**
+![header](docs/readme_images/features/login.png)
 - **Log Out**
+![header](docs/readme_images/features/logout.png)
     - Django allauth was installed and used to create the Sign up, Log in and Log out functionality. 
     - Success messages inform the user if they have logged in/ logged out successfully.
-
 
 ### Browse Recipes
 
@@ -176,20 +216,29 @@ Custom Error Pages were created to give the user more information on the error a
 
 ### Recipe Detail Page
 - **Recipe Header Section**
-    - The recipe header section At the top of the page shows the recipe image, title, author, prep time and cook time.
+ ![header](docs/readme_images/features/recipe_header.png)
+ The recipe header section at the top of the page shows the recipe image, title, author, prep time and cook time.
 
 - **Recipe Action Buttons**
-    - The following buttons will display if the user is logged in:
 
-    PUT IN PIC OF TWO BUTTONS
-        - Add to Meal Plan Button - Clicking on the button opens the Meal Plan Modal (see below)
-        - Bookmark button - Clicking the outlined bookmark button renders the recipe 'bookmarked' by the user which will then fill bookmark icon and add the recipe to the user's bookmarks page. Clicking the button again will remove the recipe from the user's bookmarks and turn the icon back to an outline.
-    - The following buttons will display if the user is logged in and is the recipe author:
-    PUT IN PIC OF FOUR BUTTONS
-        - Update Recipe Button - Clicking the button opens the update recipe form prepopulated with the current recipe details.
-        - Delete Recipe Button - Clicking the button opens the confirm delete recipe page. 
+    The following buttons will display if the user is logged in:
+
+    ![header](docs/readme_images/features/buttons_not_author.png)
+
+    - Add to Meal Plan Button - Clicking on the button opens the Meal Plan Modal (see below).
+    - Bookmark button - Clicking the outlined bookmark button renders the recipe 'bookmarked' by the user which will then fill bookmark icon and add the recipe to the user's bookmarks page. Clicking the button again will remove the recipe from the user's bookmarks and turn the icon back to an outline.
+
+    The following buttons will display if the user is logged in and is the recipe author:
+
+    ![header](docs/readme_images/features/action_buttons.png)
+
+    - Update Recipe Button - Clicking the button opens the update recipe form prepopulated with the current recipe details.
+    - Delete Recipe Button - Clicking the button opens the confirm delete recipe page. 
 
 - **Meal Plan Modal**
+
+    ![header](docs/readme_images/features/mealplan_modal.png)
+
     - The meal plan modal includes a form which allows the user to select a day of the week.
     - Once the user clicks the add to meal plan button, the recipe is added to the user's meal plan for the selected day.
     - Only one recipe can be added per day so if a user already has a meal plan item for a particular day, adding another one will over write the existing one. 
@@ -199,13 +248,20 @@ Custom Error Pages were created to give the user more information on the error a
     - The main body of the page consists of the recipe description, ingredients, and method. 
 
 - **Comments Section**
+    ![header](docs/readme_images/features/comment.png)
+    ![header](docs/readme_images/features/add_comment.png)
+
     - The comments section lists all comments left by user's for that particurly recipe.
-    - Comments can only be left if a user is logged in. Any comments left by the user that is currently     signed in can be updated or deleted using the buttons in the comment header. 
+    - Comments can only be left if a user is logged in. Any comments left by the user that is currently signed in can be updated or deleted using the buttons in the comment header. 
+    
+    ![header](docs/readme_images/features/edit_comment.png)
+    ![header](docs/readme_images/features/delete_comment.png)
     - The user receives a success message notifiying them that the comment has been successfully added, updated or deleted.
     - If a user tries to edit or delete a comment (by changing the url) without being signed in they are redirected to the log in page.
     - If a user tries to edit/delete another user's comment (by changing the url) they receive a custom 403 error.
 
 ### Add Recipe Form
+![header](docs/readme_images/features/add_recipe.png)
 - If the user is logged in, then they can add a recipe by clicking the link on the navigation bar.
 - The form fields for 'Ingredients' and 'Method' include a WYSIWYG editor called Summernote to help the user format their content by adding bullet points, headings etc.
 - The user can upload a photo if they wish. If they choose not to, a default image displays as their recipe image.
@@ -222,6 +278,7 @@ Custom Error Pages were created to give the user more information on the error a
 - The user will receive a success message notifiying them that the recipe has been successfully updated.
 
 ### Delete Recipe
+ ![header](docs/readme_images/features/delete_recipe.png)
 - If the user is logged in and is the author or the recipe they can choose to delete the recipe by clicking the delete button in the recipe detail page.  
 - The user is asked to confirm if they wish to delete the recipe or cancel.
 - The user will receive a success message notifiying them that the recipe has been successfully deleted.
@@ -253,10 +310,10 @@ Custom Error Pages were created to give the user more information on the error a
 
 Custom Error Pages were created to give the user more information on the error and to guide them back to the site.
 
-400 Bad Request - The Easy Eater is unable to handle this request.
-403 Page Forbiden - Looks like you're trying to access forbidden content. Please log out and sign in to the correct account.
-404 Page Not Found - The page you're looking for doesn't exist.
-500 Server Error - The Easy Eater is currently unable to handle this request
+- 400 Bad Request - The Easy Eater is unable to handle this request.
+- 403 Page Forbiden - Looks like you're trying to access forbidden content. Please log out and sign in to the correct account.
+- 404 Page Not Found - The page you're looking for doesn't exist.
+- 500 Server Error - The Easy Eater is currently unable to handle this request
 
 ### Future Features
 Searching and filtering
@@ -358,7 +415,24 @@ Languages:
 - [Cloudinary](https://cloudinary.com/): the image hosting service used to upload images
 
 hatchful by shopify
+BOOTSTRAP 4.6
 
 ## Credits
-
+family dinner picture
+placeholder chopsticks pexels valeria burdyka
 https://www.tablesgenerator.com/markdown_tables
+stack overflow
+slack channel
+- [W3Schools](https://www.w3schools.com/)  
+- [Stack Overflow](https://stackoverflow.com/)
+Django Docs
+- Code Institute blog walkthrough - 
+- [Update View](https://pytutorial.com/django-updateview-example)
+- [PAGINATION](https://docs.djangoproject.com/en/2.2/topics/pagination/#using-paginator-in-a-view)
+- [autoslugfield](https://django-extensions.readthedocs.io/en/latest/field_extensions.html)
+- [Bootstrap 4.6](https://getbootstrap.com/docs/4.6/getting-started/introduction/)
+- [Ian Meigh Customer Validator function]
+
+## Acknowledgments
+
+The Code Institute slack community for their quick responses and very helpful feedback!
