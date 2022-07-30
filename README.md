@@ -114,9 +114,7 @@ The Montserrat font is the main font used used for the body of the website with 
 </details>
 
 ## Data Model
-I used principles of Object-Oriented Programming throughout this project and Django’s Class-Based Generic Views. 
-
-The diagram below details the database schema. 
+I used principles of Object-Oriented Programming throughout this project and Django’s Class-Based Generic Views.  
 
 Django AllAuth was used for the user authentication system.
 
@@ -125,6 +123,8 @@ In order for the users to create Recipes a custom recipe model was required. The
 The Comment model allows users to comment on individual recipes and the Recipe is a forign key in the comment model given a comment can only be linked to one recipe. 
 
 The meal plan item model allows users to add recipes to a meal plan for a particular day. A meal plan item can only have one user and one recipe and is therefore linked to the User and Recipe models through foreign keys.
+
+The diagram below details the database schema.
 
 ![Database Schema](docs/readme_images/database_schema.png)
 
@@ -157,7 +157,7 @@ Custom Error Pages were created to give the user more information on the error a
 
 ### Header
 
-![header](docs/readme_images/features/header.png)
+![header](docs/readme_images/features/nav_loggedout.png)
 - **Logo**
     - A customised logo was created using Hatchful by Shopify which is a free logo generator.
     - This logo is positioned in the top left of the navigation bar. The logo is linked to the home page for ease of navigation for the user.
@@ -167,6 +167,9 @@ Custom Error Pages were created to give the user more information on the error a
     - The navigation bar is present at the top of every page and includes all links to the various other pages.
     - The My Account navigation link is a drop down menu which includes the Sign up and Log in links. 
     - When the user has logged in, the My Account drop down menu changes to display the user's name and a profile icon.
+
+    ![header](docs/readme_images/features/header.png)
+
     - The options to Sign up or Log in will change to the option to log out once a user has logged in.
     - Once a user has signed in, more options such as 'Add Recipe', 'My Meal Plan', 'My Recipes' and 'My Bookmarks' become available.
     - The navigation bar is fully responsive, collapsing into a hamburger menu when the screen size becomes too small.
@@ -309,6 +312,7 @@ Custom Error Pages were created to give the user more information on the error a
 ### Error Pages
 
 Custom Error Pages were created to give the user more information on the error and to guide them back to the site.
+![header](docs/readme_images/features/403_error.png)
 
 - 400 Bad Request - The Easy Eater is unable to handle this request.
 - 403 Page Forbiden - Looks like you're trying to access forbidden content. Please log out and sign in to the correct account.
