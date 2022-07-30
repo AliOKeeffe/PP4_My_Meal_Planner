@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 {% block title %}The Easy Eater | {{ recipe.title }}{% endblock %}
 {% block content %}
-
 {% load crispy_forms_tags %}
+
 <div class="container p-0">
     <div class="container pt-3">
         <div class="card mb-3 recipe-detail-card">
@@ -76,18 +76,21 @@
                                     <i class="fas fa-bookmark"></i></button>
                                 {% else %}
                                 <button class="action-btn btn btn-info" type="submit" name="bookmark_id"
-                                    value="{{recipe.slug}}" aria-label="bookmark-solid"><i class="far fa-bookmark"></i></button>
+                                    value="{{recipe.slug}}" aria-label="bookmark-solid"><i
+                                        class="far fa-bookmark"></i></button>
                                 {% endif %}
                             </form>
                             {% endif %}
                             {% if user.is_authenticated and recipe.author == user %}
                             <span>
-                                <a class="action-btn btn btn-info" href="{% url 'update_recipe' recipe.slug %}" aria-label="edit-recipe">
+                                <a class="action-btn btn btn-info" href="{% url 'update_recipe' recipe.slug %}"
+                                    aria-label="edit-recipe">
                                     <i class="fas fa-edit"></i>
                                 </a>
                             </span>
                             <span>
-                                <a class="action-btn btn btn-info" href="{% url 'delete_recipe' recipe.slug %}" aria-label="delete-recipe">
+                                <a class="action-btn btn btn-info" href="{% url 'delete_recipe' recipe.slug %}"
+                                    aria-label="delete-recipe">
                                     <i class="fas fa-times"></i>
                                 </a>
                             </span>
@@ -136,8 +139,7 @@
     </div>
 </div>
 
-
-<!-- comments section -->
+<!-- Comments section -->
 {% if comments %}
 <div class="container">
     <div class="row">
@@ -156,14 +158,14 @@
                             <span class="comment-action-btn pl-2">
                                 <a href="{% url 'update_comment' comment.id %}" aria-label="edit-comment"><i
                                         class="fas fa-edit link-primary"></i></a>
-                                <a href="{% url 'delete_comment' comment.id %}" aria-label="delete-comment"><i class="fas fa-times"></i></a>
+                                <a href="{% url 'delete_comment' comment.id %}" aria-label="delete-comment"><i
+                                        class="fas fa-times"></i></a>
                             </span>
                             {% endif %}
                         </p>
                         {{ comment.body | linebreaks }}
                         <hr>
                     </div>
-
                     {% endfor %}
                 </div>
             </div>
@@ -173,6 +175,7 @@
 {% endif %}
 
 {% if user.is_authenticated %}
+<!-- Create comment -->
 <div class="container">
     <div class="row">
         <div class="col">

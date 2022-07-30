@@ -9,13 +9,13 @@
     <hr class="home-break">
     <br>
     <div class="row justify-content-center ">
-        <!-- Checks the user is signed in and the recipe they're trying to access is owned by them -->
         {% if user.is_authenticated and recipe.author == user  %}
+        <!-- Checks the user is signed in and the recipe they're trying to access is owned by them -->
         {% load cloudinary %}
         <div class="col-11 col-md-8 col-lg-6 mt-3 add-recipe-outer">
             <form method="post" class="add-recipe mb-5" enctype="multipart/form-data">
-                    {{ form | crispy }}
-                    {% csrf_token %} 
+                {{ form | crispy }}
+                {% csrf_token %}
                 <button type="submit" class="btn btn-outline-dark">Update</button>
                 <a class="btn btn-outline-dark m-2" href="{%  url 'recipe_detail' recipe.slug  %}">Cancel</a>
             </form>
@@ -23,6 +23,5 @@
         {% endif %}
     </div>
 </div>
-
 
 {%endblock%}

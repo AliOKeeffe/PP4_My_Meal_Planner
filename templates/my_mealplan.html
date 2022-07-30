@@ -1,7 +1,5 @@
 {% extends "base.html" %}
-
 {% block title %}The Easy Eater | My Meal Plan{% endblock %}
-
 {% block content %}
 
 <div class="container">
@@ -20,7 +18,6 @@
                 <div class="card-header mealplan-card-header">
                     <h2 class="card-title mealplan-title">{{ day }} </h2>
                 </div>
-                <!-- if a meal plan exists for that day -->
                 {% if meal %}
                 {% if "placeholder" in meal.recipe.image.url %}
                 <img src="https://res.cloudinary.com/aliokeeffe/image/upload/v1656016833/placeholder_image_prqssg.jpg"
@@ -33,7 +30,6 @@
                     <a href="{% url 'recipe_detail' meal.recipe.slug %}" class="stretched-link"
                         aria-label="recipe-detail"></a>
                 </div>
-                <!-- If there is no meal plan item for that day -->
                 {% else %}
                 <i class="fas fa-calendar-plus mp-icon fa-6x card-img-top"></i>
                 <div class="card-body">

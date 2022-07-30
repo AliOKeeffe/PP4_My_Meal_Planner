@@ -1,11 +1,8 @@
 {% extends "base.html" %}
-
 {% block title %}The Easy Eater | My Recipes{% endblock %}
-
 {% block content %}
 
 {% if user.is_authenticated %}
-
 <div class="container">
     <div class="row">
         <div class="col-12">
@@ -45,9 +42,7 @@
         {% endfor %}
     </div>
 </div>
-
 {% include "paginator.html" %}
-
 {% endif %}
 
 {%endblock%}

@@ -1,7 +1,6 @@
 <!-- Pagination Code taken from Django Docs with custom styling -->
 
 {%  if is_paginated  %}
-
 <div class="container">
     <div class="row">
         <div class="col">
@@ -11,11 +10,9 @@
                     <a class="btn btn-outline-dark btn-sm mb4 ml-1" href="?page=1">First</a>
                     <a class="btn btn-outline-dark btn-sm mb4 ml-1" href="?page={{ page_obj.previous_page_number }}">Previous</a>
                     {% endif %}
-
                     <span class="current text-dark">
                         Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
                     </span>
-
                     {% if page_obj.has_next %}
                     <a class="btn btn-outline-dark btn-sm mb4 ml-1" href="?page={{ page_obj.next_page_number }}">Next</a>
                     <a class="btn btn-outline-dark btn-sm mb4 ml-1" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
@@ -25,5 +22,4 @@
         </div>
     </div>
 </div>
-
 {%  endif  %}

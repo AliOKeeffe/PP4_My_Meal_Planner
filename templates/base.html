@@ -1,5 +1,4 @@
 {% load static %}
-
 {% load cloudinary %}
 
 <!DOCTYPE html>
@@ -22,6 +21,7 @@
 
 <body>
     <div class="content">
+        <!-- Header starts -->
         <header>
             <!-- Navigation -->
             <nav class="navbar navbar-expand-lg">
@@ -104,9 +104,9 @@
                 </div>
             </nav>
         </header>
+        <!-- Header ends -->
 
         <!-- Below from Code Institute's I Think Therefore I Blog project -->
-
         <div class="container">
             <div class="row">
                 <div class="col-md-8 offset-md-2">
@@ -124,12 +124,11 @@
 
         <main>
             {% block content %}
-            <!-- Content Goes here -->
             {% endblock content %}
         </main>
     </div>
-    <!-- Start of Footer -->
 
+    <!-- Footer -->
     <footer>
         <div class="container footer-container">
             <ul class="social-networks">
@@ -152,7 +151,6 @@
             </ul>
         </div>
     </footer>
-
     <!-- End of Footer -->
 
     <!-- Script to manage messages fading from Code Institute's I Think Therefore I Blog project -->
