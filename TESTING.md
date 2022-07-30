@@ -250,14 +250,177 @@ After I updated the button styling I received 100% score on all pages.
 | Recipe Card | Order                   | Recipes are sorted by newest to oldest                                                  | Pass      |
 | Recipe Card | Hover                   | Add gold border                                                                         | Pass      |
 ### Recipe Detail Page
-### Add Recipe Page
-### Edit Recipe Page
-### Confirm Delete Recipe Page
-### My Recipes Page
-### My Bookmarks Page
-### My Meal Plan Page
-### Django All Auth Pages
 
+| Element                        | Action              | Expected Result                                                                                                         | Pass/Fail |
+|--------------------------------|---------------------|-------------------------------------------------------------------------------------------------------------------------|-----------|
+| Recipe Content                 | Display             | Display correct recipe image, title, author, prep time, cook time, description, ingredients and method                  | Pass      |
+| Add to Meal Plan button        | Click               | Meal Plan modal pops up                                                                                                 | Pass      |
+| Add to Meal Plan button        | Display             | Button only visible if user in session                                                                                  | Pass      |
+| Bookmark button (Outline)      | Click               | Clicking the outlined bookmark changes it to a solid bookmark                                                           | Pass      |
+| Bookmark button (Outline)      | Click               | Recipe is added to the user's bookmarks page                                                                            | Pass      |
+| Bookmark button (Outline)      | Click               | Success message appears informing the user that the recipe has been added to their bookmarks                            | Pass      |
+| Bookmark button (Outline)      | Click               | Success message fades after 3 seconds                                                                                   | Pass      |
+| Bookmark button (Solid)        | Click               | Clicking the solid bookmark changes it back to an outlined bookmark                                                     | Pass      |
+| Bookmark button (Solid)        | Click               | Recipe is removed from the user's bookmarks page                                                                        | Pass      |
+| Bookmark button (Solid)        | Click               | Success message appears informing the user that the recipe has been removed from bookmarks                              | Pass      |
+| Bookmark button (Solid)        | Click               | Success message fades after 3 seconds                                                                                   | Pass      |
+| Bookmark button                | Display             | Button only visible if user in session                                                                                  | Pass      |
+| Update recipe button           | Click               | Opens Update Recipe Form                                                                                                | Pass      |
+| Update recipe button           | Display             | Button only visible if user is the author                                                                               | Pass      |
+| Delete recipe button           | Click               | Opens Delete Recipe confirmation page                                                                                   | Pass      |
+| Delete recipe button           | Display             | Button only visible if user is the author                                                                               | Pass      |
+| User Comments                  | Display             | Displays correct name date time and comment body                                                                        | Pass      |
+| User Comments                  | Display             | Comments are ordered oldest to newest                                                                                   | Pass      |
+| Update comment button          | Display             | Button only visible if user is the comment author                                                                       | Pass      |
+| Update comment button          | Click               | Opens Update Comment Form                                                                                               | Pass      |
+| Update comment form            | Leave empty         | On submit: form won't submit                                                                                            | Pass      |
+| Update comment form            | Leave empty         | Error message displays                                                                                                  | Pass      |
+| Update comment submit button   | Click               | Form submit - page updates and comment displays in comments section with correct content                                | Pass      |
+| Update comment submit button   | Click               | Success message appears informing the user that the comment has been updated                                            | Pass      |
+| Update comment submit button   | Click               | Success message fades after 3 seconds                                                                                   | Pass      |
+| Update comment form            | Access              | If a user tries to edit another user's comment (by changing the url) they receive a 403 error.                          | Pass      |
+| Update comment form            | Access              | If a user tries to edit a comment (by changing the url) without being signed in they are redirected to the login page   | Pass      |
+| Delete comment button          | Display             | Button only visible if user is the comment author                                                                       | Pass      |
+| Delete comment button          | Click               | Opens delete comment confirmation page                                                                                  | Pass      |
+| Confirm delete button          | Click               | Comment is removed from comment section                                                                                 | Pass      |
+| Confirm delete button          | Click               | Success message appears informing the user that the comment has been deleted                                            | Pass      |
+| Confirm delete button          | Click               | Success message fades after 3 seconds                                                                                   | Pass      |
+| Confirm delete button          | Click               | Redirect user back to recipe page                                                                                       | Pass      |
+| Cancel delete button           | Click               | Redirect user back to recipe page                                                                                       | Pass      |
+| Delete comment                 | Access              | If a user tries to delete another user's comment (by changing the url) they receive a custom 403 error.                 | Pass      |
+| Delete comment                 | Access              | If a user tries to delete a comment (by changing the url) without being signed in they are redirected to the login page | Pass      |
+| Add comment Form               | Display             | Form only visible if user in session                                                                                    | Pass      |
+| Add comment Form submit button | Click               | On submit: form won't submit                                                                                            | Pass      |
+| Add comment Form submit button | Click               | Error message displays                                                                                                  | Pass      |
+| Add comment Form submit button | Click               | Form submit - page updates and comment displays in comments section with correct content                                | Pass      |
+| Add comment Form submit button | Click               | Success message appears informing the user that the comment has been added                                              | Pass      |
+| Add comment Form submit button | Click               | Success message fades after 3 seconds                                                                                   | Pass      |
+|                                |                     |                                                                                                                         |           |
+| Meal plan model                |                     |                                                                                                                         |           |
+| Modal cancel button            | Click               | Close modal                                                                                                             | Pass      |
+| Days drop down menu            | Click               | Display list of the days of the week                                                                                    | Pass      |
+| Days drop down menu            | Click               | Default day is Monday                                                                                                   | Pass      |
+| Add to Meal Plan submit button | Click               | Form Submit                                                                                                             | Pass      |
+| Add to Meal Plan submit button | Click               | Correct recipe is added to the user's Meal Plan page for the correct day                                                | Pass      |
+| Add to Meal Plan submit button | Click               | Success message appears telling the user that the recipe has been added to their meal plan                              | Pass      |
+| Add to Meal Plan submit button | Click               | Success message fades after 3 seconds                                                                                   | Pass      |
+| Add to Meal Plan submit button | Click               | If meal plan item already exists for that day, the success message tells the user that meal plan has been updated       | Pass      |
+| Add to Meal Plan submit button | Click               | Modal closes                                                                                                            | Pass      |
+| Meal Plan modal                | Click outside modal | Close modal                                                                                                             | Pass      |
+### Add Recipe Page
+| Element                       | Action                | Expected Result                                                                                                     | Pass/Fail |
+|-------------------------------|-----------------------|---------------------------------------------------------------------------------------------------------------------|-----------|
+| Add Recipe                    | Access                | If a user tries to add a recipe (by changing the url) without being signed in they are redirected to the login page | Pass      |
+| Form Text Input (if required) | Leave blank           | On Submit: Warning appears, form won't submit                                                                       | Pass      |
+| Form Text Input (if required) | Just input whitespace | On Submit: Form won't submit                                                                                        | Pass      |
+| Recipe Title                  | Duplicate Entry       | On Submit: Warning appears, form won't submit                                                                       | Pass      |
+| Form image select button      | Click                 | Open device storage                                                                                                 | Pass      |
+| Form image select button      | Display               | Chosen image name displayed once selected                                                                           | Pass      |
+| Form image select button      | Display               | Default image is used if no image is selected                                                                       | Pass      |
+| Cancel button                 | Click                 | Redirect to Browse Recipes page                                                                                     | Pass      |
+| Add Recipe button(form valid) | Click                 | Form submit                                                                                                         | Pass      |
+| Add Recipe button(form valid) | Click                 | Redirect to Recipe detail page for new recipe with all information displaying correctly                             | Pass      |
+| Add Recipe button(form valid) | Click                 | Success message appears informing the user that the recipe has been created                                         | Pass      |
+| Add Recipe button(form valid) | Click                 | Success message fades after 3 seconds                                                                               | Pass      |
+### Edit Recipe Page
+| Element            | Action  | Expected Result                                                                                                         | Pass/Fail |
+|--------------------|---------|-------------------------------------------------------------------------------------------------------------------------|-----------|
+| Update Recipe      | Access  | If a user tries to edit another user's recipe (by changing the url) they receive a custom 403 error. (forbidden access) | Pass      |
+| Update Recipe      | Access  | If a user tries to edit a recipe (by changing the url) without being signed in they are redirected to the login page    | Pass      |
+| Update Recipe Form | Display | Form has all the fields filled out with the original content                                                            | Pass      |
+| Update Button      | Click   | Updated recipe is saved                                                                                                 | Pass      |
+| Update Button      | Click   | Success message appears telling the user that the recipe has been successfully updated                                  | Pass      |
+| Update Button      | Click   | Success message fades after 3 seconds                                                                                   | Pass      |
+| Update Button      | Click   | User is redirected back to the current recipe page                                                                      | Pass      |
+| Cancel Button      | Click   | User is redirected back to the current recipe page                                                                      | Pass      |
+### Confirm Delete Recipe Page
+| Element       | Action | Expected Result                                                                                                        | Pass/Fail |
+|---------------|--------|------------------------------------------------------------------------------------------------------------------------|-----------|
+| Delete recipe | Access | If a user tries to delete another user's recipe (by changing the url) they receive a custom 403 error.                 | Pass      |
+| Delete recipe | Access | If a user tries to delete a recipe (by changing the url) without being signed in they are redirected to the login page | Pass      |
+| Delete Button | Click  | Recipe is deleted and removed from user recipes page                                                                   | Pass      |
+| Delete Button | Click  | Success message appears telling the user that the recipe has been successfully deleted                                 | Pass      |
+| Delete Button | Click  | User is redirected back to the My recipes page                                                                         | Pass      |
+| Cancel Button | Click  | Redirect to current recipe page                                                                                        | Pass      |
+
+### My Recipes Page
+| Element         | Action               | Expected Result                                                                                                  | Pass/Fail |
+|-----------------|----------------------|------------------------------------------------------------------------------------------------------------------|-----------|
+| My Recipes Page | Access               | If a user tries to access this page (by changing url) without being signed in they are redirected the Login page | Pass      |
+| My Recipes Page | Display              | Only displays the recipes that the user is the author for                                                        | Pass      |
+| Recipe Card     | Show Status          | Show if recipe is draft or published                                                                             | Pass      |
+| Recipe Card     | Card Content Display | Display correct image, recipe title and cooktime                                                                 | Pass      |
+| Recipe Card     | Click                | Clicking anywhere inside the recipe card takes you to the correct recipe's detail page.                          | Pass      |
+| Recipe Card     | Pagination           | Site will paginate 8 recipe cards to a page                                                                      | Pass      |
+| Recipe Card     | Order                | Recipes are sorted by newest to oldest                                                                           | Pass      |
+| Recipe Card     | Hover                | Display gold border                                                                                              | Pass      |
+### My Bookmarks Page
+
+| Element           | Action               | Expected Result                                                                                                  | Pass/Fail |
+|-------------------|----------------------|------------------------------------------------------------------------------------------------------------------|-----------|
+| My Bookmarks Page | Access               | If a user tries to access this page (by changing url) without being signed in they are redirected the Login page | Pass      |
+| My Bookmarks Page | Display              | Only the recipes the user has book marked are shown                                                              | Pass      |
+| Recipe Card       | Card Content Display | Display correct image, recipe title and cook time                                                                | Pass      |
+| Recipe Card       | Click                | Clicking anywhere inside the recipe card takes you to the correct recipe's detail page.                          | Pass      |
+| Recipe Card       | Pagination           | Site will paginate 8 recipe cards to a page                                                                      | Pass      |
+| Recipe Card       | Order                | Recipes are sorted by newest to oldest                                                                           | Pass      |
+| Recipe Card       | Hover                | Display gold border                                                                                              | Pass      |
+### My Meal Plan Page
+| Element           | Action               | Expected Result                                                                                                  | Pass/Fail |
+|-------------------|----------------------|------------------------------------------------------------------------------------------------------------------|-----------|
+| My Meal Plan Page | Access               | If a user tries to access this page (by changing url) without being signed in they are redirected the Login page | Pass      |
+| Meal Plan card    | Order                | Cards are ordered from Monday to Sunday                                                                          | Pass      |
+| Meal Plan card    | Card Content Display | If populated: Display correct image, recipe title                                                                | Pass      |
+| Meal Plan card    | Card Content Display | If unpopulated: display placeholder image and 'Add Recipe'                                                       | Pass      |
+| Meal Plan card    | Click                | If populated: clicking anywhere inside the recipe card takes you to the detailed page for that recipe            | Pass      |
+| Meal Plan card    | Click                | If unpopulated:  clicking anywhere inside the recipe card takes you to the browse recipes page                   | Pass      |
+| Meal Plan card    | Hover                | Display gold border                                                                                              | Pass      |
+
+### Django All Auth Pages
+| Element                    | Action                                    | Expected Result                            | Pass/Fail |
+|----------------------------|-------------------------------------------|--------------------------------------------|-----------|
+| Sign Up                    |                                           |                                            |           |
+| Log in link                | Click                                     | Redirect to login page                     | Pass      |
+| Username field             | Leave empty                               | On submit: form won't submit               | Pass      |
+| Username field             | Leave empty                               | Error message displays                     | Pass      |
+| Username field             | Insert correct format                     | On submit: form submit                     | Pass      |
+| Username field             | Insert duplicate username                 | On submit: form won't submit               | Pass      |
+| Username field             | Insert duplicate username                 | Error message displays                     | Pass      |
+| Email field                | Insert incorrect format                   | On submit: form won't submit               | Pass      |
+| Email field                | Insert incorrect format                   | Error message displays                     | Pass      |
+| Email field                | Insert correct format                     | On submit: form submit                     | Pass      |
+| Email field                | Leave empty                               | On submit: form submit                     | Pass      |
+| Email field                | Insert duplicate email                    | On submit: form won't submit               | Pass      |
+| Email field                | Insert duplicate email                    | Error message displays                     | Pass      |
+| Password field             | Insert incorrect format                   | On submit: form won't submit               | Pass      |
+| Password field             | Insert incorrect format                   | Error message displays                     | Pass      |
+| Password field             | Passwords don't match                     | On submit: form won't submit               | Pass      |
+| Password field             | Passwords don't match                     | Error message displays                     | Pass      |
+| Password field             | Insert correct format and passwords match | On submit: form submit                     | Pass      |
+| Sign Up button(form valid) | Click                                     | Form submit                                | Pass      |
+| Sign Up button(form valid) | Click                                     | Redirect to home page                      | Pass      |
+| Sign Up button(form valid) | Click                                     | Success message confirming login appears   | Pass      |
+| Sign Up button(form valid) | Click                                     | Success message fades after 3 seconds      | Pass      |
+|                            |                                           |                                            |           |
+| Log in                     |                                           |                                            |           |
+| Sign up link               | Click                                     | Redirect to sign up page                   | Pass      |
+| Username field             | Leave empty                               | On submit: form won't submit               | Pass      |
+| Username field             | Leave empty                               | Error message displays                     | Pass      |
+| Username field             | Insert wrong username                     | On submit: form won't submit               | Pass      |
+| Username field             | Insert wrong username                     | Error message displays                     | Pass      |
+| Password field             | Leave empty                               | On submit: form won't submit               | Pass      |
+| Password field             | Leave empty                               | Error message displays                     | Pass      |
+| Password field             | Insert wrong password                     | On submit: form won't submit               | Pass      |
+| Password field             | Insert wrong password                     | Error message displays                     | Pass      |
+| Login button(form valid)   | Click                                     | Form submit                                | Pass      |
+| Login button(form valid)   | Click                                     | Redirect to home page                      | Pass      |
+| Login button(form valid)   | Click                                     | Success message confirming login appears   | Pass      |
+| Login button(form valid)   | Click                                     | Success message fades after 3 seconds      | Pass      |
+|                            |                                           |                                            |           |
+| Log Out Confirmation       |                                           |                                            |           |
+| Logout button              | Click                                     | Redirect to homepage                       | Pass      |
+| Logout button              | Click                                     | Success message confirming log out appears | Pass      |
+| Logout button              | Click                                     | Success message fades after 3 seconds      | Pass      |
 
 ## Bugs 
 
