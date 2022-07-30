@@ -196,10 +196,7 @@ Custom Error Pages were created to give the user more information on the error a
 ![header](docs/readme_images/features/what_we_do.png)
     - The "What We Do' section gives a brief overview of what the site has to offer and summarises the basic features with three simple steps illustrated with font-awesome icons.
 
-
-
 ### User Account Pages
-
 
 - **Sign Up**
 ![header](docs/readme_images/features/signup.png)
@@ -211,7 +208,7 @@ Custom Error Pages were created to give the user more information on the error a
     - Success messages inform the user if they have logged in/ logged out successfully.
 
 ### Browse Recipes
-
+![header](docs/readme_images/features/browse_page.png)
 - This page displays all recipes with a status of published with the most recent recipes displaying first.
 - The recipes cards are paginated after every 8 recipes. 
 - Each card displays the recipe's image, Title and Cook Time. 
@@ -248,6 +245,7 @@ Custom Error Pages were created to give the user more information on the error a
     - The user receives a success message notifiying them that the recipe has been successfully added to their meal plan.
 
 - **Recipe Details Section**
+![header](docs/readme_images/features/recipe_details.png)
     - The main body of the page consists of the recipe description, ingredients, and method. 
 
 - **Comments Section**
@@ -274,6 +272,7 @@ Custom Error Pages were created to give the user more information on the error a
 - The user will receive a success message notifiying them that the recipe has been successfully added.
 
 ### Update Recipe Form
+![header](docs/readme_images/features/update_recipe.png)
 - If the user is logged in and is the author or the recipe they can choose to edit the recipe by clicking the edit button in the recipe detail page. 
 - The form opens with all fields populated with the original content.
 - If a user tries to update a recipe (by changing the url) without being signed in they are redirected to the log in page.
@@ -288,6 +287,7 @@ Custom Error Pages were created to give the user more information on the error a
 
 
 ### My Meal Plan
+![header](docs/readme_images/features/mealplan_page.png)
 - This page displays the logged in user's meal plan for the week.
 - The meal plan cards are ordered Monday to Sunday. 
 - If a user has added a recipe to their meal plan for a particular day, the card will display the recipe image and title. Clicking anywhere inside the meal plan card will take you directly to that recipe's detailed page.
@@ -295,7 +295,7 @@ Custom Error Pages were created to give the user more information on the error a
 - If a user tries to access this page (by changing the url) without being signed in they are redirected to the log in page.
 
 ### My Recipes Page
-
+![header](docs/readme_images/features/myrecipes_page.png)
 - This page displays all recipes which the logged in user has created.
 - The recipes cards are paginated after every 8 recipes. 
 - Each card displays the recipe's image, Title and Cook Time. 
@@ -304,7 +304,7 @@ Custom Error Pages were created to give the user more information on the error a
 - If a user tries to access this page (by changing the url) without being signed in they are redirected to the log in page.
 
 ### My Bookmarks Page
-
+![header](docs/readme_images/features/my_bookmarks.png)
 - This page displays all recipes which the logged in user has added to their bookmarks.
 - Clicking anywhere inside the recipes card will take you directly to that recipes detailed page.
 - If a user tries to access this page (by changing the url) without being signed in they are redirected to the log in page.
