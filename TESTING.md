@@ -1,54 +1,8 @@
 
-## Validators
-
-### HTML
-
-All HTML pages were run through the [W3C HTML Validator](https://validator.w3.org/). The following errors were flagged.
-
-Fixed Errors:
-- When validating the Recipe Detail page I received an error in relation to an extra `</p>` tag in the 'Recipe Method' field which had been created using the summernote editor. The issue was due to Summernote including `<p>` tags around the form field. I resolved the error by removing the surrounding `<p>` tags in my HTML when rendering a summernote field in my Recipe Detail page.
-
-Unfixed Errors
-- When validating the Add Recipe and Edit Recipe forms I received a number of errors which were caused by the installed Summernote library which runs when using the form on these pages. I could not recitify these errors given that they weren't in my own code therefore they are unresolved. 
-
-
- <details>
-
- <summary>Summernote Errors</summary>
-
-![Summernote Errors](docs/readme_images/summernote_errors.png)
- </details>
-
-### CSS
-- No errors were found when passing my CSS file through the official W3C CSS Validator 
-     - [W3C CSS Validator](https://jigsaw.w3.org/css-validator/)  ADD IN RESULTS
-
-### Javascript
- No errors were found when passing my javascript through [Jshint](https://jshint.com/) 
-
- <details>
-
- <summary>Jshint</summary>
-
-![Jshint](docs/readme_images/jshint_validation.png)
- </details>
-
-
-### Python
-All Python files were ran through [Pep8](http://pep8online.com/) with no errors found. 
-
-### Lighthouse
-
-Lighthouse validation was ran on all pages (both mobile and desktop) in order to check accessibility.
-At first I recieved the warning *'Background and foreground colors do not have a sufficient contrast ratio'* in relation to buttons where I had used the Bootstrap class `btn-info`. 
-
-After I updated the button styling I received 100% score on all pages. 
-
 ## User Story Testing
 
-
 ### EPIC | User Profile
-*As a Site User I can register an account so that I can add/edit/delete my recipes and comment on and bookmark other people's recipes and add recipes to my mealplanner.
+*As a Site User I can register an account so that I can add/edit/delete my recipes and comment on and bookmark other people's recipes and add recipes to my mealplanner.*
 
 ![header](docs/readme_images/features/call_out.png)
 
@@ -170,40 +124,131 @@ After I updated the button styling I received 100% score on all pages.
 ![header](docs/readme_images/features/admin_panel.png)
 
 
+## Validator Testing
+
+### HTML
+
+All HTML pages were run through the [W3C HTML Validator](https://validator.w3.org/). The following errors were flagged.
+
+#### Fixed Errors:
+When validating the Recipe Detail page I received an error in relation to an extra `</p>` tag in the 'Recipe Method' field which had been created using the summernote editor. The issue was due to Summernote including `<p>` tags around the form field. I resolved the error by removing the surrounding `<p>` tags in my HTML when rendering a summernote field in my Recipe Detail page.
+
+#### Unfixed Errors
+When validating the Add Recipe and Edit Recipe forms I received a number of errors which were caused by the installed Summernote library which runs when using the form on these pages. I could not recitify these errors given that they weren't in my own code therefore they are unresolved. 
+
+ <details>
+
+ <summary>Summernote Errors</summary>
+
+![Summernote Errors](docs/readme_images/summernote_errors.png)
+ </details>
+
+### CSS
+No errors were found when passing my CSS file through the official [W3C CSS Validator](https://jigsaw.w3.org/css-validator/)
+
+ <details>
+
+ <summary>CSS</summary>
+
+![CSS Validation](docs/readme_images/css_validation.png)
+ </details>
+
+### Javascript
+No errors were found when passing my javascript through [Jshint](https://jshint.com/) 
+
+<details>
+
+<summary>Jshint</summary>
+
+![Jshint](docs/readme_images/jshint_validation.png)
+</details>
+
+### Python
+All Python files were ran through [Pep8](http://pep8online.com/) with no errors found. 
+
+### Lighthouse
+
+Lighthouse validation was ran on all pages (both mobile and desktop) in order to check accessibility.
+At first I recieved the warning *'Background and foreground colors do not have a sufficient contrast ratio'* in relation to buttons where I had used the Bootstrap class `btn-info`. 
+
+After I updated the button styling I received 100% score on all pages. 
+
+## Browser Testing
+- The Website was tested on Google Chrome, Firefox, Safari browsers with no issues noted.
+    
+## Device Testing
+- The website was viewed on a variety of devices such as Desktop, Laptop, iPhone10 iPhone 8, iPhoneX and iPad to ensure responsiveness on various screen sizes in both portrait and landscape mode. The website performed as intended. The responsive design was also checked using Chrome developer tools across multiple devices with structural integrity holding for the various sizes.
 
 ## Manual Testing
 
 ### Site Navigation
-
-| **Element**           | **Action** | **Expected Result**                                                | **Pass/Fail** |
-|-----------------------|------------|--------------------------------------------------------------------|---------------|
-| **Navbar**            |            |                                                                    |               |
-| Site Name (logo area) | Click      | Redirect to home                                                   | Pass          |
-| Home Link             | Click      | Redirect to home                                                   | Pass          |
-| Browse Recipes Link   | Click      | Open Browse Recipes Page                                           | Pass          |
-| Add Recipe Link       | Click      | Open Add Recipe Form                                               | Pass          |
-| Add Recipe Link       | Display    | Only visble if user in session                                     | Pass          |
-| My Meal Plan Link     | Click      | Open My Meal Plan page                                             | Pass          |
-| My Meal Plan Link     | Display    | Only visble if user in session                                     | Pass          |
-| My Account Dropdown   | Click      | Open My Account dropdown                                           | Pass          |
-| My Account Dropdown   | Display    | Text changes to username with profile icon when user is in session | Pass          |
-| Sign Up Link          | Click      | Open Sign up page                                                  | Pass          |
-| Sign Up Link          | Display    | Not visible if user in session                                     | Pass          |
-| Log In Link           | Click      | Open Log in page                                                   | Pass          |
-| Log In Link           | Display    | Not visible if user in session                                     | Pass          |
-| My Recipes Link       | Click      | Open My Recipes page                                               | Pass          |
-| My Recipes Link       | Display    | Only visible if user in session                                    | Pass          |
-| My Bookmarks Link     | Click      | Open My Bookmarks page                                             | Pass          |
-| My Bookmarks Link     | Display    | Only visible if user in session                                    | Pass          |
-| Logout Link           | Click      | Open logout confirm page                                           | Pass          |
-| Logout Link           | Display    | Only visible if user in session                                    | Pass          |
-| All Nav Links         | Hover      | Darken text                                                        | Pass          |
-| All Nav Links         | If active  | Keep active link dark and bold                                     | Pass          |
-| Navbar                | Scroll     | Remains fixed to top of page                                       | Pass          |
+| Element               | Action     | Expected Result                                                    | Pass/Fail |
+|-----------------------|------------|--------------------------------------------------------------------|-----------|
+| NavBar                |            |                                                                    |           |
+| Site Name (logo area) | Click      | Redirect to home                                                   | Pass      |
+| Home Link             | Click      | Redirect to home                                                   | Pass      |
+| Browse Recipes Link   | Click      | Open Browse Recipes Page                                           | Pass      |
+| Add Recipe Link       | Click      | Open Add Recipe Form                                               | Pass      |
+| Add Recipe Link       | Display    | Only visible if user in session                                    | Pass      |
+| My Meal Plan Link     | Click      | Open My Meal Plan page                                             | Pass      |
+| My Meal Plan Link     | Display    | Only visible if user in session                                    | Pass      |
+| My Account Dropdown   | Click      | Open My Account dropdown                                           | Pass      |
+| My Account Dropdown   | Display    | Text changes to username with profile icon when user is in session | Pass      |
+| Sign Up Link          | Click      | Open Sign up page                                                  | Pass      |
+| Sign Up Link          | Display    | Not visible if user in session                                     | Pass      |
+| Log In Link           | Click      | Open Login page                                                    | Pass      |
+| Log In Link           | Display    | Not visible if user in session                                     | Pass      |
+| My Recipes Link       | Click      | Open My Recipes page                                               | Pass      |
+| My Recipes Link       | Display    | Only visible if user in session                                    | Pass      |
+| My Bookmarks Link     | Click      | Open My Bookmarks page                                             | Pass      |
+| My Bookmarks Link     | Display    | Only visible if user in session                                    | Pass      |
+| Logout Link           | Click      | Open logout confirm page                                           | Pass      |
+| Logout Link           | Display    | Only visible if user in session                                    | Pass      |
+| All Nav Links         | Hover      | Darken text                                                        | Pass      |
+| All Nav Links         | If active  | Keep active link dark and bold                                     | Pass      |
+| Navbar                | Scroll     | Remains fixed to top of page                                       | Pass      |
+|                       |            |                                                                    |           |
+| Mobile View           |            |                                                                    |           |
+| Hamburger Menu        | Responsive | Display when screen size reduces to xxx size                       | Pass      |
+| My Account Dropdown   | Responsive | Contents move into hamburger menu when size reduces size           | Pass      |
+| Site Name (logo area) | Click      | Redirect to home                                                   | Pass      |
+| Home Link             | Click      | Redirect to home                                                   | Pass      |
+| Browse Recipes Link   | Click      | Open Browse Recipes Page                                           | Pass      |
+| Sign Up Link          | Click      | Open Sign up page                                                  | Pass      |
+| Sign Up Link          | Display    | Not visible if user in session                                     | Pass      |
+| Log In Link           | Click      | Open Login page                                                    | Pass      |
+| Log In Link           | Display    | Not visible if user in session                                     | Pass      |
+| Add Recipe Link       | Click      | Open Add Recipe Form                                               | Pass      |
+| Add Recipe Link       | Display    | Only visible if user in session                                    | Pass      |
+| My Meal Plan Link     | Click      | Open My Meal Plan page                                             | Pass      |
+| My Recipes Link       | Click      | Open My Recipes page                                               | Pass      |
+| My Recipes Link       | Display    | Only visible if user in session                                    | Pass      |
+| My Bookmarks Link     | Click      | Open My Bookmarks page                                             | Pass      |
+| My Bookmarks Link     | Display    | Only visible if user in session                                    | Pass      |
+| Logout Link           | Click      | Open logout confirm page                                           | Pass      |
+| Logout Link           | Display    | Only visible if user in session                                    | Pass      |
+| All Nav Links         | Hover      | Darken text                                                        | Pass      |
+| All Nav Links         | If active  | Keep active link dark and bold                                     | Pass      |
+|                       |            |                                                                    |           |
+| Footer                |            |                                                                    |           |
+| All links             | Click      | Open in new tab and to correct location                            | Pass      |
 
 ### Home Page
+| Element               | Action  | Expected Result                 | Pass/Fail |
+|-----------------------|---------|---------------------------------|-----------|
+| Hero 'Sign Up' Button | Click   | Open Sign up page               | Pass      |
+| Hero 'Sign Up' Button | Display | Not visible if user in session  | Pass      |
+| Hero 'Create" Button  | Click   | Open Add Recipe page            | Pass      |
+| Hero 'Create" Button  | Display | Only visible if user in session | Pass      |
 
 ### Browse Recipes Page
+| Element     | Action                  | Expected Result                                                                         | Pass/Fail |
+|-------------|-------------------------|-----------------------------------------------------------------------------------------|-----------|
+| Recipe Card | Display correct content | Display correct image, recipe title and cooktime                                        | Pass      |
+| Recipe Card | Click                   | Clicking anywhere inside the recipe card takes you to the correct recipe's detail page. | Pass      |
+| Recipe Card | Pagination              | Site will paginate 8 recipe cards to a page                                             | Pass      |
+| Recipe Card | Order                   | Recipes are sorted by newest to oldest                                                  | Pass      |
+| Recipe Card | Hover                   | Add gold border                                                                         | Pass      |
 ### Recipe Detail Page
 ### Add Recipe Page
 ### Edit Recipe Page
@@ -239,7 +284,6 @@ This solved the problem whereby now if a user adds a meal plan item to a particu
 - #### Footer not staying at bottom of screen
      - **Bug**: Footer not staying at the bottom of the screen when displaying on pages without fullscreen content and didn't want to use a sticky footer. 
      - **Fix**: Was able to utilise the the calc() CSS function and make the page content 100% of the viewport height less the height of the footer and this solved the problem. 
-
 
 ### Unfixed bugs:
 

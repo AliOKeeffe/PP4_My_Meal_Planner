@@ -69,13 +69,13 @@ There is only one static image on the site depicting a family dinner on the home
 #### Fonts
 The Montserrat font is the main font used for the body of the website with the Playfair Display font used for the main headings on the home page. These fonts were imported via Google Fonts. Sans Serif is the backup font, in case for any reason the main font isn't being imported into the site correctly.
 
-####ß Wireframes
+#### Wireframes
 
 <details>
 
  <summary>Landing Page</summary>
 
-![Landing PAge](docs/wireframes/landing_wireframe.png)
+![Landing Page](docs/wireframes/landing_wireframe.png)
 </details>
 
 <details>
@@ -147,10 +147,10 @@ Cross-Site Request Forgery (CSRF) tokens were used on all forms throughout this 
 
 Custom Error Pages were created to give the user more information on the error and to provide them with buttons to guide them back to the site.
 
-400 Bad Request - The Easy Eater is unable to handle this request.
-403 Page Forbidden - Looks like you're trying to access forbidden content. Please log out and sign in to the correct account.
-404 Page Not Found - The page you're looking for doesn't exist.
-500 Server Error - The Easy Eater is currently unable to handle this request
+- 400 Bad Request - The Easy Eater is unable to handle this request.
+- 403 Page Forbidden - Looks like you're trying to access forbidden content. Please log out and sign in to the correct account.
+- 404 Page Not Found - The page you're looking for doesn't exist.
+- 500 Server Error - The Easy Eater is currently unable to handle this request
 
 ## Features
 

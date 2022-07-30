@@ -1,4 +1,8 @@
+/* Google Fonts */
+
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;500&family=Open+Sans:wght@300;500&family=Playfair+Display:wght@600&display=swap');
+
+/* Global Styles */
 
 body {
     font-family: 'Montserrat', sans-serif;
@@ -9,6 +13,20 @@ body {
 .content {
     min-height: calc(100vh - 90px);
 }
+
+.pink-text {
+    color: #886363;
+    font-weight: 300;
+}
+
+.page-title {
+    padding-top: 5px;
+    color: #886363;
+    font-weight: 300;
+    text-align: center;
+}
+
+/* Nav */
 
 .navbar {
     padding: 1rem 1rem;
@@ -25,31 +43,12 @@ body {
     color: #886363;
 }
 
-
 .logo-image {
     height: 100px;
 }
 
 .profile-icon {
     padding-right: 5px;
-}
-
-/* h1, h2, h3, h4, h5, h6 {
-    text-align: center;
-    color: darkslategrey;
-} */
-
-.pink-text {
-    color: #886363;
-    font-weight: 300;
-}
-
-.page-title {
-    padding-top: 5px;
-    color: #886363;
-    font-weight: 300;
-    text-align: center;
-
 }
 
 /* Home Page */
@@ -70,7 +69,6 @@ body {
     margin: auto !important;
 }
 
-
 .feature-image {
     text-align: center;
     color: #886363;
@@ -89,13 +87,6 @@ body {
     font-size: 17px;
 }
 
-
-
-/* .full-height{
-    height: 100vh;
-} */
-
-
 /* Recipe Cards */
 
 .recipe-card:hover, .mealplan-card:hover {
@@ -107,7 +98,6 @@ body {
     height: 15vw;
     object-fit: cover;
     min-height: 250px;
-    /* min-width: 250px; */
 }
 
 .card-detail {
@@ -126,15 +116,12 @@ body {
 .draft {
     color: red;
 }
+
 /* Recipe Detail Page */
-
-
-/* https://stackoverflow.com/questions/11129696/capitalize-first-letter-of-sentences-css */
 
 .recipe-title:first-letter{
     text-transform: capitalize
 }
-
 
 .recipe-detail-card {
     border: 0.5px solid #D8B646;
@@ -145,10 +132,6 @@ body {
     object-fit: cover;
     width: 100%;
 }
-
-/* .recipe-detail-outer {
-    min-height: 250px;
-} */
 
 .recipe-detail-header {
     border: none;
@@ -185,10 +168,6 @@ body {
     font-weight: bold;
 } 
 
-.green-background {
-    background-color: #0D5C63;
-}
-
 .clearablefileinput {
     color: #886363;
     border: none
@@ -218,7 +197,6 @@ body {
     font-size: 30px;
 }
 
-
 /* All auth templates */
 
 .signup, .login {
@@ -233,7 +211,6 @@ body {
     border: 1px solid #D8B646;
     padding: 5px;
     margin: 5px 0 10px 0;
-
 } 
 
 .signup label, .login label {
@@ -246,6 +223,7 @@ body {
 .login label[for="id_remember"] {
     display: inline;
 }
+
 .login #id_remember {
     width: 20px;
     display: inline;
@@ -276,22 +254,22 @@ body {
     color: #142a2b;
 }
 
+/* Media Queries */
+
 /* For Medium devices (tablets, less than 992px) */
+
 @media screen and (max-width: 991.98px) {
     .hero-text {
         font-size: 35px;
     }
   
-
     .logo-image {
         height: 75px;
     }
-
 }
 
-
-
 /* Small devices (landscape phones, less than 768px */
+
 @media screen and (max-width: 767.98px) {
     .landing-tagline {
         width: 100%;
@@ -310,22 +288,7 @@ body {
        width: 300px;
     }
 
-
     .mp-button, .action-btn {
         font-size: .75rem;
     }
-
-    
 }
-
-/* Extra small devices (portrait phones, less than 576px)
-@media (max-width: 575.98px) { ... }
-
-// Small devices (landscape phones, less than 768px)
-@media (max-width: 767.98px) { ... }
-
-// Medium devices (tablets, less than 992px)
-@media (max-width: 991.98px) { ... }
-
-// Large devices (desktops, less than 1200px)
-@media (max-width: 1199.98px) { ... }
