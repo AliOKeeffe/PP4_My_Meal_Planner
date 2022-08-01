@@ -7,6 +7,54 @@ The site acts as a repository for recipes whereby users can store their own reci
 The live link can be found here - [The Easy Eater](https://easy-eater.herokuapp.com/)
 
 ![Colour Palette](docs/readme_images/site_mockup.png)
+## Table of Contents
+
+- [The Easy Eater](#the-easy-eater)
+  * [User Experience (UX)](#user-experience--ux-)
+    + [User Stories](#user-stories)
+      - [EPIC | User Profile](#epic---user-profile)
+      - [EPIC | User Navigation](#epic---user-navigation)
+      - [EPIC | Recipe Management](#epic---recipe-management)
+      - [EPIC | Recipe Interaction](#epic---recipe-interaction)
+      - [EPIC | Mealplan Management](#epic---mealplan-management)
+      - [EPIC | Site Administration](#epic---site-administration)
+      - [User stories not yet implemented](#user-stories-not-yet-implemented)
+    + [Design](#design)
+      - [Colour Scheme](#colour-scheme)
+      - [Imagery](#imagery)
+      - [Fonts](#fonts)
+      - [Wireframes](#wireframes)
+  * [Agile Methodology](#agile-methodology)
+  * [Data Model](#data-model)
+  * [Security Features and Defensive Design](#security-features-and-defensive-design)
+    + [User Authentication](#user-authentication)
+    + [Form Validation](#form-validation)
+    + [Database Security](#database-security)
+    + [Custom error pages:](#custom-error-pages-)
+  * [Features](#features)
+    + [Header](#header)
+    + [Footer](#footer)
+    + [Home Page](#home-page)
+    + [User Account Pages](#user-account-pages)
+    + [Browse Recipes](#browse-recipes)
+    + [Recipe Detail Page](#recipe-detail-page)
+    + [Add Recipe Form](#add-recipe-form)
+    + [Update Recipe Form](#update-recipe-form)
+    + [Delete Recipe](#delete-recipe)
+    + [My Meal Plan](#my-meal-plan)
+    + [My Recipes Page](#my-recipes-page)
+    + [My Bookmarks Page](#my-bookmarks-page)
+    + [Error Pages](#error-pages)
+    + [Future Features](#future-features)
+  * [Deployment - Heroku](#deployment---heroku)
+  * [Forking this repository](#forking-this-repository)
+  * [Cloning this repository](#cloning-this-repository)
+  * [Languages](#languages)
+  * [Frameworks - Libraries - Programs Used](#frameworks---libraries---programs-used)
+  * [Credits](#credits)
+  * [Acknowledgments](#acknowledgments)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
 ## User Experience (UX)
 
@@ -426,7 +474,7 @@ To clone this repository follow the below steps:
 5. Type **'git clone'**, and then paste the URL copied from GitHub earlier. 
 6. Type **'Enter'** to create the local clone. 
 
-## Languages:
+## Languages
 
 - Python
 - HTML

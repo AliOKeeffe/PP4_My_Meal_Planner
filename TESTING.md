@@ -1,8 +1,42 @@
+# Table of Contents
+- [User Story Testing](#user-story-testing)
+- [Validator Testing](#validator-testing)
+  * [HTML](#html)
+    + [Fixed Errors](#fixed-errors)
+    + [Unfixed Errors](#unfixed-errors)
+  * [CSS](#css)
+  * [Javascript](#javascript)
+  * [Python](#python)
+  * [Lighthouse](#lighthouse)
+- [Browser Testing](#browser-testing)
+- [Device Testing](#device-testing)
+- [Manual Testing](#manual-testing)
+  * [Site Navigation](#site-navigation)
+  * [Home Page](#home-page)
+  * [Browse Recipes Page](#browse-recipes-page)
+  * [Recipe Detail Page](#recipe-detail-page)
+  * [Add Recipe Page](#add-recipe-page)
+  * [Edit Recipe Page](#edit-recipe-page)
+  * [Confirm Delete Recipe Page](#confirm-delete-recipe-page)
+  * [My Recipes Page](#my-recipes-page)
+  * [My Bookmarks Page](#my-bookmarks-page)
+  * [My Meal Plan Page](#my-meal-plan-page)
+  * [Django All Auth Pages](#django-all-auth-pages)
+- [Bugs](#bugs)
+  * [Fixed Bugs](#fixed-bugs)
+    + [Overwrite Meal Plan Items](#overwrite-meal-plan-items)
+    + [Required fields using Summernote extension submit with just whitespace entered](#required-fields-using-summernote-extension-submit-with-just-whitespace-entered)
+    + [No Reverse Match Error](#no-reverse-match-error)
+    + [Cloudinary Images not Displaying](#cloudinary-images-not-displaying)
+    + [Footer not staying at bottom of screen](#footer-not-staying-at-bottom-of-screen)
+  * [Unfixed bugs:](#unfixed-bugs-)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
 ## User Story Testing
 
 ### EPIC | User Profile
-*As a Site User I can register an account so that I can add/edit/delete my recipes and comment on and bookmark other people's recipes and add recipes to my mealplanner.*
+*As a Site User I can register an account so that I can add/edit/delete my recipes and comment on and bookmark other people's recipes and add recipes to my meal planner.*
 
 ![header](docs/readme_images/features/call_out.png)
 
@@ -23,7 +57,7 @@
 
 ### EPIC | User Navigation
  *As a User I can immediately understand the purpose of the site so that I can decide if it meets my needs*
-- In the center of the landing page there is a section entitled "What We Do' which gives a brief overview of what the site has to offer and summarises the basic features with three simple steps illustrated with font-awesome icons.
+- In the centre of the landing page there is a section entitled "What We Do' which gives a brief overview of what the site has to offer and summarises the basic features with three simple steps illustrated with font-awesome icons.
 
 ![header](docs/readme_images/features/what_we_do.png)
 
@@ -37,7 +71,7 @@
 
 ![header](docs/readme_images/features/browse_page.png)
 
-*As a Site User, I can click on a recipe so that I can read the full recipe,ingredients required and view comments left by users.*
+*As a Site User, I can click on a recipe so that I can read the full recipe, ingredients required and view comments left by users.*
 - Clicking anywhere inside the recipe card will take you directly to that recipe's detailed page which displays the full recipe details including description, ingredients and method. 
 
 ![header](docs/readme_images/features/recipe_header.png)
@@ -56,7 +90,7 @@
 
 ![header](docs/readme_images/features/add_recipe.png)
 
-- There is also a Add Recipe button on the Nav bar which is visible on every page.
+- There is also an 'Add Recipe' button on the Nav bar which is visible on every page.
 
 ![header](docs/readme_images/features/header.png)
 
@@ -71,24 +105,24 @@
 
 ![header](docs/readme_images/features/delete_recipe.png)
 
-*As a Site User I can view my recipes so that I can see and manage all recipes I have created in the one location.*
+*As a Site User, I can view my recipes so that I can see and manage all recipes I have created in the one location.*
 - All the user's created recipes are available to see on the 'My Recipes' page.
 
 ![header](docs/readme_images/features/myrecipes_page.png)
 
-*As a Site User I can view my bookmarked recipes so I can find them easily in the one location.*
+*As a Site User, I can view my bookmarked recipes so I can find them easily in the one location.*
 - All the user's bookmarked recipes are available to see on the 'My Bookmarks' page.
 
 -![header](docs/readme_images/features/my_bookmarks.png)
 
 ### EPIC | Recipe Interaction
-*As a Site User, I can save other user's recipes to my bookmarks so that I can find them easily at a later date.*
+*As a Site User, I can save other users' recipes to my bookmarks so that I can find them easily at a later date.*
 - Each recipe has a bookmark button which can be toggled by signed in users to bookmark the recipe or remove from bookmarks.
 
 ![header](docs/readme_images/features/buttons_not_author.png)
 
 *As a Site User, I can comment on other people's recipes so I can give my feedback.*
-- Each recipe has a comment section where logged in user's can leave comments on the recipe.
+- Each recipe has a comment section where logged in users can leave comments on the recipe.
 
 ![header](docs/readme_images/features/add_comment.png)
 
@@ -128,13 +162,33 @@
 
 ### HTML
 
-All HTML pages were run through the [W3C HTML Validator](https://validator.w3.org/). The following errors were flagged.
+All HTML pages were run through the [W3C HTML Validator](https://validator.w3.org/). See results in below table.
 
-#### Fixed Errors:
-When validating the Recipe Detail page I received an error in relation to an extra `</p>` tag in the 'Recipe Method' field which had been created using the summernote editor. The issue was due to Summernote including `<p>` tags around the form field. I resolved the error by removing the surrounding `<p>` tags in my HTML when rendering a summernote field in my Recipe Detail page.
+| Page                 | Logged Out | Logged In |
+|----------------------|------------|-----------|
+| add_recipe.html      | N/A        | Note 1    |
+| base.html            | No errors  | No errors |
+| browse_receipes.html | No errors  | No errors |
+| delete_comment.html  | N/A        | No errors |
+| delete_recipes.html  | N/A        | No errors |
+| index.html           | No errors  | No errors |
+| my_bookmarks.html    | N/A        | No errors |
+| my_mealplan.html     | N/A        | No errors |
+| my_recipes.html      | N/A        | No errors |
+| paginator.html       | No errors  | No errors |
+| recipe_detail.html   | No errors  | No errors |
+| update_comment.html  | N/A        | No errors |
+| update_recipe.html   | N/A        | Note 1    |
+| login.html           | No errors  | N/A       |
+| logout.html          | N/A        | No errors |
+| signup.html          | No errors  | N/A       |
+| 400.html             | No errors  | No errors |
+| 403.html             | N/A        | No errors |
+| 404.html             | No errors  | No errors |
+| 500.html             | No errors  | No errors |
 
-#### Unfixed Errors
-When validating the Add Recipe and Edit Recipe forms I received a number of errors which were caused by the installed Summernote library which runs when using the form on these pages. I could not recitify these errors given that they weren't in my own code therefore they are unresolved. 
+#### Note 1: Summernote Errors
+When validating the Add Recipe and Edit Recipe forms I received a number of errors which were caused by the installed Summernote library which runs when using the form on these pages. I could not rectify these errors given that they weren't in my own code therefore they are unresolved. 
 
  <details>
 
@@ -142,6 +196,9 @@ When validating the Add Recipe and Edit Recipe forms I received a number of erro
 
 ![Summernote Errors](docs/readme_images/summernote_errors.png)
  </details>
+
+#### Fixed Errors
+When validating the Recipe Detail page I received an error in relation to an extra `</p>` tag in the 'Recipe Method' field which had been created using the summernote editor. The issue was due to Summernote including `<p>` tags around the form field. I resolved the error by removing the surrounding `<p>` tags in my HTML when rendering a summernote field in my Recipe Detail page.
 
 ### CSS
 No errors were found when passing my CSS file through the official [W3C CSS Validator](https://jigsaw.w3.org/css-validator/)
@@ -164,12 +221,12 @@ No errors were found when passing my javascript through [Jshint](https://jshint.
 </details>
 
 ### Python
-All Python files were ran through [Pep8](http://pep8online.com/) with no errors found. 
+All Python files were run through [Pep8](http://pep8online.com/) with no errors found. 
 
 ### Lighthouse
 
-Lighthouse validation was ran on all pages (both mobile and desktop) in order to check accessibility.
-At first I recieved the warning *'Background and foreground colors do not have a sufficient contrast ratio'* in relation to buttons where I had used the Bootstrap class `btn-info`. 
+Lighthouse validation was run on all pages (both mobile and desktop) in order to check accessibility.
+At first I received the warning *'Background and foreground colors do not have a sufficient contrast ratio'* in relation to buttons where I had used the Bootstrap class `btn-info`. 
 
 After I updated the button styling I received 100% score on all pages. 
 
@@ -346,7 +403,7 @@ After I updated the button styling I received 100% score on all pages.
 ### My Recipes Page
 | Element         | Action               | Expected Result                                                                                                  | Pass/Fail |
 |-----------------|----------------------|------------------------------------------------------------------------------------------------------------------|-----------|
-| My Recipes Page | Access               | If a user tries to access this page (by changing url) without being signed in they are redirected the Login page | Pass      |
+| My Recipes Page | Access               | If a user tries to access this page (by changing url) without being signed in they are redirected to the Login page | Pass      |
 | My Recipes Page | Display              | Only displays the recipes that the user is the author for                                                        | Pass      |
 | Recipe Card     | Show Status          | Show if recipe is draft or published                                                                             | Pass      |
 | Recipe Card     | Card Content Display | Display correct image, recipe title and cooktime                                                                 | Pass      |
@@ -427,13 +484,13 @@ After I updated the button styling I received 100% score on all pages.
 ### Fixed Bugs
 
 - #### Overwrite Meal Plan Items
-     - **Bug**: When I initially wrote the code to add a recipe to a meal plan item, if a meal plan item already existed for the current user for a particular day and then they added another recipe to that day, the meal plan item wouldn't update and the the user's meal plan would still display the original meal plan item for that day.
+     - **Bug**: When I initially wrote the code to add a recipe to a meal plan item, if a meal plan item already existed for the current user for a particular day and then they added another recipe to that day, the meal plan item wouldn't update and the user's meal plan would still display the original meal plan item for that day.
      - **Fix**: in order to rectify this I queried the database to return all meal plan items for the current user and for the day selected. Through an if statement I could then check if a meal plan item already existed for the user for that day, and if it did then to overwrite it. 
 This solved the problem whereby now if a user adds a meal plan item to a particular day, it just overwrites the previous meal plan item. 
 
 - #### Required fields using Summernote extension submit with just whitespace entered
-     - **Bug**: In the Add Recipe form, the Ingredients and Method fields both use the summernote extension. Both fields are required fields however the form still submited when only whitespace was entered due to summernote rendering the html `<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</p>` on submit and therefore the form validation didn't pick up the empty field. 
-     - **Fix**: My first attempt at the solution was to write a custom django `clean_<fieldname>() method` which would replace any `&nbsp` with blank, `strip()` whitespace and `strip_tags()`. The solution did prevent the form submiting with only whitespace however it wasn't a good solution due to fact that stripping the HTML tags meant the summernote editor didn't format valid inputs as expected. 
+     - **Bug**: In the Add Recipe form, the Ingredients and Method fields both use the summernote extension. Both fields are required fields however the form still submitted when only whitespace was entered due to summernote rendering the html `<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</p>` on submit and therefore the form validation didn't pick up the empty field. 
+     - **Fix**: My first attempt at the solution was to write a custom django `clean_<fieldname>() method` which would replace any `&nbsp` with blank, `strip()` whitespace and `strip_tags()`. The solution did prevent the form submitting with only whitespace however it wasn't a good solution due to fact that stripping the HTML tags meant the summernote editor didn't format valid inputs as expected. 
      - After posting the question on Slack Ian Meigh_5P proposed a working solution to create a custom validator for textfields and implement this in the Model. I have utilised Ian's custom validator in my code [here](eateasy/validators.py) and have credited him in my Readme. Thanks Ian!
 
 - #### No Reverse Match Error
@@ -446,8 +503,7 @@ This solved the problem whereby now if a user adds a meal plan item to a particu
 
 - #### Footer not staying at bottom of screen
      - **Bug**: Footer not staying at the bottom of the screen when displaying on pages without fullscreen content and didn't want to use a sticky footer. 
-     - **Fix**: Was able to utilise the the calc() CSS function and make the page content 100% of the viewport height less the height of the footer and this solved the problem. 
+     - **Fix**: Was able to utilise the calc() CSS function and make the page content 100% of the viewport height less the height of the footer and this solved the problem. 
 
 ### Unfixed bugs:
-
 There are no known unfixed bugs. 
