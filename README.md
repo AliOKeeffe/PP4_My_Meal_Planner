@@ -19,6 +19,7 @@ The live link can be found here - [The Easy Eater](https://easy-eater.herokuapp.
       - [Wireframes](#wireframes)
   * [Agile Methodology](#agile-methodology)
   * [Data Model](#data-model)
+  * [Testing](#Testing)
   * [Security Features and Defensive Design](#security-features-and-defensive-design)
     + [User Authentication](#user-authentication)
     + [Form Validation](#form-validation)
@@ -168,6 +169,10 @@ The meal plan item model allows users to add recipes to a meal plan for a partic
 The diagram below details the database schema.
 
 ![Database Schema](docs/readme_images/database_schema.png)
+
+## Testing
+
+Testing and results can be found [here](/TESTING.md)
 
 ## Security Features and Defensive Design
 
