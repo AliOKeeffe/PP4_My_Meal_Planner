@@ -19,7 +19,7 @@ The live link can be found here - [The Easy Eater](https://easy-eater.herokuapp.
       - [Wireframes](#wireframes)
   * [Agile Methodology](#agile-methodology)
   * [Data Model](#data-model)
-  * [Testing](#Testing)
+  * [Testing](#testing)
   * [Security Features and Defensive Design](#security-features-and-defensive-design)
     + [User Authentication](#user-authentication)
     + [Form Validation](#form-validation)
@@ -49,7 +49,6 @@ The live link can be found here - [The Easy Eater](https://easy-eater.herokuapp.
   * [Acknowledgments](#acknowledgments)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
-
 ## User Experience (UX)
 
 A visitor to Easy Eater would be someone who is most likely an adult who enjoys their food and trying new recipes but also wants to save time and effort when deciding what to cook for dinner every night of the week.
