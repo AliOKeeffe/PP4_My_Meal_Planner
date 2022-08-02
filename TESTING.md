@@ -16,7 +16,7 @@
   * [Browse Recipes Page](#browse-recipes-page)
   * [Recipe Detail Page](#recipe-detail-page)
   * [Add Recipe Page](#add-recipe-page)
-  * [Edit Recipe Page](#edit-recipe-page)
+  * [Update Recipe Page](#update-recipe-page)
   * [Confirm Delete Recipe Page](#confirm-delete-recipe-page)
   * [My Recipes Page](#my-recipes-page)
   * [My Bookmarks Page](#my-bookmarks-page)
@@ -266,7 +266,7 @@ Lighthouse validation was run on all pages (both mobile and desktop) in order to
 - The Website was tested on Google Chrome, Firefox, Safari browsers with no issues noted.
     
 ## Device Testing
-- The website was viewed on a variety of devices such as Desktop, Laptop, iPhone10 iPhone 8, iPhoneX and iPad to ensure responsiveness on various screen sizes in both portrait and landscape mode. The website performed as intended. The responsive design was also checked using Chrome developer tools across multiple devices with structural integrity holding for the various sizes.
+- The website was viewed on a variety of devices such as Desktop, Laptop, iPhone 8, iPhoneXR and iPad to ensure responsiveness on various screen sizes in both portrait and landscape mode. The website performed as intended. The responsive design was also checked using Chrome developer tools across multiple devices with structural integrity holding for the various sizes.
 
 ## Manual Testing
 
@@ -293,13 +293,11 @@ Lighthouse validation was run on all pages (both mobile and desktop) in order to
 | My Bookmarks Link     | Display    | Only visible if user in session                                    | Pass      |
 | Logout Link           | Click      | Open logout confirm page                                           | Pass      |
 | Logout Link           | Display    | Only visible if user in session                                    | Pass      |
-| All Nav Links         | Hover      | Darken text                                                        | Pass      |
-| All Nav Links         | If active  | Keep active link dark and bold                                     | Pass      |
-| Navbar                | Scroll     | Remains fixed to top of page                                       | Pass      |
+| All Nav Links         | Hover      | lighten text                                                        | Pass      
 |                       |            |                                                                    |           |
 | Mobile View           |            |                                                                    |           |
-| Hamburger Menu        | Responsive | Display when screen size reduces to xxx size                       | Pass      |
-| My Account Dropdown   | Responsive | Contents move into hamburger menu when size reduces size           | Pass      |
+| Hamburger Menu        | Responsive | Display when screen size reduces to medium size                       | Pass      |
+| My Account Dropdown   | Responsive | Contents move into hamburger menu when screen size reduces to medium           | Pass      |
 | Site Name (logo area) | Click      | Redirect to home                                                   | Pass      |
 | Home Link             | Click      | Redirect to home                                                   | Pass      |
 | Browse Recipes Link   | Click      | Open Browse Recipes Page                                           | Pass      |
@@ -316,8 +314,6 @@ Lighthouse validation was run on all pages (both mobile and desktop) in order to
 | My Bookmarks Link     | Display    | Only visible if user in session                                    | Pass      |
 | Logout Link           | Click      | Open logout confirm page                                           | Pass      |
 | Logout Link           | Display    | Only visible if user in session                                    | Pass      |
-| All Nav Links         | Hover      | Darken text                                                        | Pass      |
-| All Nav Links         | If active  | Keep active link dark and bold                                     | Pass      |
 |                       |            |                                                                    |           |
 | Footer                |            |                                                                    |           |
 | All links             | Click      | Open in new tab and to correct location                            | Pass      |
@@ -379,9 +375,9 @@ Lighthouse validation was run on all pages (both mobile and desktop) in order to
 | Delete comment                 | Access              | If a user tries to delete another user's comment (by changing the url) they receive a custom 403 error.                 | Pass      |
 | Delete comment                 | Access              | If a user tries to delete a comment (by changing the url) without being signed in they are redirected to the login page | Pass      |
 | Add comment Form               | Display             | Form only visible if user in session                                                                                    | Pass      |
-| Add comment Form submit button | Click               | On submit: form won't submit                                                                                            | Pass      |
-| Add comment Form submit button | Click               | Error message displays                                                                                                  | Pass      |
-| Add comment Form submit button | Click               | Form submit - page updates and comment displays in comments section with correct content                                | Pass      |
+| Add comment Form submit button | Leave empty               | On submit: form won't submit                                                                                            | Pass      |
+| Add comment Form submit button | Leave empty               | Error message displays                                                                                                  | Pass      |
+| Add comment Form submit button | Filled in               | Form submit - page updates and comment displays in comments section with correct content                                | Pass      |
 | Add comment Form submit button | Click               | Success message appears informing the user that the comment has been added                                              | Pass      |
 | Add comment Form submit button | Click               | Success message fades after 3 seconds                                                                                   | Pass      |
 |                                |                     |                                                                                                                         |           |
@@ -411,7 +407,7 @@ Lighthouse validation was run on all pages (both mobile and desktop) in order to
 | Add Recipe button(form valid) | Click                 | Redirect to Recipe detail page for new recipe with all information displaying correctly                             | Pass      |
 | Add Recipe button(form valid) | Click                 | Success message appears informing the user that the recipe has been created                                         | Pass      |
 | Add Recipe button(form valid) | Click                 | Success message fades after 3 seconds                                                                               | Pass      |
-### Edit Recipe Page
+### Update Recipe Page
 | Element            | Action  | Expected Result                                                                                                         | Pass/Fail |
 |--------------------|---------|-------------------------------------------------------------------------------------------------------------------------|-----------|
 | Update Recipe      | Access  | If a user tries to edit another user's recipe (by changing the url) they receive a custom 403 error. (forbidden access) | Pass      |
@@ -437,7 +433,7 @@ Lighthouse validation was run on all pages (both mobile and desktop) in order to
 |-----------------|----------------------|------------------------------------------------------------------------------------------------------------------|-----------|
 | My Recipes Page | Access               | If a user tries to access this page (by changing url) without being signed in they are redirected to the Login page | Pass      |
 | My Recipes Page | Display              | Only displays the recipes that the user is the author for                                                        | Pass      |
-| Recipe Card     | Show Status          | Show if recipe is draft or published                                                                             | Pass      |
+| Recipe Card     | Show Status          | Show if recipe is draft                                                                             | Pass      |
 | Recipe Card     | Card Content Display | Display correct image, recipe title and cooktime                                                                 | Pass      |
 | Recipe Card     | Click                | Clicking anywhere inside the recipe card takes you to the correct recipe's detail page.                          | Pass      |
 | Recipe Card     | Pagination           | Site will paginate 8 recipe cards to a page                                                                      | Pass      |

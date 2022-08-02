@@ -10,7 +10,7 @@ The live link can be found here - [The Easy Eater](https://easy-eater.herokuapp.
 ## Table of Contents
 
 - [The Easy Eater](#the-easy-eater)
-  * [User Experience (UX)](#user-experience--ux-)
+  * [User Experience (UX)](#user-experience-ux)
     + [User Stories](#user-stories)
     + [Design](#design)
       - [Colour Scheme](#colour-scheme)
@@ -86,7 +86,7 @@ A visitor to Easy Eater would be someone who is most likely an adult who enjoys 
 
 #### User stories not yet implemented
 
-The following user stories were scoped out of the project due to time constraints and labelled as "Could Have" on the project board on Github. It is intended that these user stories will be implemented at a later date. 
+The following user stories were scoped out of the project due to time constraints and labelled as "Won't Have" on the project board on Github. It is intended that these user stories will be implemented at a later date. 
 
 - As a Site User, I can export the ingredients from the recipes on my meal plan to a shopping list and remove the ones that are not necessary so that I can have all my required ingredients for the week in one place.
 - As a Site User, I can search and filter recipes so that I can find the one I want.
@@ -100,7 +100,7 @@ Colour palette from Coolors
 
 ![Colour Palette](docs/readme_images/colour_scheme.png)
 
-The colour scheme of the site is mainly pale cream, pink and brown with thin gold borders. THe colours chosen are quite neutral and calming. 
+The colour scheme of the site is mainly pale cream, pink and brown with thin gold borders. The colours chosen are quite neutral and calming. 
 
 Great care was taken to establish a good contrast between background colours and text at all times to ensure maximum user accessibility. 
 
@@ -331,7 +331,7 @@ The following buttons will display if the user is logged in and is the recipe au
 - If the user is logged in, then they can add a recipe by clicking the link on the navigation bar.
 - The form fields for 'Ingredients' and 'Method' include a WYSIWYG editor called Summernote to help the user format their content by adding bullet points, headings etc.
 - The user can upload a photo if they wish. If they choose not to, a default image displays as their recipe image.
-- The user can choose to publish the recipe now or save for later through a drop down menu. If they choose to 'save for later', the recipe will not appear on the Browse Recipe page but the user will be able to access it in their 'My Recipes' page.
+- The user can choose to publish the recipe now or save for later through a drop down menu. If they choose to 'save for later', the recipe will not appear on the Browse Recipe page but the user will be able to access it in their 'My Recipes' page and it will be labelled as 'DRAFT'.
 - Failing to fill out the recipe's Title, Description, Ingredients, or Method, results in the form failing and rendering a message stating which fields you have missed.
 - If a user tries to add a recipe (by changing the url) without being signed in they are redirected to the log in page.
 - The user will receive a success message notifying them that the recipe has been successfully added.
