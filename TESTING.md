@@ -225,10 +225,42 @@ All Python files were run through [Pep8](http://pep8online.com/) with no errors 
 
 ### Lighthouse
 
-Lighthouse validation was run on all pages (both mobile and desktop) in order to check accessibility.
-At first I received the warning *'Background and foreground colors do not have a sufficient contrast ratio'* in relation to buttons where I had used the Bootstrap class `btn-info`. 
+Lighthouse validation was run on all pages (both mobile and desktop) in order to check accessibility and performance. At first I received the warning *'Background and foreground colors do not have a sufficient contrast ratio'* in relation to buttons where I had used the Bootstrap class `btn-info`. After I updated the button styling I received the below scores. 
 
-After I updated the button styling I received 100% score on all pages. 
+| Page           | Performance  | Accessibility | Best Practices  | SEO |
+|----------------|:------------:|:-------------:|:---------------:|:---:|
+|                |              |               |                 |     |
+| Desktop        |              |               |                 |     |
+| Home           |          100 |           100 |             100 | 100 |
+| Browse Recipes |           98 |           100 |             100 | 100 |
+| Recipe Detail  |           99 |            99 |             100 | 100 |
+| Add Recipe     |           99 |            98 |             100 | 100 |
+| My Recipes     |           99 |           100 |             100 | 100 |
+| My Bookmarks   |           99 |           100 |             100 | 100 |
+| My Meal Plan   |           99 |           100 |             100 | 100 |
+| Update Recipe  |           99 |            98 |             100 | 100 |
+| Delete Recipe  |           99 |           100 |             100 | 100 |
+| Update Comment |           99 |           100 |             100 | 100 |
+| Delete Comment |           99 |           100 |             100 | 100 |
+| Login          |           99 |           100 |             100 | 100 |
+| Logout         |           99 |           100 |             100 | 100 |
+| Signup         |           99 |           100 |             100 | 100 |
+|                |              |               |                 |     |
+| Mobile         |              |               |                 |     |
+| Home           |           94 |           100 |             100 | 100 |
+| Browse Recipes |           94 |           100 |             100 | 100 |
+| Recipe Detail  |           93 |            98 |             100 | 100 |
+| Add Recipe     |           86 |            98 |             100 | 100 |
+| My Recipes     |           94 |           100 |             100 | 100 |
+| My Bookmarks   |           95 |           100 |             100 | 100 |
+| My Meal Plan   |           95 |           100 |             100 | 100 |
+| Update Recipe  |           83 |            98 |             100 | 100 |
+| Delete Recipe  |           94 |           100 |             100 | 100 |
+| Update Comment |           94 |           100 |             100 | 100 |
+| Delete Comment |           94 |           100 |             100 | 100 |
+| Login          |           95 |           100 |             100 | 100 |
+| Logout         |           95 |           100 |             100 | 100 |
+| Signup         |           95 |           100 |             100 | 100 |
 
 ## Browser Testing
 - The Website was tested on Google Chrome, Firefox, Safari browsers with no issues noted.
